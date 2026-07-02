@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "physics-formula-typography Self-Check Report",
+  "description": "物理公式与物理量排版规范自检。所有核心检查通过时才能交付，同时要确认普通 UI 文案和非物理英文没有被过度 MathJax 化。",
+  "type": "object",
+  "required": [
+    "version",
+    "mode",
+    "final_html_url",
+    "checks",
+    "passed",
+    "status"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "example": "1.4.0"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["fresh_generate", "fix_existing"]
+    },
+    "source_html_url": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "final_html_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "checks": {
+      "type": "object",
+      "required": [
+        "mathjax_cdn",
+        "delimiter_policy",
+        "visible_symbol_coverage",
+        "quantity_unit_font",
+        "semantic_subscripts",
+        "unicode_or_html_subscripts",
+        "dynamic_typeset",
+        "canvas_svg_labels",
+        "interaction_smoke",
+        "non_overconstraint"
+      ],
+      "properties": {
+        "mathjax_cdn": {
+          "$ref": "#/definitions/check_item",
+          "description": "必须使用指定 metis-online MathJax3 CDN，且 window.MathJax 配置在 CDN 之前。"
+        },
+        "delimiter_policy": {
+          "$ref": "#/definitions/check_item",
+          "description": "全 HTML 无 $...$，只使用 \\(...\\) 与 \\[...\\]。"
+        },
+        "visible_symbol_coverage": {
+          "$ref": "#/definitions/check_item",
+          "description": "画面所有可见公式、物理量字母、单位和动态读数都已进入 MathJax。"
+        },
+        "quantity_unit_font": {
+          "$ref": "#/definitions/check_item",
+          "description": "物理量斜体，单位用 \\mathrm 正体，数字与单位之间有合适间距。"
+        },
+        "semantic_subscripts": {
+          "$ref": "#/definitions/check_item",
+          "description": "vm/vM/v0/pm/pM/Px/V1/V2/V3 等自然写法已归一为 v_{m}/v_{M}/v_{0}/p_{m}/p_{M}/P_{x}/V_{1}/V_{2}/V_{3}。"
+        },
+        "unicode_or_html_subscripts": {
+          "$ref": "#/definitions/check_item",
+          "description": "无 Unicode 上下标、无 <sub>/<sup> 公式角标。"
+        },
+        "dynamic_typeset": {
+          "$ref": "#/definitions/check_item",
+          "description": "所有动态 DOM 更新后调用 MathJax.typesetPromise 或统一 helper。"
+        },
+        "canvas_svg_labels": {
+          "$ref": "#/definitions/check_item",
+          "description": "Canvas/SVG 不直接绘制公式；公式标签使用 HTML overlay 或 foreignObject。"
+        },
+        "interaction_smoke": {
+          "$ref": "#/definitions/check_item",
+          "description": "点击开始/播放/下一步、拖动滑块、切换步骤后仍无裸公式/裸变量/裸单位。"
+        },
+        "non_overconstraint": {
+          "$ref": "#/definitions/check_item",
+          "description": "普通 UI 文案、选项编号、英文缩写、CSS/JS 标识符没有被强行 MathJax 化。"
+        }
+      }
+    },
+    "formula_inventory": {
+      "type": "array",
+      "description": "本次识别并规范化的公式/变量/单位清单。",
+      "items": {
+        "type": "object",
+        "required": ["source_text", "normalized_latex", "location"],
+        "properties": {
+          "source_text": { "type": "string" },
+          "normalized_latex": { "type": "string" },
+          "location": { "type": "string" },
+          "dynamic": { "type": "boolean" }
+        }
+      }
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["passed", "degraded"]
+    },
+    "unresolved_issues": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "definitions": {
+    "check_item": {
+      "type": "object",
+      "required": ["passed", "evidence"],
+      "properties": {
+        "passed": { "type": "boolean" },
+        "evidence": { "type": "string" },
+        "failed_locations": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+---
+description: >-
+  生成或修改 K12 教学 HTML/互动课件时，自动遵循 teaching-page Skill 与
+  courseware-shell 契约（无需用户每次 @teaching-page）。
+globs: pages/**/*.html
+alwaysApply: true
+---
+
+# Teaching Page Harness（自动路由）
+
+## 何时必须启用
+
+用户意图涉及以下**任一**时，**先 Read** `.cursor/skills/teaching-page/SKILL.md`，并严格按其工作流执行（不必等用户写 `@teaching-page`）：
+
+- 教学页面、互动课件、教学动画、课堂演示、答题页、拖拽练习
+- 多页课件 / PPT 式 / 翻页课件
+- 在 `pages/` 下**新建**或**修改**教学 HTML
+- 演示 Harness、现场生成课件
+
+## 何时不要启用
+
+- 只讨论架构、读飞象 Skill 研究资料、写汇报文档
+- 普通前端任务（与教学 HTML 产物无关）
+- 只改 `courseware-shell.js` 引擎本身（读 `reference.md` + 接口设计即可）
+
+## 执行要点
+
+1. **路由**：多页（≥2 或明确「课件」）→ `multi`；否则 → `single`
+2. **必读**：`SKILL.md`；细节查 `reference.md`；骨架查 `templates/`
+3. **产出**：必须 `Write` 到磁盘；默认 `pages/<英文名>/`
+4. **multi 模式**：`index.html` + 同目录 `courseware-shell.js`（从 `assets/courseware-shell.js` 复制）
+5. **契约**：`page-shared` / `page-data` / `slide--fit` | `slide--scroll` / `spec` 注释
+6. **禁止**：飞象 CDN 壳、只贴代码不建文件、长内容 + `overflow:hidden` 裁切
+
+## 修改已有课件
+
+Read 目标 HTML → 只改用户要求部分 → 保留 spec、壳路径、配色令牌。

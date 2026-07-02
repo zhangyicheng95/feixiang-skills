@@ -1,0 +1,1392 @@
+{
+  "candidate_count": 372,
+  "exists": 166,
+  "downloads": [],
+  "mirrors": [
+    {
+      "path": "drag-interaction/v1/drop-into-container.md",
+      "source": "drag-interaction/v1/templates/drop-into-container.md",
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ]
+    },
+    {
+      "path": "drag-interaction/v1/drop-match.md",
+      "source": "drag-interaction/v1/templates/drop-match.md",
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ]
+    },
+    {
+      "path": "html-authoring/v3/references/color-palettes-a.md",
+      "source": "html-authoring/v3/color-palettes-a.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v3/references/color-palettes-b.md",
+      "source": "html-authoring/v3/color-palettes-b.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v3/references/visual-impact.md",
+      "source": "html-authoring/v3/visual-impact.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v3/references/workflow.md",
+      "source": "html-authoring/v3/workflow.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/math-design/examples-and-pitfalls.md",
+      "source": "html-authoring/v4/examples-and-pitfalls.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/math-design/tech-details.md",
+      "source": "html-authoring/v4/tech-details.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/references/color-palettes-a.md",
+      "source": "html-authoring/v4/color-palettes-a.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/references/color-palettes-b.md",
+      "source": "html-authoring/v4/color-palettes-b.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/references/manipulatives.md",
+      "source": "html-authoring/v4/manipulatives.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/references/visual-impact.md",
+      "source": "html-authoring/v4/visual-impact.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/references/workflow.md",
+      "source": "html-authoring/v4/workflow.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/vN/color-palettes-a.md",
+      "source": "html-authoring/v4/color-palettes-a.md",
+      "why": [
+        "cross-version"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/vN/color-palettes-b.md",
+      "source": "html-authoring/v4/color-palettes-b.md",
+      "why": [
+        "cross-version"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/vN/visual-impact.md",
+      "source": "html-authoring/v4/visual-impact.md",
+      "why": [
+        "cross-version"
+      ]
+    },
+    {
+      "path": "html-authoring/v4/vN/workflow.md",
+      "source": "html-authoring/v4/workflow.md",
+      "why": [
+        "backtick-file",
+        "cross-version"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/math-design/examples-and-pitfalls.md",
+      "source": "html-authoring/v5/examples-and-pitfalls.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/math-design/tech-details.md",
+      "source": "html-authoring/v5/tech-details.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/references/color-palettes-a.md",
+      "source": "html-authoring/v5/color-palettes-a.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/references/color-palettes-b.md",
+      "source": "html-authoring/v5/color-palettes-b.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/references/grid-templates.md",
+      "source": "html-authoring/v5/grid-templates.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/references/manipulatives.md",
+      "source": "html-authoring/v5/manipulatives.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/references/visual-impact.md",
+      "source": "html-authoring/v5/visual-impact.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/references/workflow.md",
+      "source": "html-authoring/v5/workflow.md",
+      "why": [
+        "alias-dir"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/vN/color-palettes-a.md",
+      "source": "html-authoring/v5/color-palettes-a.md",
+      "why": [
+        "cross-version"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/vN/color-palettes-b.md",
+      "source": "html-authoring/v5/color-palettes-b.md",
+      "why": [
+        "cross-version"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/vN/visual-impact.md",
+      "source": "html-authoring/v5/visual-impact.md",
+      "why": [
+        "cross-version"
+      ]
+    },
+    {
+      "path": "html-authoring/v5/vN/workflow.md",
+      "source": "html-authoring/v5/workflow.md",
+      "why": [
+        "backtick-file",
+        "cross-version"
+      ]
+    },
+    {
+      "path": "stroke-order/v1/stroke-data.json",
+      "source": "stroke-order/v1/assets/stroke-data.json",
+      "why": [
+        "backtick-file"
+      ]
+    },
+    {
+      "path": "stroke-order/v1/stroke-loader.js",
+      "source": "stroke-order/v1/templates/stroke-loader.js",
+      "why": [
+        "backtick-file"
+      ]
+    },
+    {
+      "path": "stroke-order/v1/v42/templates/stroke-card.js",
+      "source": "stroke-order/v1/templates/stroke-card.js",
+      "why": [
+        "html-attr"
+      ]
+    },
+    {
+      "path": "stroke-order/v1/v42/templates/stroke-loader.js",
+      "source": "stroke-order/v1/stroke-loader.js",
+      "why": [
+        "html-attr"
+      ]
+    }
+  ],
+  "misses": [
+    {
+      "path": "courseware-generator/v1/pages-batch1-p1to3.html",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v1/content-guide.md",
+          "context": "cript>` 中不可出现字面量 `</template>`，如需要用 `<\\/template>` 替代。 - 文件名建议包含批次号和页码范围，便于后续识别：`pages-batch1-p1to3.html`。  ### 5.4 每批生成时须携带的上下文  传给实现者（或 sub-agent）的输入**不能只有本页大纲**，须包含完整的课件语境：  | 必传信息 |"
+        },
+        {
+          "file": "courseware-generator/v1/content-guide.md",
+          "context": "- 文件名建议包含批次号和页码范围，便于后续识别：`pages-batch1-p1to3.html`。"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v1/pages-batch1.html",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v1/content-guide.md",
+          "context": "→ 练习/互动页 → 小结/结束页。  ### 5.3 每批的输出格式——独立的页面片段文件  每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。  单"
+        },
+        {
+          "file": "courseware-generator/v1/content-guide.md",
+          "context": "tch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。  单个片段文件格式示例（`pages-batch1.html`，包含第 1～3 页）：  ```html <!-- 第 1 批：第 1–3 页 --> <template class=\"page-data\" data-id"
+        },
+        {
+          "file": "courseware-generator/v1/content-guide.md",
+          "context": "每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v1/pages-batch2.html",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v1/content-guide.md",
+          "context": "### 5.3 每批的输出格式——独立的页面片段文件  每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。  单个片段文件格式示例（`pages-bat"
+        },
+        {
+          "file": "courseware-generator/v1/content-guide.md",
+          "context": "每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v10/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v10/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v11/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v11/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v12/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v12/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v13/musk-collect.js",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "html-attr"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v13/html-guide.md",
+          "context": "ta\">` 的 `<script>` 中**直接** `new MuskCollect()` 即可使用。 - ❌ **禁止**在任何位置手写 `<script src=\".../musk-collect.js\">`，重复加载浪费带宽且可能产生竞态。  #### 反例：不要假定 `window.muskCollect` 是预置实例  shell **只注入 SDK 的类"
+        },
+        {
+          "file": "courseware-generator/v13/html-guide.md",
+          "context": "_ === 'thumbnail'`）下不要触发写入  ### 7.4 自检 checklist  提交前对照检查：  - [ ] 没有手写 `<script src=\".../musk-collect.js\">` - [ ] 用 `const collect = new MuskCollect()` 创建实例，**没有**假定 `window.muskCollect"
+        },
+        {
+          "file": "courseware-generator/v13/html-guide.md",
+          "context": " 参数解析，AI 无需关心。  ### 7.1 SDK 由壳框架自动注入，禁止手动引入  壳框架已在每个子页 `srcdoc` 的 `<head>` 同步注入 `musk-collect.js`。  - ✅ 在 `<template class=\"page-shared\">` 或 `<template class=\"page-data\">` 的 `<s"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v13/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v13/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v14/musk-collect.js",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "html-attr"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v14/html-guide.md",
+          "context": "ta\">` 的 `<script>` 中**直接** `new MuskCollect()` 即可使用。 - ❌ **禁止**在任何位置手写 `<script src=\".../musk-collect.js\">`，重复加载浪费带宽且可能产生竞态。  #### 反例：不要假定 `window.muskCollect` 是预置实例  shell **只注入 SDK 的类"
+        },
+        {
+          "file": "courseware-generator/v14/html-guide.md",
+          "context": "_ === 'thumbnail'`）下不要触发写入  ### 7.4 自检 checklist  提交前对照检查：  - [ ] 没有手写 `<script src=\".../musk-collect.js\">` - [ ] 用 `const collect = new MuskCollect()` 创建实例，**没有**假定 `window.muskCollect"
+        },
+        {
+          "file": "courseware-generator/v14/html-guide.md",
+          "context": " 参数解析，AI 无需关心。  ### 7.1 SDK 由壳框架自动注入，禁止手动引入  壳框架已在每个子页 `srcdoc` 的 `<head>` 同步注入 `musk-collect.js`。  - ✅ 在 `<template class=\"page-shared\">` 或 `<template class=\"page-data\">` 的 `<s"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v14/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v14/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v15/musk-collect.js",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "html-attr"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v15/html-guide.md",
+          "context": "ta\">` 的 `<script>` 中**直接** `new MuskCollect()` 即可使用。 - ❌ **禁止**在任何位置手写 `<script src=\".../musk-collect.js\">`，重复加载浪费带宽且可能产生竞态。  #### 反例：不要假定 `window.muskCollect` 是预置实例  shell **只注入 SDK 的类"
+        },
+        {
+          "file": "courseware-generator/v15/html-guide.md",
+          "context": "_ === 'thumbnail'`）下不要触发写入  ### 7.4 自检 checklist  提交前对照检查：  - [ ] 没有手写 `<script src=\".../musk-collect.js\">` - [ ] 用 `const collect = new MuskCollect()` 创建实例，**没有**假定 `window.muskCollect"
+        },
+        {
+          "file": "courseware-generator/v15/html-guide.md",
+          "context": " 参数解析，AI 无需关心。  ### 7.1 SDK 由壳框架自动注入，禁止手动引入  壳框架已在每个子页 `srcdoc` 的 `<head>` 同步注入 `musk-collect.js`。  - ✅ 在 `<template class=\"page-shared\">` 或 `<template class=\"page-data\">` 的 `<s"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v15/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v15/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v16/musk-collect.js",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "html-attr"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v16/html-guide.md",
+          "context": "ta\">` 的 `<script>` 中**直接** `new MuskCollect()` 即可使用。 - ❌ **禁止**在任何位置手写 `<script src=\".../musk-collect.js\">`，重复加载浪费带宽且可能产生竞态。  #### 反例：不要假定 `window.muskCollect` 是预置实例  shell **只注入 SDK 的类"
+        },
+        {
+          "file": "courseware-generator/v16/html-guide.md",
+          "context": "_ === 'thumbnail'`）下不要触发写入  ### 7.4 自检 checklist  提交前对照检查：  - [ ] 没有手写 `<script src=\".../musk-collect.js\">` - [ ] 用 `const collect = new MuskCollect()` 创建实例，**没有**假定 `window.muskCollect"
+        },
+        {
+          "file": "courseware-generator/v16/html-guide.md",
+          "context": " 参数解析，AI 无需关心。  ### 7.1 SDK 由壳框架自动注入，禁止手动引入  壳框架已在每个子页 `srcdoc` 的 `<head>` 同步注入 `musk-collect.js`。  - ✅ 在 `<template class=\"page-shared\">` 或 `<template class=\"page-data\">` 的 `<s"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v16/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v16/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v17/musk-collect.js",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "html-attr"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v17/html-guide.md",
+          "context": "ta\">` 的 `<script>` 中**直接** `new MuskCollect()` 即可使用。 - ❌ **禁止**在任何位置手写 `<script src=\".../musk-collect.js\">`，重复加载浪费带宽且可能产生竞态。  #### 反例：不要假定 `window.muskCollect` 是预置实例  shell **只注入 SDK 的类"
+        },
+        {
+          "file": "courseware-generator/v17/html-guide.md",
+          "context": "_ === 'thumbnail'`）下不要触发写入  ### 7.4 自检 checklist  提交前对照检查：  - [ ] 没有手写 `<script src=\".../musk-collect.js\">` - [ ] 用 `const collect = new MuskCollect()` 创建实例，**没有**假定 `window.muskCollect"
+        },
+        {
+          "file": "courseware-generator/v17/html-guide.md",
+          "context": " 参数解析，AI 无需关心。  ### 7.1 SDK 由壳框架自动注入，禁止手动引入  壳框架已在每个子页 `srcdoc` 的 `<head>` 同步注入 `musk-collect.js`。  - ✅ 在 `<template class=\"page-shared\">` 或 `<template class=\"page-data\">` 的 `<s"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v17/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v17/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v18/musk-collect.js",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "html-attr"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v18/html-guide.md",
+          "context": "ta\">` 的 `<script>` 中**直接** `new MuskCollect()` 即可使用。 - ❌ **禁止**在任何位置手写 `<script src=\".../musk-collect.js\">`，重复加载浪费带宽且可能产生竞态。  #### 反例：不要假定 `window.muskCollect` 是预置实例  shell **只注入 SDK 的类"
+        },
+        {
+          "file": "courseware-generator/v18/html-guide.md",
+          "context": "_ === 'thumbnail'`）下不要触发写入  ### 7.4 自检 checklist  提交前对照检查：  - [ ] 没有手写 `<script src=\".../musk-collect.js\">` - [ ] 用 `const collect = new MuskCollect()` 创建实例，**没有**假定 `window.muskCollect"
+        },
+        {
+          "file": "courseware-generator/v18/html-guide.md",
+          "context": " 参数解析，AI 无需关心。  ### 7.1 SDK 由壳框架自动注入，禁止手动引入  壳框架已在每个子页 `srcdoc` 的 `<head>` 同步注入 `musk-collect.js`。  - ✅ 在 `<template class=\"page-shared\">` 或 `<template class=\"page-data\">` 的 `<s"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v18/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v18/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v2/pages-batch1-p1to3.html",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v2/content-guide.md",
+          "context": "cript>` 中不可出现字面量 `</template>`，如需要用 `<\\/template>` 替代。 - 文件名建议包含批次号和页码范围，便于后续识别：`pages-batch1-p1to3.html`。  ### 5.4 每批生成时须携带的上下文  传给实现者（或 sub-agent）的输入**不能只有本页大纲**，须包含完整的课件语境：  | 必传信息 |"
+        },
+        {
+          "file": "courseware-generator/v2/content-guide.md",
+          "context": "- 文件名建议包含批次号和页码范围，便于后续识别：`pages-batch1-p1to3.html`。"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v2/pages-batch1.html",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v2/content-guide.md",
+          "context": "→ 练习/互动页 → 小结/结束页。  ### 5.3 每批的输出格式——独立的页面片段文件  每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。  单"
+        },
+        {
+          "file": "courseware-generator/v2/content-guide.md",
+          "context": "tch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。  单个片段文件格式示例（`pages-batch1.html`，包含第 1～3 页）：  ```html <!-- 第 1 批：第 1–3 页 --> <template class=\"page-data\" data-id"
+        },
+        {
+          "file": "courseware-generator/v2/content-guide.md",
+          "context": "每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v2/pages-batch2.html",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v2/content-guide.md",
+          "context": "### 5.3 每批的输出格式——独立的页面片段文件  每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。  单个片段文件格式示例（`pages-bat"
+        },
+        {
+          "file": "courseware-generator/v2/content-guide.md",
+          "context": "每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v3/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v3/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v4/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v4/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v5/pages-batch1-p1to3.html",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v5/content-guide.md",
+          "context": "cript>` 中不可出现字面量 `</template>`，如需要用 `<\\/template>` 替代。 - 文件名建议包含批次号和页码范围，便于后续识别：`pages-batch1-p1to3.html`。  ### 5.4 每批生成时须携带的上下文  传给实现者（或 sub-agent）的输入**不能只有本页大纲**，须包含完整的课件语境：  | 必传信息 |"
+        },
+        {
+          "file": "courseware-generator/v5/content-guide.md",
+          "context": "- 文件名建议包含批次号和页码范围，便于后续识别：`pages-batch1-p1to3.html`。"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v5/pages-batch1.html",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v5/content-guide.md",
+          "context": "→ 练习/互动页 → 小结/结束页。  ### 5.3 每批的输出格式——独立的页面片段文件  每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。  单"
+        },
+        {
+          "file": "courseware-generator/v5/content-guide.md",
+          "context": "tch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。  单个片段文件格式示例（`pages-batch1.html`，包含第 1～3 页）：  ```html <!-- 第 1 批：第 1–3 页 --> <template class=\"page-data\" data-id"
+        },
+        {
+          "file": "courseware-generator/v5/content-guide.md",
+          "context": "每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v5/pages-batch2.html",
+      "status": 404,
+      "why": [
+        "backtick-file",
+        "nav-line-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v5/content-guide.md",
+          "context": "### 5.3 每批的输出格式——独立的页面片段文件  每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。  单个片段文件格式示例（`pages-bat"
+        },
+        {
+          "file": "courseware-generator/v5/content-guide.md",
+          "context": "每批生成后，将结果保存为**独立的 HTML 片段文件**（如 `pages-batch1.html`、`pages-batch2.html`），文件内容**只包含本批各页的 `<template>` 标签**，不包含 HTML 壳、不包含其他批次的页面。"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v6/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v6/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v7/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v7/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v8/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v8/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "courseware-generator/v9/少年闰土.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "courseware-generator/v9/html-guide.md",
+          "context": "**文件命名**：生成的 `.html` 文件名须与 `<title>` 标签中的课件标题保持一致（如 `<title>少年闰土</title>` 对应文件名 `少年闰土.html`），避免用户看到的文件名与课件标题不符产生误解。 - **保留注入标记**：交付的 HTML 文件中 `<!-- CW_PAGES -->` 标记**必须保留*"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v1/agent-fidelity-prompt.md",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v1/pdf-ocr-preprocess.md",
+          "context": "anifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v1/fidelity-resources.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v1/pdf-ocr-preprocess.md",
+          "context": "img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v1/manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v1/pdf-ocr-preprocess.md",
+          "context": "\" --out \"../../tmp/pdf-pages-test\" ```  该工具会输出 `page-01.png`、`page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v1/source-pages.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v1/pdf-ocr-preprocess.md",
+          "context": "upload-manifest \"../../tmp/pdf-pages-test/upload-manifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent "
+        },
+        {
+          "file": "magazine-layout/v1/pdf-ocr-preprocess.md",
+          "context": "的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测或改写，也不能把该附录当作正文主体。  ### 后端增强方案  如果研发后续愿意加能力：  1. 上传 PDF 后先"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v1/upload-manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v1/pdf-ocr-preprocess.md",
+          "context": "page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent 可直接使用的保真输入：  ```bash cd tools/pdf-to-images npm run build:fidelity --"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v2/agent-fidelity-prompt.md",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v2/pdf-ocr-preprocess.md",
+          "context": "anifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v2/fidelity-resources.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v2/pdf-ocr-preprocess.md",
+          "context": "img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v2/manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v2/pdf-ocr-preprocess.md",
+          "context": "\" --out \"../../tmp/pdf-pages-test\" ```  该工具会输出 `page-01.png`、`page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v2/source-pages.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v2/pdf-ocr-preprocess.md",
+          "context": "upload-manifest \"../../tmp/pdf-pages-test/upload-manifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent "
+        },
+        {
+          "file": "magazine-layout/v2/pdf-ocr-preprocess.md",
+          "context": "的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测或改写，也不能把该附录当作正文主体。  ### 后端增强方案  如果研发后续愿意加能力：  1. 上传 PDF 后先"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v2/upload-manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v2/pdf-ocr-preprocess.md",
+          "context": "page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent 可直接使用的保真输入：  ```bash cd tools/pdf-to-images npm run build:fidelity --"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v3/agent-fidelity-prompt.md",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v3/pdf-ocr-preprocess.md",
+          "context": "anifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v3/fidelity-resources.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v3/pdf-ocr-preprocess.md",
+          "context": "img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v3/manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v3/pdf-ocr-preprocess.md",
+          "context": "\" --out \"../../tmp/pdf-pages-test\" ```  该工具会输出 `page-01.png`、`page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v3/source-pages.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v3/pdf-ocr-preprocess.md",
+          "context": "upload-manifest \"../../tmp/pdf-pages-test/upload-manifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent "
+        },
+        {
+          "file": "magazine-layout/v3/pdf-ocr-preprocess.md",
+          "context": "的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测或改写，也不能把该附录当作正文主体。  ### 后端增强方案  如果研发后续愿意加能力：  1. 上传 PDF 后先"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v3/upload-manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v3/pdf-ocr-preprocess.md",
+          "context": "page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent 可直接使用的保真输入：  ```bash cd tools/pdf-to-images npm run build:fidelity --"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v4/agent-fidelity-prompt.md",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v4/pdf-ocr-preprocess.md",
+          "context": "anifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v4/fidelity-resources.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v4/pdf-ocr-preprocess.md",
+          "context": "img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v4/manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v4/pdf-ocr-preprocess.md",
+          "context": "\" --out \"../../tmp/pdf-pages-test\" ```  该工具会输出 `page-01.png`、`page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v4/source-pages.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v4/pdf-ocr-preprocess.md",
+          "context": "upload-manifest \"../../tmp/pdf-pages-test/upload-manifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent "
+        },
+        {
+          "file": "magazine-layout/v4/pdf-ocr-preprocess.md",
+          "context": "的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测或改写，也不能把该附录当作正文主体。  ### 后端增强方案  如果研发后续愿意加能力：  1. 上传 PDF 后先"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v4/upload-manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v4/pdf-ocr-preprocess.md",
+          "context": "page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent 可直接使用的保真输入：  ```bash cd tools/pdf-to-images npm run build:fidelity --"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v5/agent-fidelity-prompt.md",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v5/pdf-ocr-preprocess.md",
+          "context": "anifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v5/fidelity-resources.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v5/pdf-ocr-preprocess.md",
+          "context": "img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v5/manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v5/pdf-ocr-preprocess.md",
+          "context": "\" --out \"../../tmp/pdf-pages-test\" ```  该工具会输出 `page-01.png`、`page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v5/source-pages.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v5/pdf-ocr-preprocess.md",
+          "context": "upload-manifest \"../../tmp/pdf-pages-test/upload-manifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent "
+        },
+        {
+          "file": "magazine-layout/v5/pdf-ocr-preprocess.md",
+          "context": "的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测或改写，也不能把该附录当作正文主体。  ### 后端增强方案  如果研发后续愿意加能力：  1. 上传 PDF 后先"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v5/upload-manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v5/pdf-ocr-preprocess.md",
+          "context": "page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent 可直接使用的保真输入：  ```bash cd tools/pdf-to-images npm run build:fidelity --"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v6/agent-fidelity-prompt.md",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v6/pdf-ocr-preprocess.md",
+          "context": "anifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v6/fidelity-resources.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v6/pdf-ocr-preprocess.md",
+          "context": "img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v6/manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v6/pdf-ocr-preprocess.md",
+          "context": "\" --out \"../../tmp/pdf-pages-test\" ```  该工具会输出 `page-01.png`、`page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v6/source-pages.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v6/pdf-ocr-preprocess.md",
+          "context": "upload-manifest \"../../tmp/pdf-pages-test/upload-manifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent "
+        },
+        {
+          "file": "magazine-layout/v6/pdf-ocr-preprocess.md",
+          "context": "的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测或改写，也不能把该附录当作正文主体。  ### 后端增强方案  如果研发后续愿意加能力：  1. 上传 PDF 后先"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v6/upload-manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v6/pdf-ocr-preprocess.md",
+          "context": "page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent 可直接使用的保真输入：  ```bash cd tools/pdf-to-images npm run build:fidelity --"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v7/agent-fidelity-prompt.md",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v7/pdf-ocr-preprocess.md",
+          "context": "anifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v7/fidelity-resources.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v7/pdf-ocr-preprocess.md",
+          "context": "img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v7/manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v7/pdf-ocr-preprocess.md",
+          "context": "\" --out \"../../tmp/pdf-pages-test\" ```  该工具会输出 `page-01.png`、`page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v7/source-pages.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v7/pdf-ocr-preprocess.md",
+          "context": "upload-manifest \"../../tmp/pdf-pages-test/upload-manifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent "
+        },
+        {
+          "file": "magazine-layout/v7/pdf-ocr-preprocess.md",
+          "context": "的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL作为校验附录，不能重新猜测或改写，也不能把该附录当作正文主体。  ### 后端增强方案  如果研发后续愿意加能力：  1. 上传 PDF 后先"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v7/upload-manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v7/pdf-ocr-preprocess.md",
+          "context": "page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent 可直接使用的保真输入：  ```bash cd tools/pdf-to-images npm run build:fidelity --"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v8/agent-fidelity-prompt.md",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v8/pdf-ocr-preprocess.md",
+          "context": "anifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v8/fidelity-resources.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v8/pdf-ocr-preprocess.md",
+          "context": "img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL，不能重新猜测或改写。  "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v8/manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v8/pdf-ocr-preprocess.md",
+          "context": "\" --out \"../../tmp/pdf-pages-test\" ```  该工具会输出 `page-01.png`、`page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v8/source-pages.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v8/pdf-ocr-preprocess.md",
+          "context": "upload-manifest \"../../tmp/pdf-pages-test/upload-manifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent "
+        },
+        {
+          "file": "magazine-layout/v8/pdf-ocr-preprocess.md",
+          "context": "的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL，不能重新猜测或改写。  ### 后端增强方案  如果研发后续愿意加能力：  1. 上传 PDF 后先异步跑 OCRmyPDF。 2. 生成 "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v8/upload-manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v8/pdf-ocr-preprocess.md",
+          "context": "page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent 可直接使用的保真输入：  ```bash cd tools/pdf-to-images npm run build:fidelity --"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v9/agent-fidelity-prompt.md",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v9/pdf-ocr-preprocess.md",
+          "context": "anifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v9/content.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v9/mineru-integration.md",
+          "context": "rU 的 Markdown 文本传给 Agent。至少需要保留：  - `content.md`：按阅读顺序排列的正文 Markdown，用于可编辑重排。 - `content.json`：阅读顺序 JSON 或等价结构，用于题号、段落、列表、标题层级和块级 bbox。 - `images/`：MinerU 抽取出的原文图片、题内图、截图区域；必"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v9/content.md",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v9/mineru-integration.md",
+          "context": "/题量结构 ```  ## 后端必须保留的 MinerU 输出  后端不要只把 MinerU 的 Markdown 文本传给 Agent。至少需要保留：  - `content.md`：按阅读顺序排列的正文 Markdown，用于可编辑重排。 - `content.json`：阅读顺序 JSON 或等价结构，用于题号、段落、列表、标题层级和块"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v9/fidelity-resources.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v9/pdf-ocr-preprocess.md",
+          "context": "img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL，不能重新猜测或改写。但逐"
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v9/manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v9/pdf-ocr-preprocess.md",
+          "context": "\" --out \"../../tmp/pdf-pages-test\" ```  该工具会输出 `page-01.png`、`page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v9/source-pages.html",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v9/pdf-ocr-preprocess.md",
+          "context": "upload-manifest \"../../tmp/pdf-pages-test/upload-manifest.json\" ```  该命令会输出：  - `source-pages.html`：包含真实 `<img>` 的原卷逐页 HTML 片段。 - `agent-fidelity-prompt.md`：包含资源 ID 和 URL 的 Agent "
+        },
+        {
+          "file": "magazine-layout/v9/pdf-ocr-preprocess.md",
+          "context": "的 Agent 输入说明。 - `fidelity-resources.json`：标准化后的逐页图片资源清单。  Agent 生成 HTML 时必须直接使用 `source-pages.html` 中的真实 URL，不能重新猜测或改写。但逐页图片只能作为校验或裁剪来源，不能替代可编辑重排正文。  ### 后端增强方案  如果研发后续愿意加能力：  1. "
+        }
+      ]
+    },
+    {
+      "path": "magazine-layout/v9/upload-manifest.json",
+      "status": 404,
+      "why": [
+        "backtick-file"
+      ],
+      "sources": [
+        {
+          "file": "magazine-layout/v9/pdf-ocr-preprocess.md",
+          "context": "page-02.png` 等图片和 `manifest.json`，后端上传 PNG 后把真实 URL 交给 Agent。  上传完成后，把上传返回结果整理为 `upload-manifest.json`，再生成 Agent 可直接使用的保真输入：  ```bash cd tools/pdf-to-images npm run build:fidelity --"
+        }
+      ]
+    }
+  ]
+}

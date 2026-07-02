@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<title>StrokeTrace · validate API 演示</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'PingFang SC', sans-serif;
+    background: #FFF9F0;
+    min-height: 100vh;
+    color: #2D3436;
+    padding: 24px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 22px; margin-bottom: 8px; }
+  .lead { color: #7F8C8D; font-size: 13px; margin-bottom: 24px; }
+  .case { background: #fff; border-radius: 10px; padding: 14px 18px; margin-bottom: 14px;
+          box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+  .case .input { font-family: Menlo, monospace; color: #2980B9; font-weight: 600; }
+  .case .desc { font-size: 12px; color: #7F8C8D; margin: 4px 0 8px; }
+  .result { background: #F8F9FA; border-radius: 6px; padding: 10px 12px;
+            font: 11px/1.55 Menlo, monospace; white-space: pre-wrap; word-break: break-all;
+            border-left: 3px solid #E0E0E0; }
+  .result.ok    { border-left-color: #27AE60; background: #EAFBF1; }
+  .result.fail  { border-left-color: #E67E22; background: #FDF5EC; }
+  .result .k { color: #C0392B; }
+  .result .s { color: #16A085; }
+  .result .b { color: #2980B9; }
+  .section-title { margin: 28px 0 12px; font-weight: 700; font-size: 15px; color: #2C3E50; }
+  .status { background: #FFE9B5; color: #B9770E; padding: 6px 12px; border-radius: 16px;
+            display: inline-block; font-size: 12px; margin-bottom: 12px; }
+  .status.ready { background: #D5F5E3; color: #1E8449; }
+  .tryit { display: flex; gap: 8px; align-items: center; margin: 12px 0; }
+  .tryit input {
+    flex: 1; padding: 10px 14px; font-size: 16px;
+    border: 2px solid #EADBC8; border-radius: 10px; font-family: inherit; outline: none;
+  }
+  .tryit input:focus { border-color: #FF9F43; }
+  .tryit button {
+    padding: 10px 18px; background: linear-gradient(135deg,#FF9F43,#FF7F50);
+    color: #fff; border: none; border-radius: 10px; cursor: pointer;
+    font-weight: 600; font-family: inherit;
+  }
+  .tryit select { padding: 10px; border: 2px solid #EADBC8; border-radius: 10px;
+                  font-family: inherit; background: #fff; }
+</style>
+<script>
+  window.STROKE_ANIM_PATH_URL = './stroke-path.json?v=v21';
+  window.STROKE_DATA_URL      = './stroke-data.json?v=v21';
+</script>
+<script src="./animation-loader.js?v=vdd1"></script>
+</head>
+<body>
+
+<h1>StrokeTrace · <code>validate()</code> API 演示</h1>
+<div class="lead">v1.2 新增：结构化输入校验 API，给 LLM 生成代码提供 <code>{ok, reason, tier, suggestion}</code> 兜底信息。</div>
+
+<span id="status" class="status">加载字库中…</span>
+
+<div class="section-title">📚 自动测试用例（页面加载后立即运行）</div>
+<div id="cases"></div>
+
+<div class="section-title">🧪 手动试一试</div>
+<div class="tryit">
+  <input id="tryInput" type="text" placeholder="输入任意字符，例如：学 / 曼 / abc / 春夏秋冬" />
+  <select id="tryApi">
+    <option value="validate">validate()</option>
+    <option value="validateAll">validateAll()</option>
+  </select>
+  <button id="tryBtn" type="button">校验</button>
+</div>
+<div id="tryResult" class="result" style="min-height: 48px">尚未执行…</div>
+
+<script>
+var CASES = [
+  { input: '学',             desc: 'textbook 字，应 ok:true', api: 'validate' },
+  { input: '春',             desc: '常用 9 笔字', api: 'validate' },
+  { input: '尔',             desc: '第 2 笔修正核对（应为「横钩」）', api: 'validate' },
+  { input: '',               desc: '空串 → reason:empty', api: 'validate' },
+  { input: '   ',            desc: '纯空白 → reason:empty', api: 'validate' },
+  { input: 'abc',            desc: '英文 → reason:not-han', api: 'validate' },
+  { input: '😀',             desc: 'emoji → reason:not-han', api: 'validate' },
+  { input: '曼',             desc: 'extended 字 → reason:not-in-textbook', api: 'validate' },
+  { input: '丁',             desc: '另一个 extended 字', api: 'validate' },
+  { input: '春夏秋冬',       desc: '多字字符串 → 取首字 + allHansInInput=4', api: 'validate' },
+  { input: 'I love 春',      desc: '混合 ASCII + Han', api: 'validate' },
+  { input: '学习学习',       desc: '重复字 → 去重', api: 'validate' },
+  { input: '春眠不觉晓',     desc: '诗句 → 5 字全 valid', api: 'validateAll' },
+  { input: '春曼秋',         desc: '含 extended → ok:false，valid=[春,秋] invalid=[曼]', api: 'validateAll' },
+  { input: '曼丁丙',         desc: '全 extended → 整体降级建议', api: 'validateAll' }
+];
+
+function renderResult(r, container) {
+  container.className = 'result ' + (r.ok ? 'ok' : 'fail');
+  container.textContent = JSON.stringify(r, null, 2);
+}
+
+function runCase(c) {
+  var wrap = document.createElement('div');
+  wrap.className = 'case';
+  wrap.innerHTML = '<div><span class="input">' + c.api + '(' + JSON.stringify(c.input) + ')</span></div>' +
+                   '<div class="desc">' + c.desc + '</div>' +
+                   '<div class="result"></div>';
+  document.getElementById('cases').appendChild(wrap);
+  var r = (c.api === 'validateAll')
+    ? window.StrokeTrace.validateAll(c.input)
+    : window.StrokeTrace.validate(c.input);
+  renderResult(r, wrap.querySelector('.result'));
+}
+
+function runAll() {
+  document.getElementById('cases').innerHTML = '';
+  CASES.forEach(runCase);
+}
+
+function bindTryIt() {
+  var input = document.getElementById('tryInput');
+  var sel = document.getElementById('tryApi');
+  var btn = document.getElementById('tryBtn');
+  var out = document.getElementById('tryResult');
+  function go() {
+    var v = input.value;
+    var api = sel.value;
+    var r = (api === 'validateAll')
+      ? window.StrokeTrace.validateAll(v)
+      : window.StrokeTrace.validate(v);
+    renderResult(r, out);
+  }
+  btn.addEventListener('click', go);
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+}
+
+window.addEventListener('stroke-anim-ready', function (e) {
+  var s = document.getElementById('status');
+  s.className = 'status ready';
+  s.textContent = '✓ 字库就绪（' + (e.detail && e.detail.chars) + ' 字可练）— 开始运行测试';
+  runAll();
+  bindTryIt();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,342 @@
+{
+  "courseware-generator": {
+    "v1": [
+      "SKILL.md",
+      "content-guide.md",
+      "style-guide.md"
+    ],
+    "v2": [
+      "SKILL.md",
+      "content-guide.md",
+      "style-guide.md"
+    ],
+    "v3": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v4": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v5": [
+      "SKILL.md",
+      "content-guide.md",
+      "style-guide.md"
+    ],
+    "v6": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v7": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v8": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v9": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v10": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v11": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v12": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v13": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v14": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v15": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v16": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v17": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ],
+    "v18": [
+      "SKILL.md",
+      "html-guide.md",
+      "outline-guidance.md"
+    ]
+  },
+  "data-collect": {
+    "v1": [
+      "SKILL.md"
+    ],
+    "v2": [
+      "SKILL.md"
+    ],
+    "v3": [
+      "SKILL.md"
+    ],
+    "v4": [
+      "SKILL.md"
+    ],
+    "v5": [
+      "SKILL.md"
+    ],
+    "v6": [
+      "SKILL.md"
+    ],
+    "v7": [
+      "SKILL.md"
+    ],
+    "v8": [
+      "SKILL.md"
+    ],
+    "v9": [
+      "SKILL.md"
+    ],
+    "v10": [
+      "SKILL.md"
+    ],
+    "v11": [
+      "SKILL.md"
+    ],
+    "v12": [
+      "SKILL.md"
+    ],
+    "v13": [
+      "SKILL.md"
+    ]
+  },
+  "drag-interaction": {
+    "v1": [
+      "SKILL.md",
+      "templates/drop-into-container.md",
+      "templates/drop-match.md",
+      "templates/free-drag.md",
+      "templates/sortable-list.md"
+    ]
+  },
+  "html-authoring": {
+    "v1": [
+      "SKILL.md"
+    ],
+    "v2": [
+      "SKILL.md"
+    ],
+    "v3": [
+      "SKILL.md",
+      "color-palettes-a.md",
+      "color-palettes-b.md",
+      "math-design/color-palettes-a.md",
+      "math-design/color-palettes-b.md",
+      "math-design/visual-impact.md",
+      "math-design/workflow.md",
+      "vN/workflow.md",
+      "visual-impact.md",
+      "workflow.md"
+    ],
+    "v4": [
+      "SKILL.md",
+      "color-palettes-a.md",
+      "color-palettes-b.md",
+      "examples-and-pitfalls.md",
+      "manipulatives.md",
+      "math-design/workflow.md",
+      "references/examples-and-pitfalls.md",
+      "references/tech-details.md",
+      "tech-details.md",
+      "visual-impact.md",
+      "workflow.md"
+    ],
+    "v5": [
+      "SKILL.md",
+      "color-palettes-a.md",
+      "color-palettes-b.md",
+      "examples-and-pitfalls.md",
+      "grid-templates.md",
+      "manipulatives.md",
+      "math-design/grid-templates.md",
+      "math-design/workflow.md",
+      "references/examples-and-pitfalls.md",
+      "references/tech-details.md",
+      "tech-details.md",
+      "visual-impact.md",
+      "workflow.md"
+    ]
+  },
+  "magazine-layout": {
+    "v1": [
+      "SKILL.md",
+      "examples.md",
+      "math-image-fidelity.md",
+      "pagedjs-template.md",
+      "pdf-ocr-preprocess.md",
+      "pdf-page-fidelity.md",
+      "quality-gate.md",
+      "reproduction-guide.md",
+      "visual-design-guide.md"
+    ],
+    "v2": [
+      "SKILL.md",
+      "examples.md",
+      "math-image-fidelity.md",
+      "pagedjs-template.md",
+      "pdf-ocr-preprocess.md",
+      "pdf-page-fidelity.md",
+      "quality-gate.md",
+      "reproduction-guide.md",
+      "visual-design-guide.md"
+    ],
+    "v3": [
+      "SKILL.md",
+      "examples.md",
+      "math-image-fidelity.md",
+      "pagedjs-template.md",
+      "pdf-ocr-preprocess.md",
+      "pdf-page-fidelity.md",
+      "quality-gate.md",
+      "reproduction-guide.md",
+      "visual-design-guide.md"
+    ],
+    "v4": [
+      "SKILL.md",
+      "examples.md",
+      "math-image-fidelity.md",
+      "pagedjs-template.md",
+      "pdf-ocr-preprocess.md",
+      "pdf-page-fidelity.md",
+      "quality-gate.md",
+      "reproduction-guide.md",
+      "visual-design-guide.md"
+    ],
+    "v5": [
+      "SKILL.md",
+      "examples.md",
+      "math-image-fidelity.md",
+      "pagedjs-template.md",
+      "pdf-ocr-preprocess.md",
+      "pdf-page-fidelity.md",
+      "quality-gate.md",
+      "reproduction-guide.md",
+      "visual-design-guide.md"
+    ],
+    "v6": [
+      "SKILL.md",
+      "examples.md",
+      "math-image-fidelity.md",
+      "pagedjs-template.md",
+      "pdf-ocr-preprocess.md",
+      "pdf-page-fidelity.md",
+      "quality-gate.md",
+      "reproduction-guide.md",
+      "visual-design-guide.md"
+    ],
+    "v7": [
+      "SKILL.md",
+      "examples.md",
+      "math-image-fidelity.md",
+      "pagedjs-template.md",
+      "pdf-ocr-preprocess.md",
+      "pdf-page-fidelity.md",
+      "quality-gate.md",
+      "reproduction-guide.md",
+      "visual-design-guide.md"
+    ],
+    "v8": [
+      "SKILL.md",
+      "examples.md",
+      "math-image-fidelity.md",
+      "pagedjs-template.md",
+      "pdf-ocr-preprocess.md",
+      "pdf-page-fidelity.md",
+      "quality-gate.md",
+      "reproduction-guide.md",
+      "visual-design-guide.md"
+    ],
+    "v9": [
+      "SKILL.md",
+      "examples.md",
+      "math-image-fidelity.md",
+      "mineru-integration.md",
+      "pagedjs-template.md",
+      "pdf-ocr-preprocess.md",
+      "pdf-page-fidelity.md",
+      "quality-gate.md",
+      "reproduction-guide.md",
+      "visual-design-guide.md"
+    ]
+  },
+  "math-design": {
+    "v1": [
+      "SKILL.md",
+      "color-palettes-a.md",
+      "color-palettes-b.md",
+      "visual-impact.md"
+    ]
+  },
+  "paper-generation": {
+    "v1": [
+      "SKILL.md"
+    ]
+  },
+  "physics-formula-typography": {
+    "v1": [
+      "CHANGELOG.md",
+      "SKILL.md",
+      "code-patterns.md",
+      "self-check-schema.json"
+    ]
+  },
+  "stroke-order": {
+    "v1": [
+      "SKILL.md",
+      "assets/stroke-data.json",
+      "templates/audit-page.html",
+      "templates/stroke-card.js",
+      "templates/stroke-loader.js",
+      "templates/stroke-snippet.html"
+    ]
+  },
+  "teaching-game-design": {
+    "v1": [
+      "SKILL.md"
+    ]
+  },
+  "test-html": {
+    "v1": [
+      "SKILL.md"
+    ],
+    "v2": [
+      "SKILL.md"
+    ],
+    "v3": [
+      "SKILL.md",
+      "references/test-templates.md"
+    ]
+  }
+}

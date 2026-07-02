@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>飞象老师 · StrokeTrace 跟练 Demo (v2)</title>
+
+<!-- ===== 调试用：固定在右上角的折叠诊断面板 ===== -->
+<script>
+(function () {
+  var T0 = Date.now(), panel = null;
+  function ensure() {
+    if (panel && panel.tagName) return panel;
+    var build = function () {
+      panel = document.createElement('div');
+      panel.id = '__diag';
+      panel.style.cssText =
+        'position:fixed;top:8px;right:8px;width:320px;max-height:60vh;overflow-y:auto;' +
+        'z-index:99999;font:10px/1.4 Menlo,monospace;border-radius:8px;' +
+        'box-shadow:0 4px 16px rgba(0,0,0,.25);opacity:.92';
+      document.body.appendChild(panel);
+      if (panel._q) { panel._q.forEach(function (el) { panel.appendChild(el); }); delete panel._q; }
+    };
+    if (document.body) build();
+    else {
+      panel = { _q: [], appendChild: function (el) { this._q.push(el); }, tagName: null };
+      document.addEventListener('DOMContentLoaded', build);
+    }
+    return panel;
+  }
+  function row(bg, txt) {
+    ensure();
+    var d = document.createElement('div');
+    d.style.cssText = 'background:' + bg + ';color:#fff;padding:4px 8px;border-top:1px solid rgba(255,255,255,.2);white-space:pre-wrap;word-break:break-all';
+    d.textContent = '[+' + ((Date.now() - T0) / 1000).toFixed(2) + 's] ' + txt;
+    panel.appendChild(d);
+  }
+  window.__diagSync = function (s) { row('#34495E', 'SYNC ' + s); };
+  window.__diagInfo = function (s) { row('#2980B9', 'INFO ' + s); };
+  window.__diagOk   = function (s) { row('#16A085', 'OK   ' + s); };
+  window.__diagWarn = function (s) { row('#E67E22', 'WARN ' + s); };
+  window.__diagErr  = function (s) { row('#C0392B', 'ERR  ' + s); };
+  window.addEventListener('error', function (e) {
+    window.__diagErr((e.message || e.type) +
+      '\n  at ' + (e.filename || '?') + ':' + (e.lineno || 0) + ':' + (e.colno || 0) +
+      (e.error && e.error.stack ? '\n' + e.error.stack.split('\n').slice(0, 3).join('\n') : ''));
+  }, true);
+  window.addEventListener('unhandledrejection', function (e) {
+    var r = e.reason || {};
+    window.__diagWarn('PROMISE ' + (r.message || r));
+  });
+  window.__diagSync('A. error handler 注册');
+})();
+</script>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'PingFang SC', sans-serif;
+    background: linear-gradient(135deg,#FFF9F0 0%,#FFF3E4 100%);
+    min-height: 100vh;
+    color: #2D3436;
+    padding: 16px;
+  }
+  header { text-align: center; margin: 12px 0 24px; }
+  header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  header p { font-size: 13px; color: #7F8C8D; }
+  .picker { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 12px; }
+  .picker button {
+    width: 52px; height: 52px;
+    font-size: 24px; font-weight: 700;
+    background: #fff;
+    border: 2px solid #EADBC8;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .picker button:hover { border-color: #FF9F43; transform: translateY(-2px); }
+  .picker button.active {
+    background: linear-gradient(135deg,#FFE0B2,#FFD1A1);
+    border-color: #FF9F43;
+  }
+  .search {
+    display: flex; justify-content: center; gap: 8px;
+    margin: 0 auto 20px; max-width: 360px;
+  }
+  .search input {
+    flex: 1; min-width: 0;
+    padding: 10px 14px;
+    font-size: 18px; font-family: inherit;
+    border: 2px solid #EADBC8; border-radius: 10px;
+    background: #fff; color: #2D3436;
+    outline: none; transition: border-color 0.2s;
+  }
+  .search input:focus { border-color: #FF9F43; }
+  .search button {
+    padding: 0 16px;
+    background: linear-gradient(135deg,#FF9F43,#FF7F50);
+    color: #fff; font-weight: 600; font-size: 14px;
+    border: none; border-radius: 10px;
+    cursor: pointer; font-family: inherit;
+    transition: opacity 0.2s;
+  }
+  .search button:hover { opacity: 0.9; }
+  .search button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .search-hint {
+    text-align: center; font-size: 12px; color: #C0392B;
+    min-height: 16px; margin: -12px auto 12px; max-width: 360px;
+  }
+  .stage { display: flex; justify-content: center; margin-bottom: 24px; }
+  #trace { width: 100%; max-width: 360px; }
+  .lib-info {
+    text-align: center; margin-bottom: 12px; font-size: 12px; color: #B9770E;
+  }
+  .lib-info span {
+    background: #FFE9B5; padding: 4px 10px; border-radius: 10px; font-weight: 600;
+  }
+  .footer {
+    text-align: center; color: #BDC3C7; font-size: 11px; margin-top: 24px; line-height: 1.6;
+  }
+</style>
+
+<script>
+  window.__diagSync('B. 设置 URL');
+  window.STROKE_ANIM_PATH_URL = './stroke-path.json?v=v21';
+  window.STROKE_DATA_URL      = './stroke-data.json?v=v21';
+</script>
+
+<script>
+  window.__diagSync('C. 即将加载 loader');
+  window.__loadStart = Date.now();
+</script>
+
+<script src="./animation-loader.js?v=v141-handpen"></script>
+
+<script>
+  window.__diagSync('D. loader 加载完成（' + (Date.now() - window.__loadStart) + 'ms）');
+  window.__diagInfo('StrokeTrace=' + (typeof window.StrokeTrace) +
+    ' · _ST=' + (window._ST ? Object.keys(window._ST).join(',') : 'undef'));
+</script>
+
+</head>
+<body>
+
+<header>
+  <h1>飞象老师 · 跟练组件 Demo</h1>
+  <p>StrokeTrace v1.0 · 生产级 loader 测试页 (v2)</p>
+</header>
+
+<div class="lib-info">字库就绪：<span id="libBadge">加载中…</span></div>
+
+<div class="picker" id="picker"></div>
+
+<div class="search">
+  <input id="charInput" type="text" maxlength="2" placeholder="输入任意汉字试写…" autocomplete="off" inputmode="text" />
+  <button id="charBtn" type="button">练这个字</button>
+</div>
+<div class="search-hint" id="searchHint"></div>
+
+<div class="stage">
+  <div id="trace"></div>
+</div>
+
+<div class="footer">
+  数据 ARPHIC 公版 · 笔顺名 stroke-order v57 (data v56)
+</div>
+
+<script>
+  window.__diagSync('E. body 末尾脚本');
+
+  var DEFAULT = ['一', '十', '大', '口', '手', '春', '学', '写'];
+  var traceHandle = null;
+  var curChar = '学';
+
+  function renderPicker() {
+    var wrap = document.getElementById('picker');
+    wrap.innerHTML = '';
+    DEFAULT.forEach(function (c) {
+      var btn = document.createElement('button');
+      btn.textContent = c;
+      btn.className = (c === curChar) ? 'active' : '';
+      btn.addEventListener('click', function () { switchChar(c); });
+      wrap.appendChild(btn);
+    });
+  }
+
+  function switchChar(ch) {
+    window.__diagSync('switchChar("' + ch + '") traceHandle=' + (traceHandle ? 'exist' : 'null'));
+    curChar = ch;
+    renderPicker();
+    try {
+      if (traceHandle && typeof traceHandle.setChar === 'function') {
+        traceHandle.setChar(ch);
+        window.__diagOk('setChar("' + ch + '") OK');
+      } else {
+        var t1 = Date.now();
+        traceHandle = window.StrokeTrace.mount({
+          target: '#trace',
+          char: ch,
+          grid: { style: 'tian' },
+          scoring: { showStars: true, showSegmentErrors: true, combo: true },
+          hints: { showOutline: true, pulseNextStroke: true, showStrokeName: true },
+          onStrokeComplete: function (r) {
+            console.log('第', r.index, '笔', r.strokeName, '→', r.stars, '★');
+          },
+          onFinish: function (r) {
+            console.log(curChar, '总分', Math.round(r.finalScore * 100), '·', r.finalStars, '★');
+          }
+        });
+        window.__diagOk('mount("' + ch + '") OK (' + (Date.now() - t1) + 'ms) handle=' +
+          (traceHandle ? Object.keys(traceHandle).slice(0, 4).join(',') + '...' : 'null'));
+      }
+    } catch (e) {
+      window.__diagErr('switchChar throw: ' + e.message);
+    }
+  }
+
+  // 取「首个字符」作为练习对象（处理用户粘贴多字 / emoji / 空白等）
+  function pickFirstHan(s) {
+    if (!s) return '';
+    s = s.replace(/\s+/g, '');
+    if (!s) return '';
+    // 用 codePointAt 防止 surrogate pair 拆字
+    var cp = s.codePointAt(0);
+    return String.fromCodePoint(cp);
+  }
+
+  function showHint(html, isErr) {
+    var el = document.getElementById('searchHint');
+    el.innerHTML = html || '';
+    el.style.color = isErr ? '#C0392B' : '#16A085';
+  }
+
+  function trySearch() {
+    var raw = document.getElementById('charInput').value;
+    var c = pickFirstHan(raw);
+    if (!c) { showHint('请先输入一个汉字', true); return; }
+    if (!window.StrokeTrace || !window.StrokeTrace.hasChar(c)) {
+      showHint('「' + c + '」不在字库内（仅支持 2,865 教材字）', true);
+      return;
+    }
+    showHint('开始练习「' + c + '」', false);
+    document.getElementById('charInput').value = c;
+    switchChar(c);
+  }
+
+  function bindSearch() {
+    var input = document.getElementById('charInput');
+    var btn = document.getElementById('charBtn');
+    btn.addEventListener('click', trySearch);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); trySearch(); }
+    });
+    // 输入法上屏后自动触发（一旦有 1+ 字符就练）
+    input.addEventListener('input', function (e) {
+      var v = e.target.value;
+      if (!v) { showHint(''); return; }
+      // 只有完整字符（不在 IME composition）时才触发
+      if (!input._composing && pickFirstHan(v)) trySearch();
+    });
+    input.addEventListener('compositionstart', function () { input._composing = true; });
+    input.addEventListener('compositionend', function () {
+      input._composing = false;
+      if (input.value) trySearch();
+    });
+  }
+
+  // 只处理第一次 ready，避免重复 mount
+  var _bootDone = false;
+  function boot() {
+    if (_bootDone) return;
+    if (!window.StrokeTrace || !window._ST || !window._ST.dataLoader || !window._ST.dataLoader.isReady()) {
+      window.__diagWarn('boot 时 StrokeTrace 未就绪');
+      return;
+    }
+    _bootDone = true;
+    window.__diagSync('boot() 启动');
+    document.getElementById('libBadge').textContent = window.StrokeTrace.listChars().length + ' 字可练';
+    renderPicker();
+    bindSearch();
+    switchChar(curChar);
+  }
+
+  window.addEventListener('stroke-anim-ready', function (e) {
+    window.__diagOk('stroke-anim-ready! detail=' + JSON.stringify(e.detail || {}));
+    boot();
+  });
+
+  // 兜底：如果事件 listener 注册晚了（loader 已经先 ready），主动触发一次
+  setTimeout(function () {
+    if (!_bootDone) {
+      window.__diagWarn('T+200ms 还没 boot，主动尝试');
+      var dl = window._ST && window._ST.dataLoader;
+      if (dl && dl.isReady && dl.isReady()) {
+        boot();
+      } else if (dl) {
+        dl.loadAll().then(boot).catch(function (e) {
+          window.__diagErr('兜底 loadAll FAIL: ' + e.message);
+        });
+      } else {
+        window.__diagErr('兜底失败：dataLoader 不存在');
+      }
+    }
+  }, 200);
+
+  setTimeout(function () {
+    if (!_bootDone) window.__diagErr('T+5s 仍未 boot, 检查上面错误');
+  }, 5000);
+</script>
+
+</body>
+</html>

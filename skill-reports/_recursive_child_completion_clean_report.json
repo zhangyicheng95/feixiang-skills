@@ -1,0 +1,71 @@
+{
+  "actions": [
+    {
+      "type": "mirror",
+      "from": "html-authoring/v3/vN/workflow.md",
+      "path": "html-authoring/v3/vN/color-palettes-a.md",
+      "source": "html-authoring/v3/color-palettes-a.md"
+    },
+    {
+      "type": "mirror",
+      "from": "html-authoring/v3/vN/workflow.md",
+      "path": "html-authoring/v3/vN/color-palettes-b.md",
+      "source": "html-authoring/v3/color-palettes-b.md"
+    },
+    {
+      "type": "mirror",
+      "from": "html-authoring/v3/vN/workflow.md",
+      "path": "html-authoring/v3/vN/visual-impact.md",
+      "source": "html-authoring/v3/visual-impact.md"
+    },
+    {
+      "type": "mirror",
+      "from": "html-authoring/v4/math-design/workflow.md",
+      "path": "html-authoring/v4/math-design/color-palettes-a.md",
+      "source": "html-authoring/v4/color-palettes-a.md"
+    },
+    {
+      "type": "mirror",
+      "from": "html-authoring/v4/math-design/workflow.md",
+      "path": "html-authoring/v4/math-design/color-palettes-b.md",
+      "source": "html-authoring/v4/color-palettes-b.md"
+    },
+    {
+      "type": "mirror",
+      "from": "html-authoring/v4/math-design/workflow.md",
+      "path": "html-authoring/v4/math-design/visual-impact.md",
+      "source": "html-authoring/v4/visual-impact.md"
+    },
+    {
+      "type": "mirror",
+      "from": "html-authoring/v4/math-design/workflow.md",
+      "path": "html-authoring/v4/math-design/manipulatives.md",
+      "source": "html-authoring/v4/manipulatives.md"
+    },
+    {
+      "type": "mirror",
+      "from": "html-authoring/v5/math-design/workflow.md",
+      "path": "html-authoring/v5/math-design/color-palettes-a.md",
+      "source": "html-authoring/v5/color-palettes-a.md"
+    },
+    {
+      "type": "mirror",
+      "from": "html-authoring/v5/math-design/workflow.md",
+      "path": "html-authoring/v5/math-design/color-palettes-b.md",
+      "source": "html-authoring/v5/color-palettes-b.md"
+    },
+    {
+      "type": "mirror",
+      "from": "html-authoring/v5/math-design/workflow.md",
+      "path": "html-authoring/v5/math-design/visual-impact.md",
+      "source": "html-authoring/v5/visual-impact.md"
+    },
+    {
+      "type": "mirror",
+      "from": "html-authoring/v5/math-design/workflow.md",
+      "path": "html-authoring/v5/math-design/manipulatives.md",
+      "source": "html-authoring/v5/manipulatives.md"
+    }
+  ],
+  "unresolved": []
+}

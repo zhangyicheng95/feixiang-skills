@@ -1,0 +1,133 @@
+<!--
+  飞象老师 · 汉字笔顺即拿即用模板（v10.6 · 双层置信度）
+  ─────────────────────────────────────────────
+  tier 置信度：
+    - textbook (2842 字, 教材会写/认读+OVERRIDE)：3 轮教研审核，100% 可靠
+    - extended (4976 字, 字典扩展)：自动映射+启发式，≥98% 准确，未完全审核
+
+  UI 策略：
+    - textbook 字：正常展示（醒目红色"X 画"数字）
+    - extended 字：展示但加"待验证"标记（灰色徽章），提示用户自行核对
+    - 小学语文场景建议：只取 textbook 字
+
+  禁忌（继承自 v10）：
+    - 不要硬编码任何笔画数组
+    - 不要引入 cnchar / HanziWriter
+    - data.source !== 'db' 时显示"暂无数据"，不猜
+-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>笔顺示例 v10.6（双层置信度）</title>
+<style>
+  body { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; padding: 24px; background: #f7f8fa; }
+  .stroke-card {
+    display: inline-block;
+    margin: 8px;
+    padding: 16px 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    min-width: 220px;
+    vertical-align: top;
+    position: relative;
+  }
+  .stroke-card.tier-extended { border: 1px dashed #bdc3c7; }
+  .stroke-char { font-size: 48px; font-weight: bold; color: #2c3e50; margin-bottom: 8px; }
+  .stroke-count { color: #e74c3c; font-size: 14px; margin-bottom: 8px; font-weight: 600; }
+  .stroke-count.tier-extended { color: #7f8c8d; }
+  .tier-badge { position: absolute; top: 8px; right: 10px; font-size: 11px;
+                padding: 2px 8px; border-radius: 12px; font-weight: normal; }
+  .tier-badge.textbook { background: #d5f5e3; color: #27ae60; }
+  .tier-badge.extended { background: #f4f6f6; color: #7f8c8d; border: 1px solid #d5dbdb; }
+  .stroke-seq { line-height: 1.8; color: #34495e; font-size: 14px; }
+  .stroke-seq .step { display: inline-block; margin: 2px 4px; padding: 2px 8px;
+                       background: #ecf0f1; border-radius: 4px; font-size: 13px; }
+  .err { color: #95a5a6; font-style: italic; }
+  .tip { background: #fffbeb; border-left: 3px solid #f39c12;
+         padding: 8px 12px; margin: 6px 0; font-size: 12px; color: #7f6300; }
+</style>
+
+<!-- 加载器（必须，URL 不要改） -->
+<script src="https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/stroke-order/v1/templates/stroke-loader.js"></script>
+</head>
+
+<body>
+
+<h1>汉字笔顺教学示例（v10.6 双层置信度）</h1>
+<div id="stats"></div>
+<div id="app">正在加载笔顺数据...</div>
+
+<script>
+// LLM 填入的字符数组，不含任何笔画数据
+var chars = ['学', '写', '字', '彭', '窿', '铅', '曼', '丁', '孛'];
+
+window.addEventListener('stroke-data-ready', function (ev) {
+  var stats = document.getElementById('stats');
+  if (ev.detail && ev.detail.status === 'error') {
+    stats.innerHTML = '<p class="err">加载失败：' + ev.detail.error + '</p>';
+    return;
+  }
+  stats.innerHTML = '<p class="tip">数据库: ' + ev.detail.total + ' 字（教材 ' +
+    window._strokeLoader.getTextbookTotal() + ' 高置信度 / 扩展 ' +
+    window._strokeLoader.getExtendedTotal() + ' 待验证）</p>';
+
+  var app = document.getElementById('app');
+  app.innerHTML = '';
+  chars.forEach(function (ch) {
+    app.appendChild(renderCard(ch, window.getStrokeData(ch)));
+  });
+});
+
+function renderCard(ch, d) {
+  var card = document.createElement('div');
+  card.className = 'stroke-card' + (d.tier === 'extended' ? ' tier-extended' : '');
+
+  // tier 徽章
+  if (d.source === 'db') {
+    var badge = document.createElement('span');
+    badge.className = 'tier-badge ' + d.tier;
+    badge.textContent = d.tier === 'textbook' ? '✓ 教材权威' : '⚠ 待验证';
+    card.appendChild(badge);
+  }
+
+  var chDiv = document.createElement('div');
+  chDiv.className = 'stroke-char';
+  chDiv.textContent = ch;
+  card.appendChild(chDiv);
+
+  if (d.source === 'db') {
+    var cntDiv = document.createElement('div');
+    cntDiv.className = 'stroke-count' + (d.tier === 'extended' ? ' tier-extended' : '');
+    cntDiv.textContent = d.count + ' 画';
+    card.appendChild(cntDiv);
+
+    var seqDiv = document.createElement('div');
+    seqDiv.className = 'stroke-seq';
+    d.strokes.forEach(function (name, i) {
+      var span = document.createElement('span');
+      span.className = 'step';
+      span.textContent = (i + 1) + '. ' + name;
+      seqDiv.appendChild(span);
+    });
+    card.appendChild(seqDiv);
+  } else {
+    var errDiv = document.createElement('div');
+    errDiv.className = 'err';
+    if (d.source === 'missing') {
+      errDiv.textContent = '该字暂未收录（权威库覆盖 7818 字：小学教材+通用规范字）';
+    } else if (d.source === 'loading') {
+      errDiv.textContent = '加载中...';
+    } else {
+      errDiv.textContent = '数据异常：' + (d.error || d.source);
+    }
+    card.appendChild(errDiv);
+  }
+  return card;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电学基础 · 初中物理</title>
+  <!-- spec: requirements=初中物理电学,6页; require=概念+欧姆定律+2D/3D电路互动+4题测验; core-loop=2D:调U/R→I变;3D:开关→通断→灯泡;测验:选题→提交→反馈 -->
+</head>
+<body>
+
+<div id="cw-loading">加载课件中...</div>
+
+<template class="page-shared">
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --secondary: #3b82f6;
+      --accent: #fbbf24;
+      --bg: #eff6ff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+    }
+    .slide {
+      width: 100%;
+      min-height: 540px;
+      box-sizing: border-box;
+      font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      color: var(--text);
+    }
+    .slide--fit {
+      height: 540px;
+      overflow: hidden;
+    }
+    .slide--scroll {
+      max-height: 540px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .btn {
+      padding: 8px 18px;
+      border: none;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-outline {
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+  </style>
+</template>
+
+<!-- 第 1 页：封面 -->
+<template class="page-data" data-id="1" data-name="封面">
+  <style>
+    .cover {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      background: linear-gradient(145deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
+      color: #fff;
+    }
+    .cover h1 { font-size: 42px; margin: 14px 0 10px; }
+    .cover .sub { font-size: 18px; opacity: 0.92; line-height: 1.7; max-width: 520px; }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(251,191,36,.25);
+      border: 1px solid rgba(251,191,36,.5);
+      font-size: 14px;
+      color: #fde68a;
+    }
+    .bolt { font-size: 56px; margin-bottom: 8px; }
+  </style>
+  <div class="slide slide--fit cover">
+    <div class="bolt">⚡</div>
+    <span class="badge">初中物理 · 电学</span>
+    <h1>电流 · 电压 · 电阻</h1>
+    <p class="sub">认识电路基本量 · 欧姆定律<br>2D/3D 电路互动 · 课堂测验</p>
+  </div>
+</template>
+
+<!-- 第 2 页：基本概念 -->
+<template class="page-data" data-id="2" data-name="基本概念">
+  <style>
+    .concept { padding: 24px 32px; background: var(--bg); }
+    .concept h2 { color: var(--primary); font-size: 26px; margin: 0 0 12px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--primary);
+      box-shadow: 0 2px 8px rgba(29,78,216,.08);
+    }
+    .card h3 { margin: 0 0 6px; font-size: 16px; color: var(--primary); }
+    .card p { margin: 0; font-size: 14px; line-height: 1.65; }
+    .sym { font-size: 22px; font-weight: 700; color: var(--accent); }
+    .circuit-demo {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      border: 2px solid #bfdbfe;
+    }
+    .circuit-demo svg { max-width: 100%; }
+  </style>
+  <div class="slide slide--scroll concept">
+    <h2>电路里的三个基本量</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>电流 <span class="sym">I</span></h3>
+        <p>电荷的定向移动形成电流。单位：<strong>安培（A）</strong>。用电流表串联测量。</p>
+      </div>
+      <div class="card">
+        <h3>电压 <span class="sym">U</span></h3>
+        <p>使电路中形成电流的原因，也叫电势差。单位：<strong>伏特（V）</strong>。用电压表并联测量。</p>
+      </div>
+      <div class="card">
+        <h3>电阻 <span class="sym">R</span></h3>
+        <p>导体对电流的阻碍作用。单位：<strong>欧姆（Ω）</strong>。与材料、长度、横截面积、温度有关。</p>
+      </div>
+      <div class="card">
+        <h3>简单电路</h3>
+        <p>电源、用电器、开关、导线组成闭合回路，电流才能持续流动。</p>
+      </div>
+      <div class="circuit-demo">
+        <svg width="420" height="100" viewBox="0 0 420 100" aria-hidden="true">
+          <rect x="30" y="35" width="50" height="30" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+          <text x="55" y="55" text-anchor="middle" font-size="12" fill="#92400e">电源</text>
+          <line x1="80" y1="50" x2="130" y2="50" stroke="#334155" stroke-width="3"/>
+          <circle cx="155" cy="50" r="18" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+          <text x="155" y="54" text-anchor="middle" font-size="11" fill="#78350f">L</text>
+          <line x1="173" y1="50" x2="230" y2="50" stroke="#334155" stroke-width="3"/>
+          <rect x="240" y="38" width="36" height="24" rx="3" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+          <text x="258" y="54" text-anchor="middle" font-size="10" fill="#334155">S</text>
+          <line x1="276" y1="50" x2="340" y2="50" stroke="#334155" stroke-width="3"/>
+          <line x1="340" y1="50" x2="340" y2="80" stroke="#334155" stroke-width="3"/>
+          <line x1="340" y1="80" x2="30" y2="80" stroke="#334155" stroke-width="3"/>
+          <line x1="30" y1="80" x2="30" y2="65" stroke="#334155" stroke-width="3"/>
+          <polygon points="115,50 125,45 125,55" fill="#2563eb"/>
+        </svg>
+        <p style="margin:0;font-size:14px;color:var(--muted);max-width:200px">闭合开关 S，形成通路，灯泡 L 发光</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- 第 3 页：欧姆定律 -->
+<template class="page-data" data-id="3" data-name="欧姆定律">
+  <style>
+    .ohm { padding: 28px 36px; background: linear-gradient(180deg, #eff6ff, #fff); }
+    .ohm h2 { color: var(--primary); font-size: 28px; margin: 0 0 8px; }
+    .formula-box {
+      text-align: center;
+      padding: 24px;
+      margin: 16px 0;
+      background: #1e3a8a;
+      border-radius: 16px;
+      color: #fff;
+    }
+    .formula-box .main { font-size: 36px; font-weight: 800; letter-spacing: 2px; }
+    .formula-box .sub { font-size: 15px; opacity: 0.85; margin-top: 8px; }
+    .tri {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 20px 0;
+    }
+    .tri-item {
+      text-align: center;
+      background: #fff;
+      border: 2px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 16px 24px;
+      min-width: 140px;
+    }
+    .tri-item strong { display: block; font-size: 20px; color: var(--primary); margin-bottom: 4px; }
+    .tri-item span { font-size: 13px; color: var(--muted); }
+    .tips {
+      background: #fef9c3;
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+  </style>
+  <div class="slide slide--fit ohm">
+    <h2>欧姆定律</h2>
+    <p style="margin:0 0 4px;color:var(--muted);font-size:15px">导体中的电流，跟导体两端的电压成正比，跟导体的电阻成反比。</p>
+    <div class="formula-box">
+      <div class="main">I = U / R</div>
+      <div class="sub">I：电流(A)　U：电压(V)　R：电阻(Ω)</div>
+    </div>
+    <div class="tri">
+      <div class="tri-item">
+        <strong>U = I × R</strong>
+        <span>求电压</span>
+      </div>
+      <div class="tri-item">
+        <strong>R = U / I</strong>
+        <span>求电阻</span>
+      </div>
+      <div class="tri-item">
+        <strong>I = U / R</strong>
+        <span>求电流</span>
+      </div>
+    </div>
+    <div class="tips">
+      <strong>注意：</strong>欧姆定律适用于金属导体等线性元件；同一导体在温度不变时，R 可视为定值。下一页可拖动 U、R，观察 I 与灯泡亮度的变化。
+    </div>
+  </div>
+</template>
+
+<!-- 第 4 页：串联电路互动 -->
+<template class="page-data" data-id="4" data-name="串联电路模拟">
+  <style>
+    .lab {
+      height: 540px;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+    }
+    .lab-head { padding: 12px 28px 4px; }
+    .lab-head h2 { margin: 0; font-size: 21px; color: #93c5fd; }
+    .lab-head p { margin: 4px 0 0; font-size: 12px; color: #94a3b8; }
+    .lab-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 0 24px;
+    }
+    .circuit-svg { flex-shrink: 0; }
+    .bulb-glow { transition: filter 0.25s ease, fill 0.25s ease; }
+    .readout {
+      width: 300px;
+      background: rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+    .readout .val {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fde047;
+      margin: 4px 0 12px;
+    }
+    .readout .row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin: 6px 0;
+      color: #cbd5e1;
+    }
+    .readout .row strong { color: #fff; }
+    .lab-ctrl {
+      padding: 10px 28px 16px;
+      background: #0f172a;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ctrl-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+    }
+    .ctrl-row input[type=range] { flex: 1; accent-color: #fbbf24; }
+    .ctrl-row label { width: 72px; white-space: nowrap; }
+    .warn { font-size: 12px; color: #fca5a5; min-height: 16px; text-align: center; }
+  </style>
+  <div class="slide slide--fit lab">
+    <div class="lab-head">
+      <h2>互动：串联电路 · 欧姆定律</h2>
+      <p>调节电源电压 U 与灯泡电阻 R，观察电流 I 与亮度（定性模型）</p>
+    </div>
+    <div class="lab-body">
+      <svg class="circuit-svg" width="340" height="220" viewBox="0 0 340 220" aria-label="串联电路示意图">
+        <rect x="20" y="80" width="56" height="36" rx="5" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+        <text x="48" y="102" text-anchor="middle" font-size="11" fill="#92400e">U</text>
+        <line x1="76" y1="98" x2="120" y2="98" stroke="#94a3b8" stroke-width="3"/>
+        <circle id="bulbCircle" class="bulb-glow" cx="150" cy="98" r="26" fill="#475569" stroke="#64748b" stroke-width="2"/>
+        <text id="bulbText" x="150" y="103" text-anchor="middle" font-size="13" fill="#1e293b">💡</text>
+        <line x1="176" y1="98" x2="220" y2="98" stroke="#94a3b8" stroke-width="3"/>
+        <rect x="228" y="86" width="32" height="24" rx="4" fill="#334155" stroke="#64748b" stroke-width="2"/>
+        <text x="244" y="102" text-anchor="middle" font-size="10" fill="#e2e8f0">S</text>
+        <line x1="260" y1="98" x2="300" y2="98" stroke="#94a3b8" stroke-width="3"/>
+        <line x1="300" y1="98" x2="300" y2="170" stroke="#94a3b8" stroke-width="3"/>
+        <line x1="300" y1="170" x2="20" y2="170" stroke="#94a3b8" stroke-width="3"/>
+        <line x1="20" y1="170" x2="20" y2="116" stroke="#94a3b8" stroke-width="3"/>
+        <text id="iArrow" x="110" y="88" font-size="12" fill="#60a5fa">I →</text>
+      </svg>
+      <div class="readout">
+        <div class="row"><span>电源电压 U</span><strong id="dispU">6.0 V</strong></div>
+        <div class="row"><span>灯泡电阻 R</span><strong id="dispR">12 Ω</strong></div>
+        <div class="val" id="dispI">I = 0.50 A</div>
+        <div class="row"><span>实际功率 P=UI</span><strong id="dispP">3.0 W</strong></div>
+        <div class="row"><span>灯泡状态</span><strong id="dispStatus" style="color:#86efac">正常发光</strong></div>
+      </div>
+    </div>
+    <div class="lab-ctrl">
+      <div class="ctrl-row">
+        <label for="uSlider">电压 U</label>
+        <input type="range" id="uSlider" data-interactive min="0" max="12" value="6" step="0.5">
+        <span id="uVal">6.0 V</span>
+      </div>
+      <div class="ctrl-row">
+        <label for="rSlider">电阻 R</label>
+        <input type="range" id="rSlider" data-interactive min="2" max="24" value="12" step="1">
+        <span id="rVal">12 Ω</span>
+      </div>
+      <p class="warn" id="warnText"></p>
+      <button type="button" class="btn" id="resetLab" data-interactive style="align-self:center">重置</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var uSlider = document.getElementById('uSlider');
+      var rSlider = document.getElementById('rSlider');
+      var bulbCircle = document.getElementById('bulbCircle');
+      var dispU = document.getElementById('dispU');
+      var dispR = document.getElementById('dispR');
+      var dispI = document.getElementById('dispI');
+      var dispP = document.getElementById('dispP');
+      var dispStatus = document.getElementById('dispStatus');
+      var warnText = document.getElementById('warnText');
+      var iArrow = document.getElementById('iArrow');
+
+      function brightness(i) {
+        return Math.min(1, i / 1.2);
+      }
+
+      function update(skipSave) {
+        var u = Number(uSlider.value);
+        var r = Number(rSlider.value);
+        var i = r > 0 ? u / r : 0;
+        var p = u * i;
+        var b = brightness(i);
+
+        dispU.textContent = u.toFixed(1) + ' V';
+        dispR.textContent = r + ' Ω';
+        dispI.textContent = 'I = ' + i.toFixed(2) + ' A';
+        dispP.textContent = p.toFixed(1) + ' W';
+        document.getElementById('uVal').textContent = u.toFixed(1) + ' V';
+        document.getElementById('rVal').textContent = r + ' Ω';
+
+        if (u === 0) {
+          dispStatus.textContent = '未通电';
+          dispStatus.style.color = '#94a3b8';
+          warnText.textContent = '';
+        } else if (i > 1) {
+          dispStatus.textContent = '过亮 · 可能烧坏';
+          dispStatus.style.color = '#fca5a5';
+          warnText.textContent = '⚠ 电流过大（I > 1 A），实际电路需加保护电阻';
+        } else if (i < 0.05) {
+          dispStatus.textContent = '几乎不亮';
+          dispStatus.style.color = '#cbd5e1';
+          warnText.textContent = '';
+        } else {
+          dispStatus.textContent = '正常发光';
+          dispStatus.style.color = '#86efac';
+          warnText.textContent = '';
+        }
+
+        var glow = Math.round(b * 24);
+        bulbCircle.setAttribute('fill', b < 0.05 ? '#475569' : '#fde047');
+        bulbCircle.style.filter = 'drop-shadow(0 0 ' + glow + 'px #fbbf24)';
+        iArrow.style.opacity = String(0.3 + b * 0.7);
+
+        if (!skipSave) {
+          window.parent.postMessage({ type: 'saveState', state: { u: u, r: r } }, '*');
+        }
+      }
+
+      uSlider.addEventListener('input', function () { update(); });
+      rSlider.addEventListener('input', function () { update(); });
+      document.getElementById('resetLab').addEventListener('click', function () {
+        uSlider.value = '6';
+        rSlider.value = '12';
+        update();
+      });
+
+      window.addEventListener('message', function (e) {
+        if (e.data && e.data.type === 'restoreState' && e.data.state) {
+          if (e.data.state.u != null) uSlider.value = String(e.data.state.u);
+          if (e.data.state.r != null) rSlider.value = String(e.data.state.r);
+          update(true);
+        }
+      });
+
+      update(true);
+    })();
+  </script>
+</template>
+
+<!-- 第 5 页：3D 电路 -->
+<template class="page-data" data-id="5" data-name="3D电路实验">
+  <style>
+    .lab3d {
+      height: 540px;
+      display: flex;
+      flex-direction: column;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .lab-head {
+      padding: 12px 24px 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .lab-head h2 { margin: 0; font-size: 20px; color: #93c5fd; }
+    .lab-head p { margin: 0; font-size: 13px; color: #94a3b8; }
+    #circuit3dCanvas { display: block; width: 100%; height: 360px; flex: 0 0 360px; cursor: grab; touch-action: none; }
+    #circuit3dCanvas.dragging { cursor: grabbing; }
+    .lab-panel {
+      padding: 10px 24px 16px;
+      background: #1e293b;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+    .stat {
+      flex: 1;
+      min-width: 180px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fde047;
+    }
+    .btn-on { background: #16a34a; }
+    .btn-off { background: #64748b; }
+  </style>
+  <div class="slide slide--fit lab3d">
+    <div class="lab-head">
+      <h2>3D 串联电路</h2>
+      <p>拖拽旋转视角 · 点击开关或按钮通断 · 观察闭合回路</p>
+    </div>
+    <canvas id="circuit3dCanvas" data-interactive></canvas>
+    <div class="lab-panel">
+      <span class="stat" id="circuitStatus">开关：断开 · 灯泡不亮（断路）</span>
+      <button type="button" class="btn btn-off" id="toggleSwitch" data-interactive>闭合开关</button>
+      <button type="button" class="btn btn-outline" id="reset3d" data-interactive style="background:#334155;color:#e2e8f0;border-color:#64748b">重置</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var canvas = document.getElementById('circuit3dCanvas');
+      var statusEl = document.getElementById('circuitStatus');
+      var toggleBtn = document.getElementById('toggleSwitch');
+      var switchOn = false;
+      var renderer, scene, camera, animId, circuitRoot;
+      var bulbFilament, bulbGlow, bulbLight, switchLever, switchGroup, wireMat, electrons;
+      var pendingState = null;
+      var WY = 0.38;
+      var LX = -2.8;
+      var RX = 2.8;
+      var FZ = -1.75;
+      var BZ = 1.75;
+      var electronPath = [
+        [LX, WY, FZ], [0, WY, FZ], [RX, WY, FZ], [RX, WY, 0],
+        [RX, WY, BZ], [LX, WY, BZ], [-3.15, WY, 0], [LX, WY, FZ]
+      ];
+
+      var orbit = {
+        target: { x: 0, y: 0.55, z: 0 },
+        theta: 0.35,
+        phi: 0.95,
+        radius: 9.5,
+        dragging: false,
+        pointerId: null,
+        lastX: 0,
+        lastY: 0,
+        moved: false
+      };
+
+      function loadThree(cb) {
+        if (window.THREE) { cb(); return; }
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js';
+        s.onload = cb;
+        s.onerror = function () {
+          statusEl.textContent = 'Three.js 加载失败，请检查网络';
+        };
+        document.head.appendChild(s);
+      }
+
+      function save() {
+        window.parent.postMessage({
+          type: 'saveState',
+          state: { switchOn: switchOn }
+        }, '*');
+      }
+
+      function addWireSeg(x1, z1, x2, z2) {
+        var y = WY;
+        var t = 0.07;
+        var dx = x2 - x1;
+        var dz = z2 - z1;
+        var len = Math.sqrt(dx * dx + dz * dz);
+        if (len < 0.02) return null;
+        var mesh = new THREE.Mesh(new THREE.BoxGeometry(len, t, t), wireMat);
+        mesh.position.set((x1 + x2) / 2, y, (z1 + z2) / 2);
+        mesh.rotation.y = -Math.atan2(dz, dx);
+        circuitRoot.add(mesh);
+        return mesh;
+      }
+
+      function addWireVert(x, y1, z, y2) {
+        var t = 0.06;
+        var len = Math.abs(y2 - y1);
+        if (len < 0.02) return null;
+        var mesh = new THREE.Mesh(new THREE.BoxGeometry(t, len, t), wireMat);
+        mesh.position.set(x, (y1 + y2) / 2, z);
+        circuitRoot.add(mesh);
+        return mesh;
+      }
+
+      function buildWires() {
+        addWireSeg(LX, FZ, -0.42, FZ);
+        addWireSeg(0.42, FZ, RX, FZ);
+        addWireSeg(RX, FZ, RX, 0);
+        addWireSeg(RX, 0, RX, BZ);
+        addWireSeg(RX, BZ, LX, BZ);
+        addWireSeg(LX, BZ, LX, FZ);
+        addWireSeg(-3.15, WY, 0, LX, WY, 0);
+        addWireVert(-3.15, WY, 0, 1.02);
+      }
+
+      function updateCameraFromOrbit() {
+        var s = orbit;
+        camera.position.x = s.target.x + s.radius * Math.sin(s.phi) * Math.sin(s.theta);
+        camera.position.y = s.target.y + s.radius * Math.cos(s.phi);
+        camera.position.z = s.target.z + s.radius * Math.sin(s.phi) * Math.cos(s.theta);
+        camera.lookAt(s.target.x, s.target.y, s.target.z);
+      }
+
+      function buildScene() {
+        var w = canvas.clientWidth || 960;
+        var h = canvas.clientHeight || 360;
+        renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        renderer.setSize(w, h, false);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0f172a);
+        camera = new THREE.PerspectiveCamera(38, w / h, 0.1, 100);
+        updateCameraFromOrbit();
+
+        scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+        var dir = new THREE.DirectionalLight(0xffffff, 0.8);
+        dir.position.set(4, 10, 6);
+        dir.castShadow = true;
+        scene.add(dir);
+
+        circuitRoot = new THREE.Group();
+        scene.add(circuitRoot);
+
+        var board = new THREE.Mesh(
+          new THREE.BoxGeometry(7.8, 0.18, 4.2),
+          new THREE.MeshStandardMaterial({ color: 0x78350f, roughness: 0.85 })
+        );
+        board.position.set(0, 0.09, 0);
+        board.receiveShadow = true;
+        circuitRoot.add(board);
+
+        wireMat = new THREE.MeshStandardMaterial({
+          color: 0xb45309, metalness: 0.85, roughness: 0.25, emissive: 0x000000
+        });
+        buildWires();
+
+        var battery = new THREE.Group();
+        var cellMat = new THREE.MeshStandardMaterial({ color: 0xfbbf24, metalness: 0.2, roughness: 0.5 });
+        var capMat = new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.6 });
+        var cell1 = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.85, 0.5), cellMat);
+        cell1.position.set(0, 0.6, 0);
+        cell1.castShadow = true;
+        var cell2 = cell1.clone();
+        cell2.position.x = 0.58;
+        var cap1 = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.08, 16), capMat);
+        cap1.position.set(0, 1.06, 0);
+        var cap2 = cap1.clone();
+        cap2.position.x = 0.58;
+        var label = new THREE.Mesh(
+          new THREE.BoxGeometry(0.04, 0.12, 0.04),
+          new THREE.MeshStandardMaterial({ color: 0xdc2626 })
+        );
+        label.position.set(0.29, 1.14, 0.22);
+        battery.add(cell1, cell2, cap1, cap2, label);
+        battery.position.set(LX - 0.35, 0.09, 0);
+        circuitRoot.add(battery);
+
+        switchGroup = new THREE.Group();
+        switchGroup.position.set(0, WY, FZ);
+        var swBase = new THREE.Mesh(
+          new THREE.BoxGeometry(0.55, 0.1, 0.32),
+          new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.5 })
+        );
+        var swPostL = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.035, 0.035, 0.18, 12),
+          new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.7 })
+        );
+        swPostL.position.set(-0.14, 0.12, 0);
+        var swPostR = swPostL.clone();
+        swPostR.position.x = 0.14;
+        switchLever = new THREE.Mesh(
+          new THREE.BoxGeometry(0.36, 0.05, 0.07),
+          new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.6 })
+        );
+        switchLever.position.set(-0.14, 0.2, 0);
+        switchGroup.add(swBase, swPostL, swPostR, switchLever);
+        circuitRoot.add(switchGroup);
+
+        var bulbGroup = new THREE.Group();
+        bulbGroup.position.set(RX, 0.35, 0);
+        var bulbBase = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.17, 0.21, 0.12, 20),
+          new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.5 })
+        );
+        bulbBase.position.y = 0.06;
+        bulbGlow = new THREE.Mesh(
+          new THREE.SphereGeometry(0.3, 24, 24),
+          new THREE.MeshPhysicalMaterial({
+            color: 0xfffbeb, transparent: true, opacity: 0.35,
+            roughness: 0.1, transmission: 0.2
+          })
+        );
+        bulbGlow.position.y = 0.44;
+        bulbFilament = new THREE.Mesh(
+          new THREE.TorusGeometry(0.09, 0.016, 8, 20),
+          new THREE.MeshStandardMaterial({ color: 0x57534e, emissive: 0x000000, emissiveIntensity: 0 })
+        );
+        bulbFilament.rotation.x = Math.PI / 2;
+        bulbFilament.position.y = 0.41;
+        bulbGroup.add(bulbBase, bulbGlow, bulbFilament);
+        circuitRoot.add(bulbGroup);
+
+        bulbLight = new THREE.PointLight(0xffedd5, 0, 4);
+        bulbLight.position.set(RX, 0.72, 0);
+        circuitRoot.add(bulbLight);
+
+        electrons = [];
+        var eMat = new THREE.MeshStandardMaterial({ color: 0x60a5fa, emissive: 0x2563eb, emissiveIntensity: 0.8 });
+        for (var i = 0; i < 12; i++) {
+          var e = new THREE.Mesh(new THREE.SphereGeometry(0.045, 8, 8), eMat.clone());
+          e.userData.t = i / 12;
+          e.userData.path = electronPath;
+          circuitRoot.add(e);
+          electrons.push(e);
+        }
+
+        applySwitchVisual(false, true);
+        if (pendingState && pendingState.switchOn != null) {
+          setSwitch(!!pendingState.switchOn, true);
+        }
+      }
+
+      function applySwitchVisual(on, skipSave) {
+        if (switchLever) {
+          if (on) {
+            switchLever.rotation.z = 0;
+            switchLever.position.set(0, 0.18, 0);
+          } else {
+            switchLever.rotation.z = -0.85;
+            switchLever.position.set(-0.14, 0.22, 0);
+          }
+        }
+        if (bulbFilament) {
+          bulbFilament.material.emissive.setHex(on ? 0xffa500 : 0x000000);
+          bulbFilament.material.emissiveIntensity = on ? 2.2 : 0;
+        }
+        if (bulbGlow) {
+          bulbGlow.material.opacity = on ? 0.85 : 0.25;
+          bulbGlow.material.emissive = new THREE.Color(on ? 0xfbbf24 : 0x000000);
+          bulbGlow.material.emissiveIntensity = on ? 0.6 : 0;
+        }
+        if (bulbLight) bulbLight.intensity = on ? 1.8 : 0;
+        if (wireMat) wireMat.emissive.setHex(on ? 0x92400e : 0x000000);
+
+        toggleBtn.textContent = on ? '断开开关' : '闭合开关';
+        toggleBtn.className = 'btn ' + (on ? 'btn-on' : 'btn-off');
+        toggleBtn.setAttribute('data-interactive', '');
+        if (on) {
+          statusEl.textContent = '开关：闭合 · 回路连通 · 灯泡发光';
+          statusEl.style.color = '#86efac';
+        } else {
+          statusEl.textContent = '开关：断开 · 回路断路 · 灯泡不亮';
+          statusEl.style.color = '#fde047';
+        }
+        if (!skipSave) save();
+      }
+
+      function setSwitch(on, skipSave) {
+        switchOn = on;
+        applySwitchVisual(on, skipSave);
+      }
+
+      function lerpPath(path, t) {
+        var n = path.length - 1;
+        var seg = Math.floor(t * n) % n;
+        var local = (t * n) - seg;
+        var a = path[seg];
+        var b = path[seg + 1];
+        return [
+          a[0] + (b[0] - a[0]) * local,
+          a[1] + (b[1] - a[1]) * local,
+          a[2] + (b[2] - a[2]) * local
+        ];
+      }
+
+      function tryToggleSwitchAt(clientX, clientY) {
+        if (!renderer || !camera || !switchGroup) return;
+        var rect = canvas.getBoundingClientRect();
+        var mouse = new THREE.Vector2(
+          ((clientX - rect.left) / rect.width) * 2 - 1,
+          -((clientY - rect.top) / rect.height) * 2 + 1
+        );
+        var ray = new THREE.Raycaster();
+        ray.setFromCamera(mouse, camera);
+        var hits = ray.intersectObjects(switchGroup.children, true);
+        if (hits.length) setSwitch(!switchOn);
+      }
+
+      function animate() {
+        animId = requestAnimationFrame(animate);
+        if (switchOn && electrons.length) {
+          electrons.forEach(function (e) {
+            e.userData.t += 0.0035;
+            if (e.userData.t > 1) e.userData.t -= 1;
+            var p = lerpPath(e.userData.path, e.userData.t);
+            e.position.set(p[0], p[1], p[2]);
+            e.visible = true;
+          });
+        } else if (electrons.length) {
+          electrons.forEach(function (e) { e.visible = false; });
+        }
+        if (renderer && scene && camera) renderer.render(scene, camera);
+      }
+
+      function onResize() {
+        if (!renderer) return;
+        var cw = canvas.clientWidth;
+        var ch = canvas.clientHeight;
+        camera.aspect = cw / ch;
+        camera.updateProjectionMatrix();
+        renderer.setSize(cw, ch, false);
+      }
+
+      toggleBtn.addEventListener('click', function () {
+        setSwitch(!switchOn);
+      });
+
+      document.getElementById('reset3d').addEventListener('click', function () {
+        setSwitch(false);
+        orbit.theta = 0.35;
+        orbit.phi = 0.95;
+        orbit.radius = 9.5;
+        updateCameraFromOrbit();
+      });
+
+      canvas.addEventListener('pointerdown', function (ev) {
+        if (ev.button !== 0) return;
+        orbit.dragging = true;
+        orbit.pointerId = ev.pointerId;
+        orbit.lastX = ev.clientX;
+        orbit.lastY = ev.clientY;
+        orbit.moved = false;
+        canvas.classList.add('dragging');
+        canvas.setPointerCapture(ev.pointerId);
+      });
+
+      canvas.addEventListener('pointermove', function (ev) {
+        if (!orbit.dragging || ev.pointerId !== orbit.pointerId) return;
+        var dx = ev.clientX - orbit.lastX;
+        var dy = ev.clientY - orbit.lastY;
+        if (Math.abs(dx) + Math.abs(dy) > 3) orbit.moved = true;
+        orbit.theta -= dx * 0.012;
+        orbit.phi = Math.max(0.25, Math.min(Math.PI / 2 - 0.08, orbit.phi + dy * 0.012));
+        orbit.lastX = ev.clientX;
+        orbit.lastY = ev.clientY;
+        updateCameraFromOrbit();
+      });
+
+      canvas.addEventListener('pointerup', function (ev) {
+        if (ev.pointerId !== orbit.pointerId) return;
+        orbit.dragging = false;
+        canvas.classList.remove('dragging');
+        try { canvas.releasePointerCapture(ev.pointerId); } catch (err) {}
+        if (!orbit.moved) tryToggleSwitchAt(ev.clientX, ev.clientY);
+      });
+
+      canvas.addEventListener('wheel', function (ev) {
+        ev.preventDefault();
+        orbit.radius = Math.max(5.5, Math.min(14, orbit.radius + ev.deltaY * 0.012));
+        updateCameraFromOrbit();
+      }, { passive: false });
+
+      window.addEventListener('message', function (e) {
+        if (e.data && e.data.type === 'restoreState' && e.data.state) {
+          pendingState = e.data.state;
+          if (switchLever) setSwitch(!!e.data.state.switchOn, true);
+        }
+      });
+
+      loadThree(function () {
+        buildScene();
+        animate();
+        window.addEventListener('resize', onResize);
+      });
+    })();
+  </script>
+</template>
+
+<!-- 第 6 页：测验 -->
+<template class="page-data" data-id="6" data-name="课堂测验">
+  <style>
+    .quiz { padding: 18px 28px 22px; background: var(--bg); }
+    .quiz h2 { margin: 0 0 4px; font-size: 24px; color: var(--primary); }
+    .hint { margin: 0 0 10px; font-size: 13px; color: var(--muted); }
+    .q-text { font-size: 15px; font-weight: 600; margin: 0 0 5px; }
+    .q-block { margin-bottom: 8px; }
+    .opt {
+      display: block; width: 100%; text-align: left;
+      padding: 7px 12px; margin: 3px 0;
+      border: 2px solid #bfdbfe; border-radius: 8px;
+      background: #fff; font-size: 14px; cursor: pointer;
+    }
+    .opt:disabled { cursor: default; }
+    .opt.correct { border-color: var(--success); background: #dcfce7; }
+    .opt.wrong { border-color: var(--error); background: #fee2e2; }
+    .footer {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 10px; padding-top: 10px; border-top: 1px solid #bfdbfe;
+    }
+    #scoreText { flex: 1; font-size: 15px; font-weight: 700; color: var(--primary); }
+  </style>
+  <div class="slide slide--scroll quiz">
+    <h2>课堂测验</h2>
+    <p class="hint">共 4 题，选完后点击「提交答案」</p>
+
+    <div class="q-block">
+      <p class="q-text">1. 电流的单位是？</p>
+      <button type="button" class="opt" data-interactive data-q="0" data-v="A">伏特（V）</button>
+      <button type="button" class="opt" data-interactive data-q="0" data-v="B">安培（A）</button>
+      <button type="button" class="opt" data-interactive data-q="0" data-v="C">欧姆（Ω）</button>
+    </div>
+    <div class="q-block">
+      <p class="q-text">2. 欧姆定律的表达式是？</p>
+      <button type="button" class="opt" data-interactive data-q="1" data-v="A">I = U × R</button>
+      <button type="button" class="opt" data-interactive data-q="1" data-v="B">I = U / R</button>
+      <button type="button" class="opt" data-interactive data-q="1" data-v="C">U = I / R</button>
+    </div>
+    <div class="q-block">
+      <p class="q-text">3. 电压为 6 V、电阻为 12 Ω 时，电流 I 为？</p>
+      <button type="button" class="opt" data-interactive data-q="2" data-v="A">0.5 A</button>
+      <button type="button" class="opt" data-interactive data-q="2" data-v="B">2 A</button>
+      <button type="button" class="opt" data-interactive data-q="2" data-v="C">72 A</button>
+    </div>
+    <div class="q-block">
+      <p class="q-text">4. 测量灯泡两端电压，电压表应如何连接？</p>
+      <button type="button" class="opt" data-interactive data-q="3" data-v="A">与灯泡串联</button>
+      <button type="button" class="opt" data-interactive data-q="3" data-v="B">与灯泡并联</button>
+      <button type="button" class="opt" data-interactive data-q="3" data-v="C">接在开关两端</button>
+    </div>
+
+    <div class="footer">
+      <span id="scoreText">请选择答案后提交</span>
+      <button type="button" class="btn" id="submitQuiz" data-interactive>提交答案</button>
+      <button type="button" class="btn btn-outline" id="retryQuiz" data-interactive>重新作答</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var ANSWERS = { 0: 'B', 1: 'B', 2: 'A', 3: 'B' };
+      var picks = { 0: null, 1: null, 2: null, 3: null };
+      var submitted = false;
+      var scoreEl = document.getElementById('scoreText');
+
+      function save() {
+        window.parent.postMessage({
+          type: 'saveState',
+          state: { picks: picks, submitted: submitted }
+        }, '*');
+      }
+
+      function select(q, val, btn) {
+        if (submitted) return;
+        picks[q] = val;
+        document.querySelectorAll('.opt[data-q="' + q + '"]').forEach(function (b) {
+          b.style.borderColor = '';
+          b.style.background = '';
+        });
+        btn.style.borderColor = 'var(--primary)';
+        btn.style.background = '#dbeafe';
+        save();
+      }
+
+      document.querySelectorAll('.opt').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          select(Number(btn.dataset.q), btn.dataset.v, btn);
+        });
+      });
+
+      function grade() {
+        var missing = [0, 1, 2, 3].filter(function (q) { return !picks[q]; });
+        if (missing.length) {
+          scoreEl.textContent = '还有 ' + missing.length + ' 题未选择';
+          scoreEl.style.color = 'var(--error)';
+          return;
+        }
+        submitted = true;
+        var score = 0;
+        [0, 1, 2, 3].forEach(function (q) {
+          if (picks[q] === ANSWERS[q]) score++;
+          document.querySelectorAll('.opt[data-q="' + q + '"]').forEach(function (b) {
+            b.disabled = true;
+            if (b.dataset.v === ANSWERS[q]) b.classList.add('correct');
+            else if (b.dataset.v === picks[q]) b.classList.add('wrong');
+          });
+        });
+        scoreEl.textContent = '得分：' + score + ' / 4' + (score === 4 ? '  🎉 全对！' : '');
+        scoreEl.style.color = score === 4 ? 'var(--success)' : 'var(--primary)';
+        save();
+      }
+
+      document.getElementById('submitQuiz').addEventListener('click', grade);
+      document.getElementById('retryQuiz').addEventListener('click', function () {
+        submitted = false;
+        picks = { 0: null, 1: null, 2: null, 3: null };
+        document.querySelectorAll('.opt').forEach(function (b) {
+          b.disabled = false;
+          b.classList.remove('correct', 'wrong');
+          b.style.borderColor = '';
+          b.style.background = '';
+        });
+        scoreEl.textContent = '请选择答案后提交';
+        scoreEl.style.color = '';
+        save();
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'restoreState' || !e.data.state) return;
+        var st = e.data.state;
+        picks = st.picks || picks;
+        submitted = !!st.submitted;
+        if (!submitted) {
+          Object.keys(picks).forEach(function (q) {
+            if (picks[q]) {
+              var btn = document.querySelector('.opt[data-q="' + q + '"][data-v="' + picks[q] + '"]');
+              if (btn) select(Number(q), picks[q], btn);
+            }
+          });
+        } else {
+          grade();
+        }
+      });
+    })();
+  </script>
+</template>
+
+<script src="./courseware-shell.js"></script>
+</body>
+</html>

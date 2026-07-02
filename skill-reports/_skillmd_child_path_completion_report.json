@@ -1,0 +1,1828 @@
+[
+  {
+    "skill": "courseware-generator",
+    "version": "v1",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v1/content-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v1/style-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v2",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v2/content-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v2/style-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v3",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v3/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v3/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v4",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v4/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v4/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v5",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v5/content-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v5/style-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v6",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v6/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v6/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v7",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v7/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v7/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v8",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v8/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v8/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v9",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v9/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v9/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v10",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v10/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v10/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v11",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v11/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v11/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v12",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v12/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v12/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v13",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v13/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v13/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v14",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v14/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v14/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v15",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v15/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v15/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v16",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v16/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v16/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v17",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v17/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v17/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v18",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v18/html-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "courseware-generator/v18/outline-guidance.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v1",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v2",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v3",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v4",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v5",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v6",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v7",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v8",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v9",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v10",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v11",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v12",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "data-collect",
+    "version": "v13",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "drag-interaction",
+    "version": "v1",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "drag-interaction/v1/Hammer.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "drag-interaction/v1/Sortable.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "drag-interaction/v1/anime.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "drag-interaction/v1/drop-into-container.md",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "drag-interaction/v1/drop-match.md",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "drag-interaction/v1/interact.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "drag-interaction/v1/templates/drop-into-container.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "drag-interaction/v1/templates/drop-match.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "drag-interaction/v1/templates/free-drag.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "drag-interaction/v1/templates/sortable-list.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "drag-interaction/v1/Hammer.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/drag-interaction/v1/Hammer.js",
+        "reason": 404
+      },
+      {
+        "path": "drag-interaction/v1/Sortable.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/drag-interaction/v1/Sortable.js",
+        "reason": 404
+      },
+      {
+        "path": "drag-interaction/v1/anime.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/drag-interaction/v1/anime.js",
+        "reason": 404
+      },
+      {
+        "path": "drag-interaction/v1/drop-into-container.md",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/drag-interaction/v1/drop-into-container.md",
+        "reason": 404
+      },
+      {
+        "path": "drag-interaction/v1/drop-match.md",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/drag-interaction/v1/drop-match.md",
+        "reason": 404
+      },
+      {
+        "path": "drag-interaction/v1/interact.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/drag-interaction/v1/interact.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "html-authoring",
+    "version": "v1",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "html-authoring/v1/Anime.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v1/Core.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v1/D3.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v1/Three.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v1/p5.js",
+        "status": "missing:404",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "html-authoring/v1/Anime.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v1/Anime.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v1/Core.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v1/Core.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v1/D3.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v1/D3.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v1/Three.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v1/Three.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v1/p5.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v1/p5.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "html-authoring",
+    "version": "v2",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "html-authoring/v2/Anime.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v2/Core.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v2/D3.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v2/Three.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v2/p5.js",
+        "status": "missing:404",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "html-authoring/v2/Anime.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v2/Anime.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v2/Core.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v2/Core.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v2/D3.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v2/D3.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v2/Three.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v2/Three.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v2/p5.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v2/p5.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "html-authoring",
+    "version": "v3",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/Anime.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/Core.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/D3.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/Three.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/color-palettes-a.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/color-palettes-b.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/math-design/color-palettes-a.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/math-design/color-palettes-b.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/math-design/visual-impact.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/math-design/workflow.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/p5.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/vN/workflow.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/visual-impact.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v3/workflow.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [
+      {
+        "documented_path": "html-authoring/v3/math-design/color-palettes-a.md",
+        "source_path": "html-authoring/v3/color-palettes-a.md"
+      },
+      {
+        "documented_path": "html-authoring/v3/math-design/color-palettes-b.md",
+        "source_path": "html-authoring/v3/color-palettes-b.md"
+      },
+      {
+        "documented_path": "html-authoring/v3/math-design/visual-impact.md",
+        "source_path": "html-authoring/v3/visual-impact.md"
+      },
+      {
+        "documented_path": "html-authoring/v3/math-design/workflow.md",
+        "source_path": "html-authoring/v3/workflow.md"
+      },
+      {
+        "documented_path": "html-authoring/v3/vN/workflow.md",
+        "source_path": "html-authoring/v3/workflow.md"
+      }
+    ],
+    "unresolved": [
+      {
+        "path": "html-authoring/v3/Anime.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v3/Anime.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v3/Core.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v3/Core.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v3/D3.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v3/D3.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v3/Three.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v3/Three.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v3/p5.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v3/p5.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "html-authoring",
+    "version": "v4",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "html-authoring/v4/Anime.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v4/color-palettes-a.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v4/color-palettes-b.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v4/manipulatives.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v4/math-design/workflow.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v4/references/examples-and-pitfalls.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v4/references/tech-details.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v4/visual-impact.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v4/workflow.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [
+      {
+        "documented_path": "html-authoring/v4/math-design/workflow.md",
+        "source_path": "html-authoring/v4/workflow.md"
+      },
+      {
+        "documented_path": "html-authoring/v4/references/examples-and-pitfalls.md",
+        "source_path": "html-authoring/v4/examples-and-pitfalls.md"
+      },
+      {
+        "documented_path": "html-authoring/v4/references/tech-details.md",
+        "source_path": "html-authoring/v4/tech-details.md"
+      }
+    ],
+    "unresolved": [
+      {
+        "path": "html-authoring/v4/Anime.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v4/Anime.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "html-authoring",
+    "version": "v5",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/Anime.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/Three.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/color-palettes-a.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/color-palettes-b.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/grid-templates.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/manipulatives.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/math-design/grid-templates.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/math-design/workflow.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/references/examples-and-pitfalls.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/references/tech-details.md",
+        "status": "mirrored",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/visual-impact.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "html-authoring/v5/workflow.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [
+      {
+        "documented_path": "html-authoring/v5/math-design/grid-templates.md",
+        "source_path": "html-authoring/v5/grid-templates.md"
+      },
+      {
+        "documented_path": "html-authoring/v5/math-design/workflow.md",
+        "source_path": "html-authoring/v5/workflow.md"
+      },
+      {
+        "documented_path": "html-authoring/v5/references/examples-and-pitfalls.md",
+        "source_path": "html-authoring/v5/examples-and-pitfalls.md"
+      },
+      {
+        "documented_path": "html-authoring/v5/references/tech-details.md",
+        "source_path": "html-authoring/v5/tech-details.md"
+      }
+    ],
+    "unresolved": [
+      {
+        "path": "html-authoring/v5/Anime.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v5/Anime.js",
+        "reason": 404
+      },
+      {
+        "path": "html-authoring/v5/Three.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/html-authoring/v5/Three.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v1",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v1/Paged.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v1/examples.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v1/math-image-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v1/pagedjs-template.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v1/pdf-ocr-preprocess.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v1/pdf-page-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v1/quality-gate.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v1/reproduction-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v1/visual-design-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "magazine-layout/v1/Paged.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/magazine-layout/v1/Paged.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v2",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v2/Paged.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v2/examples.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v2/math-image-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v2/pagedjs-template.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v2/pdf-ocr-preprocess.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v2/pdf-page-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v2/quality-gate.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v2/reproduction-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v2/visual-design-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "magazine-layout/v2/Paged.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/magazine-layout/v2/Paged.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v3",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v3/Paged.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v3/examples.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v3/math-image-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v3/pagedjs-template.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v3/pdf-ocr-preprocess.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v3/pdf-page-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v3/quality-gate.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v3/reproduction-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v3/visual-design-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "magazine-layout/v3/Paged.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/magazine-layout/v3/Paged.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v4",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v4/Paged.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v4/examples.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v4/math-image-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v4/pagedjs-template.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v4/pdf-ocr-preprocess.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v4/pdf-page-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v4/quality-gate.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v4/reproduction-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v4/visual-design-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "magazine-layout/v4/Paged.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/magazine-layout/v4/Paged.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v5",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v5/Paged.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v5/examples.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v5/math-image-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v5/pagedjs-template.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v5/pdf-ocr-preprocess.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v5/pdf-page-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v5/quality-gate.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v5/reproduction-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v5/visual-design-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "magazine-layout/v5/Paged.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/magazine-layout/v5/Paged.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v6",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v6/Paged.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v6/examples.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v6/math-image-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v6/pagedjs-template.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v6/pdf-ocr-preprocess.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v6/pdf-page-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v6/quality-gate.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v6/reproduction-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v6/visual-design-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "magazine-layout/v6/Paged.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/magazine-layout/v6/Paged.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v7",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v7/Paged.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v7/examples.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v7/math-image-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v7/pagedjs-template.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v7/pdf-ocr-preprocess.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v7/pdf-page-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v7/quality-gate.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v7/reproduction-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v7/visual-design-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "magazine-layout/v7/Paged.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/magazine-layout/v7/Paged.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v8",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v8/Paged.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v8/examples.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v8/math-image-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v8/pagedjs-template.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v8/pdf-ocr-preprocess.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v8/pdf-page-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v8/reproduction-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "magazine-layout/v8/Paged.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/magazine-layout/v8/Paged.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v9",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v9/Paged.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v9/examples.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v9/math-image-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v9/mineru-integration.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v9/pagedjs-template.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v9/pdf-ocr-preprocess.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v9/pdf-page-fidelity.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v9/reproduction-guide.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "magazine-layout/v9/visual-design-guide.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "magazine-layout/v9/Paged.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/magazine-layout/v9/Paged.js",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "math-design",
+    "version": "v1",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "math-design/v1/color-palettes-a.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "math-design/v1/color-palettes-b.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "math-design/v1/visual-impact.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "paper-generation",
+    "version": "v1",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "physics-formula-typography",
+    "version": "v1",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "physics-formula-typography/v1/CHANGELOG.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "physics-formula-typography/v1/code-patterns.md",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "physics-formula-typography/v1/self-check-schema.json",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "stroke-order",
+    "version": "v1",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "stroke-order/v1/assets/stroke-data.json",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "stroke-order/v1/stroke-data.json",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "stroke-order/v1/stroke-loader.js",
+        "status": "missing:404",
+        "source": null
+      },
+      {
+        "kind": "cdn",
+        "path": "stroke-order/v1/templates/stroke-card.js",
+        "status": "exists",
+        "source": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/stroke-order/v1/templates/stroke-card.js"
+      },
+      {
+        "kind": "cdn",
+        "path": "stroke-order/v1/templates/stroke-loader.js",
+        "status": "exists",
+        "source": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/stroke-order/v1/templates/stroke-loader.js"
+      },
+      {
+        "kind": "relative",
+        "path": "stroke-order/v1/templates/stroke-loader.js",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "stroke-order/v1/templates/stroke-snippet.html",
+        "status": "exists",
+        "source": null
+      },
+      {
+        "kind": "relative",
+        "path": "stroke-order/v1/{char}.json",
+        "status": "missing:404",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": [
+      {
+        "path": "stroke-order/v1/stroke-data.json",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/stroke-order/v1/stroke-data.json",
+        "reason": 404
+      },
+      {
+        "path": "stroke-order/v1/stroke-loader.js",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/stroke-order/v1/stroke-loader.js",
+        "reason": 404
+      },
+      {
+        "path": "stroke-order/v1/{char}.json",
+        "url": "https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/stroke-order/v1/%7Bchar%7D.json",
+        "reason": 404
+      }
+    ]
+  },
+  {
+    "skill": "teaching-game-design",
+    "version": "v1",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "test-html",
+    "version": "v1",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "test-html",
+    "version": "v2",
+    "refs": [],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  },
+  {
+    "skill": "test-html",
+    "version": "v3",
+    "refs": [
+      {
+        "kind": "relative",
+        "path": "test-html/v3/references/test-templates.md",
+        "status": "exists",
+        "source": null
+      }
+    ],
+    "downloaded": [],
+    "mirrored": [],
+    "unresolved": []
+  }
+]

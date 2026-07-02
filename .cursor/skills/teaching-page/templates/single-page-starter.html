@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教学页面标题</title>
+  <!-- spec: requirements=; require=; forbid= -->
+  <!-- fx-style: palette=FX-青(B-08); radius=0; keyword=; source=hash -->
+  <style>
+    :root{
+      /* 选定飞象色板（示例：FX-青 / B-08）。换色板整组替换，见 skill feixiang-style.md §2 */
+      --bg:#FFFFFF; --text:#00404D; --primary:#00404D; --accent:#137F8B;
+      --card:#D3F6F4; --card-border:rgba(0,64,77,.30);
+      --demo-bg:#D3F6F4; --demo-border:#93BFC2; --demo-grid:#DBF1F0;
+      --btn-primary-bg:#00404D; --btn-primary-fg:#FFFFFF;
+      --btn-2nd-bg:#ECFCFB; --btn-2nd-fg:#00404D;
+      --radius:0px;
+      --font:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    }
+    *{ box-sizing:border-box; }
+    body{ margin:0; min-height:100vh; font-family:var(--font);
+      background:var(--bg); color:var(--text);
+      display:flex; flex-direction:column; align-items:center; padding:32px; }
+    h1{ color:var(--primary); font-size:34px; font-weight:800; margin:0 0 8px; }
+    /* 飞象组件：平涂 + 描边 + 无阴影 */
+    .fx-card{ background:var(--card); border:2px solid var(--card-border);
+      border-radius:var(--radius); padding:16px 18px; }
+    .fx-demo{ background:var(--demo-bg); border:2px solid var(--demo-border);
+      border-radius:var(--radius);
+      background-image:
+        linear-gradient(var(--demo-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--demo-grid) 1px, transparent 1px);
+      background-size:30px 30px; }
+    .fx-btn{ font-size:16px; font-weight:600; padding:10px 22px; cursor:pointer;
+      border-radius:var(--radius); background:var(--btn-primary-bg);
+      color:var(--btn-primary-fg); border:2px solid var(--card-border); }
+    .fx-btn--2nd{ background:var(--btn-2nd-bg); color:var(--btn-2nd-fg); }
+    .fx-chip{ display:inline-block; padding:4px 12px; border:2px solid var(--card-border);
+      border-radius:999px; background:var(--card); font-size:13px; font-weight:600; }
+  </style>
+</head>
+<body>
+  <span class="fx-chip">学科 · 年级</span>
+  <h1>标题</h1>
+  <p>说明文字（高对比正文，无 emoji）</p>
+  <div class="fx-demo" style="width:min(720px,90%); height:320px; display:flex; align-items:center; justify-content:center; margin:16px 0;">
+    <span>演示区（网格底纹 · 多色分块）</span>
+  </div>
+  <button type="button" class="fx-btn" id="action">开始</button>
+  <script>
+    document.getElementById('action').addEventListener('click', function () {
+      // 实现核心交互：点击后 DOM/文案必须变化
+    });
+  </script>
+</body>
+</html>

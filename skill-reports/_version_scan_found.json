@@ -1,0 +1,272 @@
+[
+  {
+    "skill": "courseware-generator",
+    "version": "v1",
+    "bytes": 2811
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v2",
+    "bytes": 2811
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v3",
+    "bytes": 7914
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v4",
+    "bytes": 7914
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v5",
+    "bytes": 2811
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v6",
+    "bytes": 7914
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v7",
+    "bytes": 7914
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v8",
+    "bytes": 7914
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v9",
+    "bytes": 7914
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v10",
+    "bytes": 8264
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v11",
+    "bytes": 8261
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v12",
+    "bytes": 8609
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v13",
+    "bytes": 8609
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v14",
+    "bytes": 8609
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v15",
+    "bytes": 8609
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v16",
+    "bytes": 8609
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v17",
+    "bytes": 8609
+  },
+  {
+    "skill": "courseware-generator",
+    "version": "v18",
+    "bytes": 8624
+  },
+  {
+    "skill": "data-collect",
+    "version": "v1",
+    "bytes": 7680
+  },
+  {
+    "skill": "data-collect",
+    "version": "v2",
+    "bytes": 7695
+  },
+  {
+    "skill": "data-collect",
+    "version": "v3",
+    "bytes": 8889
+  },
+  {
+    "skill": "data-collect",
+    "version": "v4",
+    "bytes": 9358
+  },
+  {
+    "skill": "data-collect",
+    "version": "v5",
+    "bytes": 10255
+  },
+  {
+    "skill": "data-collect",
+    "version": "v6",
+    "bytes": 8168
+  },
+  {
+    "skill": "data-collect",
+    "version": "v7",
+    "bytes": 8151
+  },
+  {
+    "skill": "data-collect",
+    "version": "v8",
+    "bytes": 10065
+  },
+  {
+    "skill": "data-collect",
+    "version": "v9",
+    "bytes": 11951
+  },
+  {
+    "skill": "data-collect",
+    "version": "v10",
+    "bytes": 15293
+  },
+  {
+    "skill": "data-collect",
+    "version": "v11",
+    "bytes": 15492
+  },
+  {
+    "skill": "data-collect",
+    "version": "v12",
+    "bytes": 15721
+  },
+  {
+    "skill": "data-collect",
+    "version": "v13",
+    "bytes": 16462
+  },
+  {
+    "skill": "drag-interaction",
+    "version": "v1",
+    "bytes": 21026
+  },
+  {
+    "skill": "html-authoring",
+    "version": "v1",
+    "bytes": 34362
+  },
+  {
+    "skill": "html-authoring",
+    "version": "v2",
+    "bytes": 33527
+  },
+  {
+    "skill": "html-authoring",
+    "version": "v3",
+    "bytes": 43455
+  },
+  {
+    "skill": "html-authoring",
+    "version": "v4",
+    "bytes": 16435
+  },
+  {
+    "skill": "html-authoring",
+    "version": "v5",
+    "bytes": 18606
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v1",
+    "bytes": 18139
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v2",
+    "bytes": 19628
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v3",
+    "bytes": 19954
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v4",
+    "bytes": 20902
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v5",
+    "bytes": 22153
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v6",
+    "bytes": 23239
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v7",
+    "bytes": 23100
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v8",
+    "bytes": 17647
+  },
+  {
+    "skill": "magazine-layout",
+    "version": "v9",
+    "bytes": 21312
+  },
+  {
+    "skill": "math-design",
+    "version": "v1",
+    "bytes": 5767
+  },
+  {
+    "skill": "paper-generation",
+    "version": "v1",
+    "bytes": 8427
+  },
+  {
+    "skill": "physics-formula-typography",
+    "version": "v1",
+    "bytes": 13329
+  },
+  {
+    "skill": "stroke-order",
+    "version": "v1",
+    "bytes": 18639
+  },
+  {
+    "skill": "teaching-game-design",
+    "version": "v1",
+    "bytes": 9024
+  },
+  {
+    "skill": "test-html",
+    "version": "v1",
+    "bytes": 25691
+  },
+  {
+    "skill": "test-html",
+    "version": "v2",
+    "bytes": 27788
+  },
+  {
+    "skill": "test-html",
+    "version": "v3",
+    "bytes": 8948
+  }
+]

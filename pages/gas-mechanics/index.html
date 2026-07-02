@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>气体的压强 · 初中物理</title>
+  <!-- spec: requirements=初中物理,气体力学,含3D样例,含测验; require=Three.js活塞模型,翻页,选择题判分; core-loop=3D:调活塞→体积压强变化;测验:选题→提交→反馈→重做 -->
+</head>
+<body>
+
+<div id="cw-loading">加载课件中...</div>
+
+<template class="page-shared">
+  <style>
+    :root {
+      --primary: #0e7490;
+      --secondary: #0891b2;
+      --accent: #f97316;
+      --bg: #f0fdfa;
+      --text: #134e4a;
+      --muted: #5b7c7a;
+      --success: #16a34a;
+      --error: #dc2626;
+    }
+    .slide {
+      width: 100%;
+      min-height: 540px;
+      box-sizing: border-box;
+      font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      color: var(--text);
+    }
+    .slide--fit {
+      height: 540px;
+      overflow: hidden;
+    }
+    .slide--scroll {
+      max-height: 540px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .btn {
+      padding: 8px 18px;
+      border: none;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-outline {
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+  </style>
+</template>
+
+<!-- 第 1 页：封面 -->
+<template class="page-data" data-id="1" data-name="封面">
+  <style>
+    .cover {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      background: linear-gradient(160deg, #042f2e 0%, #0e7490 50%, #22d3ee 100%);
+      color: #fff;
+    }
+    .cover h1 { font-size: 42px; margin: 12px 0; letter-spacing: 2px; }
+    .cover .sub { font-size: 20px; opacity: 0.92; max-width: 520px; line-height: 1.6; }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .icons { font-size: 48px; margin-bottom: 8px; }
+  </style>
+  <div class="slide slide--fit cover">
+    <div class="icons">🫧💨</div>
+    <span class="badge">初中物理 · 气体力学</span>
+    <h1>气体的压强</h1>
+    <p class="sub">从分子碰撞理解压强 · 3D 活塞气缸模型 · 课堂小测</p>
+  </div>
+</template>
+
+<!-- 第 2 页：概念讲解 -->
+<template class="page-data" data-id="2" data-name="概念讲解">
+  <style>
+    .concept { padding: 28px 36px; background: var(--bg); }
+    .concept h2 { color: var(--primary); font-size: 26px; margin: 0 0 16px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--primary);
+      box-shadow: 0 2px 10px rgba(14,116,144,.08);
+    }
+    .card h3 { margin: 0 0 8px; font-size: 17px; color: var(--primary); }
+    .card p, .card li { margin: 0; font-size: 15px; line-height: 1.65; }
+    .card ul { padding-left: 18px; margin-top: 6px; }
+    .highlight {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #ecfeff, #fff);
+      border: 2px solid #99f6e4;
+      border-radius: 12px;
+      padding: 14px 20px;
+      text-align: center;
+      font-size: 17px;
+    }
+    .highlight strong { color: var(--accent); font-size: 19px; }
+  </style>
+  <div class="slide slide--scroll concept">
+    <h2>气体为什么会有压强？</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>微观解释</h3>
+        <p>气体分子<strong>不停地无规则运动</strong>，频繁碰撞容器壁。大量碰撞对单位面积的作用力，形成<strong>气体压强</strong>。</p>
+      </div>
+      <div class="card">
+        <h3>大气压强</h3>
+        <p>地球周围的空气层受重力作用，对地面及其中物体产生压强。标准大气压约为 \(1.0 \times 10^5\,\text{Pa}\)（约 760 mmHg）。</p>
+      </div>
+      <div class="card">
+        <h3>影响因素（定性）</h3>
+        <ul>
+          <li>温度升高 → 分子运动加剧 → 压强<strong>增大</strong></li>
+          <li>体积减小（质量不变）→ 分子更密集 → 碰撞更频繁 → 压强<strong>增大</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>生活实例</h3>
+        <ul>
+          <li>吸饮料：吸管内外气压差</li>
+          <li>吸盘挂物：大气压“托住”吸盘</li>
+          <li>打气筒：压缩气体对轮胎施力</li>
+        </ul>
+      </div>
+      <div class="highlight">
+        一定质量的气体，温度不变时：<strong>体积越小，压强越大</strong>（玻意耳定律定性）
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- 第 3 页：3D 活塞气缸 -->
+<template class="page-data" data-id="3" data-name="3D活塞模型">
+  <style>
+    .lab3d {
+      height: 540px;
+      display: flex;
+      flex-direction: column;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .lab-head {
+      padding: 12px 24px 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .lab-head h2 { margin: 0; font-size: 20px; color: #67e8f9; }
+    .lab-head p { margin: 0; font-size: 13px; color: #94a3b8; }
+    #gasCanvas { display: block; width: 100%; height: 360px; flex: 0 0 360px; }
+    .lab-panel {
+      padding: 10px 24px 16px;
+      background: #1e293b;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+    .lab-panel label { font-size: 14px; }
+    .lab-panel input[type=range] { flex: 1; min-width: 120px; accent-color: #22d3ee; }
+    .stat {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fde68a;
+      min-width: 200px;
+    }
+  </style>
+  <div class="slide slide--fit lab3d">
+    <div class="lab-head">
+      <h2>3D 密闭气缸模型</h2>
+      <p>拖动活塞 → 观察体积与压强（温度不变，定性）</p>
+    </div>
+    <canvas id="gasCanvas" data-interactive></canvas>
+    <div class="lab-panel">
+      <label for="pistonSlider">活塞位置</label>
+      <input type="range" id="pistonSlider" data-interactive min="20" max="85" value="55">
+      <span class="stat" id="gasStats">V = 55% · P = 1.0 相对压强</span>
+      <button type="button" class="btn" id="reset3d" data-interactive>重置</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var canvas = document.getElementById('gasCanvas');
+      var slider = document.getElementById('pistonSlider');
+      var statsEl = document.getElementById('gasStats');
+      var pistonPos = 55;
+      var renderer, scene, camera, particles, pistonMesh, cylinderGroup, baseMesh;
+      var animId;
+      var speeds = [];
+
+      function loadThree(cb) {
+        if (window.THREE) { cb(); return; }
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js';
+        s.onload = cb;
+        s.onerror = function () {
+          statsEl.textContent = 'Three.js 加载失败，请检查网络';
+        };
+        document.head.appendChild(s);
+      }
+
+      function save() {
+        window.parent.postMessage({
+          type: 'saveState',
+          state: { pistonPos: pistonPos }
+        }, '*');
+      }
+
+      function updateStats() {
+        var v = pistonPos;
+        var p = (55 / v).toFixed(2);
+        statsEl.textContent = 'V = ' + v + '% · P = ' + p + ' 相对压强';
+      }
+
+      function buildScene() {
+        var w = canvas.clientWidth || 960;
+        var h = canvas.clientHeight || 380;
+        renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        renderer.setSize(w, h, false);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0f172a);
+        camera = new THREE.PerspectiveCamera(42, w / h, 0.1, 100);
+        camera.position.set(0, 2.5, 9);
+        camera.lookAt(0, 0.5, 0);
+
+        scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+        var dir = new THREE.DirectionalLight(0xffffff, 0.85);
+        dir.position.set(5, 8, 6);
+        scene.add(dir);
+
+        cylinderGroup = new THREE.Group();
+        scene.add(cylinderGroup);
+
+        var glassMat = new THREE.MeshPhysicalMaterial({
+          color: 0x22d3ee, transparent: true, opacity: 0.18,
+          roughness: 0.1, metalness: 0.05, side: THREE.DoubleSide
+        });
+        var cyl = new THREE.Mesh(new THREE.CylinderGeometry(1.6, 1.6, 3.2, 32, 1, true), glassMat);
+        cyl.position.y = 1.6;
+        cylinderGroup.add(cyl);
+
+        baseMesh = new THREE.Mesh(
+          new THREE.CylinderGeometry(1.65, 1.65, 0.15, 32),
+          new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.4 })
+        );
+        baseMesh.position.y = 0.08;
+        cylinderGroup.add(baseMesh);
+
+        var pistonMat = new THREE.MeshStandardMaterial({ color: 0xf97316, metalness: 0.5, roughness: 0.35 });
+        pistonMesh = new THREE.Mesh(new THREE.CylinderGeometry(1.55, 1.55, 0.2, 32), pistonMat);
+        cylinderGroup.add(pistonMesh);
+
+        var rod = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.12, 0.12, 1.2, 16),
+          new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.6 })
+        );
+        rod.name = 'rod';
+        cylinderGroup.add(rod);
+
+        particles = new THREE.Group();
+        cylinderGroup.add(particles);
+        var pMat = new THREE.MeshStandardMaterial({ color: 0xfde047, emissive: 0xfbbf24, emissiveIntensity: 0.35 });
+        speeds = [];
+        for (var i = 0; i < 48; i++) {
+          var m = new THREE.Mesh(new THREE.SphereGeometry(0.1, 10, 10), pMat);
+          m.userData.vel = new THREE.Vector3(
+            (Math.random() - 0.5) * 0.06,
+            (Math.random() - 0.5) * 0.06,
+            (Math.random() - 0.5) * 0.06
+          );
+          speeds.push(m.userData.vel.clone());
+          particles.add(m);
+        }
+
+        layoutPiston(pistonPos);
+        scatterParticles();
+      }
+
+      function chamberHeight() {
+        return 0.3 + (pistonPos / 100) * 2.8;
+      }
+
+      function layoutPiston(pos) {
+        pistonPos = pos;
+        var h = chamberHeight();
+        pistonMesh.position.y = h;
+        var rod = cylinderGroup.getObjectByName('rod');
+        if (rod) rod.position.y = h + 0.7;
+        slider.value = String(Math.round(pos));
+        updateStats();
+      }
+
+      function scatterParticles() {
+        var h = chamberHeight();
+        var r = 1.3;
+        particles.children.forEach(function (m) {
+          m.position.set(
+            (Math.random() - 0.5) * r * 2,
+            0.25 + Math.random() * (h - 0.35),
+            (Math.random() - 0.5) * r * 2
+          );
+        });
+      }
+
+      function animate() {
+        animId = requestAnimationFrame(animate);
+        var h = chamberHeight();
+        var r = 1.35;
+        var speedMul = 55 / pistonPos;
+        particles.children.forEach(function (m, i) {
+          var v = m.userData.vel;
+          v.x = speeds[i].x * speedMul;
+          v.y = speeds[i].y * speedMul;
+          v.z = speeds[i].z * speedMul;
+          m.position.add(v);
+          if (m.position.y < 0.28) { m.position.y = 0.28; v.y = Math.abs(v.y); }
+          if (m.position.y > h - 0.1) { m.position.y = h - 0.1; v.y = -Math.abs(v.y); }
+          if (m.position.x < -r) { m.position.x = -r; v.x = Math.abs(v.x); }
+          if (m.position.x > r) { m.position.x = r; v.x = -Math.abs(v.x); }
+          if (m.position.z < -r) { m.position.z = -r; v.z = Math.abs(v.z); }
+          if (m.position.z > r) { m.position.z = r; v.z = -Math.abs(v.z); }
+        });
+        renderer.render(scene, camera);
+      }
+
+      function onResize() {
+        if (!renderer) return;
+        var w = canvas.clientWidth;
+        var h = canvas.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h, false);
+      }
+
+      slider.addEventListener('input', function () {
+        layoutPiston(Number(slider.value));
+        save();
+      });
+
+      document.getElementById('reset3d').addEventListener('click', function () {
+        layoutPiston(55);
+        scatterParticles();
+        save();
+      });
+
+      window.addEventListener('message', function (e) {
+        if (e.data && e.data.type === 'restoreState' && e.data.state && e.data.state.pistonPos != null) {
+          layoutPiston(e.data.state.pistonPos);
+        }
+      });
+
+      loadThree(function () {
+        buildScene();
+        animate();
+        window.addEventListener('resize', onResize);
+        window.__gas3d = {
+          get ground() { return baseMesh; },
+          get pistonPos() { return pistonPos; }
+        };
+      });
+    })();
+  </script>
+</template>
+
+<!-- 第 4 页：测验 -->
+<template class="page-data" data-id="4" data-name="课堂测验">
+  <style>
+    .quiz { padding: 22px 32px 28px; background: var(--bg); }
+    .quiz h2 { margin: 0 0 6px; font-size: 24px; color: var(--primary); }
+    .hint { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+    .q-text { font-size: 16px; font-weight: 600; margin: 0 0 8px; }
+    .q-block { margin-bottom: 12px; }
+    .opt {
+      display: block; width: 100%; text-align: left;
+      padding: 9px 14px; margin: 5px 0;
+      border: 2px solid #ccfbf1; border-radius: 8px;
+      background: #fff; font-size: 15px; cursor: pointer;
+    }
+    .opt:disabled { cursor: default; }
+    .opt.correct { border-color: var(--success); background: #dcfce7; }
+    .opt.wrong { border-color: var(--error); background: #fee2e2; }
+    .footer {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 14px; padding-top: 14px; border-top: 1px solid #99f6e4;
+    }
+    #scoreText { flex: 1; font-size: 17px; font-weight: 700; color: var(--primary); }
+  </style>
+  <div class="slide slide--scroll quiz">
+    <h2>课堂测验</h2>
+    <p class="hint">共 4 题，选完后点击「提交答案」</p>
+
+    <div class="q-block">
+      <p class="q-text">1. 气体压强产生的主要原因是？</p>
+      <button type="button" class="opt" data-interactive data-q="0" data-v="A">气体受重力作用</button>
+      <button type="button" class="opt" data-interactive data-q="0" data-v="B">气体分子碰撞容器壁</button>
+      <button type="button" class="opt" data-interactive data-q="0" data-v="C">气体具有流动性</button>
+    </div>
+    <div class="q-block">
+      <p class="q-text">2. 一定质量的气体，温度不变，体积减小，压强将？</p>
+      <button type="button" class="opt" data-interactive data-q="1" data-v="A">减小</button>
+      <button type="button" class="opt" data-interactive data-q="1" data-v="B">不变</button>
+      <button type="button" class="opt" data-interactive data-q="1" data-v="C">增大</button>
+    </div>
+    <div class="q-block">
+      <p class="q-text">3. 下列现象主要利用大气压强的是？</p>
+      <button type="button" class="opt" data-interactive data-q="2" data-v="A">用吸管吸饮料</button>
+      <button type="button" class="opt" data-interactive data-q="2" data-v="B">液压机起重</button>
+      <button type="button" class="opt" data-interactive data-q="2" data-v="C">潜水员穿抗压服</button>
+    </div>
+    <div class="q-block">
+      <p class="q-text">4. 在 3D 模型中压缩活塞（温度不变），气体分子运动更剧烈，是因为？</p>
+      <button type="button" class="opt" data-interactive data-q="3" data-v="A">分子总数增加</button>
+      <button type="button" class="opt" data-interactive data-q="3" data-v="B">单位体积内碰撞更频繁（定性演示）</button>
+      <button type="button" class="opt" data-interactive data-q="3" data-v="C">重力变大</button>
+    </div>
+
+    <div class="footer">
+      <span id="scoreText">请选择答案后提交</span>
+      <button type="button" class="btn" id="submitQuiz" data-interactive>提交答案</button>
+      <button type="button" class="btn btn-outline" id="retryQuiz" data-interactive>重新作答</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var ANSWERS = { 0: 'B', 1: 'C', 2: 'A', 3: 'B' };
+      var picks = { 0: null, 1: null, 2: null, 3: null };
+      var submitted = false;
+      var scoreEl = document.getElementById('scoreText');
+
+      function save() {
+        window.parent.postMessage({
+          type: 'saveState',
+          state: { picks: picks, submitted: submitted }
+        }, '*');
+      }
+
+      function select(q, val, btn) {
+        if (submitted) return;
+        picks[q] = val;
+        document.querySelectorAll('.opt[data-q="' + q + '"]').forEach(function (b) {
+          b.style.borderColor = '';
+          b.style.background = '';
+        });
+        btn.style.borderColor = 'var(--primary)';
+        btn.style.background = '#ecfeff';
+        save();
+      }
+
+      document.querySelectorAll('.opt').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          select(Number(btn.dataset.q), btn.dataset.v, btn);
+        });
+      });
+
+      function grade() {
+        var missing = [0, 1, 2, 3].filter(function (q) { return !picks[q]; });
+        if (missing.length) {
+          scoreEl.textContent = '还有 ' + missing.length + ' 题未选择';
+          scoreEl.style.color = 'var(--error)';
+          return;
+        }
+        submitted = true;
+        var score = 0;
+        [0, 1, 2, 3].forEach(function (q) {
+          if (picks[q] === ANSWERS[q]) score++;
+          document.querySelectorAll('.opt[data-q="' + q + '"]').forEach(function (b) {
+            b.disabled = true;
+            if (b.dataset.v === ANSWERS[q]) b.classList.add('correct');
+            else if (b.dataset.v === picks[q]) b.classList.add('wrong');
+          });
+        });
+        scoreEl.textContent = '得分：' + score + ' / 4' + (score === 4 ? '  🎉 全对！' : '');
+        scoreEl.style.color = score === 4 ? 'var(--success)' : 'var(--primary)';
+        save();
+      }
+
+      document.getElementById('submitQuiz').addEventListener('click', grade);
+      document.getElementById('retryQuiz').addEventListener('click', function () {
+        submitted = false;
+        picks = { 0: null, 1: null, 2: null, 3: null };
+        document.querySelectorAll('.opt').forEach(function (b) {
+          b.disabled = false;
+          b.classList.remove('correct', 'wrong');
+          b.style.borderColor = '';
+          b.style.background = '';
+        });
+        scoreEl.textContent = '请选择答案后提交';
+        scoreEl.style.color = '';
+        save();
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'restoreState' || !e.data.state) return;
+        var st = e.data.state;
+        picks = st.picks || picks;
+        submitted = !!st.submitted;
+        if (!submitted) {
+          Object.keys(picks).forEach(function (q) {
+            if (picks[q]) {
+              var btn = document.querySelector('.opt[data-q="' + q + '"][data-v="' + picks[q] + '"]');
+              if (btn) select(Number(q), picks[q], btn);
+            }
+          });
+        } else {
+          grade();
+        }
+      });
+    })();
+  </script>
+</template>
+
+<script src="./courseware-shell.js"></script>
+</body>
+</html>

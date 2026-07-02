@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光的反射 · 初二物理</title>
+  <!-- spec: requirements=初二物理,4页,封面+概念+互动作图+选择题; require=翻页,反射定律讲解,可调入射角作图,测验反馈; core-loop=作图:调角度→更新光路→显示i与r;测验:选题→判分→反馈 -->
+</head>
+<body>
+
+<div id="cw-loading">加载课件中...</div>
+
+<template class="page-shared">
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --secondary: #f59e0b;
+      --accent: #fbbf24;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+    }
+    .slide {
+      width: 100%;
+      min-height: 540px;
+      box-sizing: border-box;
+      font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      color: var(--text);
+    }
+    .slide--fit {
+      height: 540px;
+      overflow: hidden;
+    }
+    .slide--scroll {
+      max-height: 540px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn:hover { opacity: 0.92; }
+    .btn-outline {
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+  </style>
+</template>
+
+<!-- 第 1 页：封面 -->
+<template class="page-data" data-id="1" data-name="封面">
+  <style>
+    .cover {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #0f172a 0%, #1e3a8a 45%, #1d4ed8 100%);
+      color: #fff;
+      text-align: center;
+      padding: 48px;
+    }
+    .cover h1 {
+      font-size: 44px;
+      margin: 16px 0 12px;
+      letter-spacing: 2px;
+    }
+    .cover .sub {
+      font-size: 20px;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }
+    .cover .meta {
+      font-size: 16px;
+      opacity: 0.75;
+    }
+    .ray-deco {
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--accent), #fff);
+      transform: rotate(-35deg);
+      margin-bottom: 8px;
+      box-shadow: 0 0 20px var(--accent);
+    }
+  </style>
+  <div class="slide slide--fit cover">
+    <div class="ray-deco"></div>
+    <span class="tag" style="background:rgba(255,255,255,.15);color:#fde68a">初二物理</span>
+    <h1>光的反射</h1>
+    <p class="sub">认识反射现象 · 理解反射定律 · 动手作图</p>
+    <p class="meta">人教版 · 光现象单元 · 建议课时 1 学时</p>
+  </div>
+</template>
+
+<!-- 第 2 页：概念讲解 -->
+<template class="page-data" data-id="2" data-name="概念讲解">
+  <style>
+    .concept {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 28px 36px;
+      background: var(--bg);
+    }
+    .concept h2 {
+      grid-column: 1 / -1;
+      color: var(--primary);
+      font-size: 28px;
+      margin: 0 0 4px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(15,23,42,.06);
+      border-left: 4px solid var(--primary);
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: var(--primary);
+    }
+    .card p, .card li {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .card ul { padding-left: 20px; margin: 8px 0 0; }
+    .law {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #eff6ff, #fff);
+      border: 2px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 18px 24px;
+      text-align: center;
+    }
+    .law strong { color: var(--primary); font-size: 20px; }
+    .diagram-mini {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .diagram-mini svg { display: block; }
+  </style>
+  <div class="slide slide--scroll concept">
+    <h2>什么是光的反射？</h2>
+    <div class="card">
+      <h3>📖 现象</h3>
+      <p>光遇到<strong>光滑界面</strong>（平面镜、平静水面、抛光金属）时，一部分光会<strong>返回原介质</strong>，这种现象叫做<strong>光的反射</strong>。</p>
+    </div>
+    <div class="diagram-mini">
+      <svg width="200" height="140" viewBox="0 0 200 140">
+        <line x1="0" y1="110" x2="200" y2="110" stroke="#94a3b8" stroke-width="3"/>
+        <line x1="100" y1="110" x2="100" y2="30" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <line x1="100" y1="110" x2="40" y2="35" stroke="#fbbf24" stroke-width="2.5"/>
+        <line x1="100" y1="110" x2="160" y2="35" stroke="#fde047" stroke-width="2.5"/>
+        <text x="48" y="28" fill="#fbbf24" font-size="11">入射光</text>
+        <text x="128" y="28" fill="#fde047" font-size="11">反射光</text>
+        <text x="104" y="72" fill="#94a3b8" font-size="10">法线</text>
+      </svg>
+    </div>
+    <div class="card">
+      <h3>📐 关键术语</h3>
+      <ul>
+        <li><strong>法线</strong>：过入射点、垂直于镜面的直线（虚线表示）</li>
+        <li><strong>入射角 i</strong>：入射光与法线的夹角</li>
+        <li><strong>反射角 r</strong>：反射光与法线的夹角</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>⚖️ 反射定律（两要点）</h3>
+      <ul>
+        <li>三线共面：入射光、反射光、法线在同一平面内</li>
+        <li><strong>反射角等于入射角</strong>（i = r）</li>
+      </ul>
+    </div>
+    <div class="law">
+      <strong>反射定律：∠i = ∠r</strong>
+      <p style="margin:8px 0 0;font-size:15px;color:var(--muted)">角度均相对于法线测量，不是相对于镜面</p>
+    </div>
+  </div>
+</template>
+
+<!-- 第 3 页：互动作图 -->
+<template class="page-data" data-id="3" data-name="互动作图">
+  <style>
+    .lab {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .lab-header {
+      padding: 16px 28px 8px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .lab-header h2 { margin: 0; font-size: 22px; color: #fde68a; }
+    .lab-header p { margin: 0; font-size: 14px; color: #94a3b8; }
+    .lab-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px 8px;
+    }
+  </style>
+  <div class="slide slide--fit lab">
+    <div class="lab-header">
+      <h2>互动光路图</h2>
+      <p>拖动滑块改变入射角，观察反射光与角度数值（i = r）</p>
+    </div>
+    <div class="lab-body">
+      <svg id="raySvg" width="720" height="320" viewBox="0 0 720 320" data-interactive>
+        <defs>
+          <marker id="arrowIn" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/>
+          </marker>
+          <marker id="arrowOut" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#fde047"/>
+          </marker>
+        </defs>
+        <rect x="0" y="0" width="720" height="320" fill="#0f172a"/>
+        <line x1="40" y1="240" x2="680" y2="240" stroke="#64748b" stroke-width="4"/>
+        <text x="600" y="258" fill="#94a3b8" font-size="14">平面镜</text>
+        <line id="normal" x1="360" y1="240" x2="360" y2="60" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,5"/>
+        <text x="368" y="150" fill="#94a3b8" font-size="13">法线 N</text>
+        <line id="incident" x1="360" y1="240" x2="200" y2="80" stroke="#fbbf24" stroke-width="3" marker-end="url(#arrowIn)"/>
+        <line id="reflected" x1="360" y1="240" x2="520" y2="80" stroke="#fde047" stroke-width="3" marker-end="url(#arrowOut)"/>
+        <path id="arcI" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+        <path id="arcR" fill="none" stroke="#fde047" stroke-width="1.5"/>
+        <text id="labelI" fill="#fbbf24" font-size="15" font-weight="bold">i = 40°</text>
+        <text id="labelR" fill="#fde047" font-size="15" font-weight="bold">r = 40°</text>
+        <text x="200" y="70" fill="#fbbf24" font-size="13">入射光</text>
+        <text x="500" y="70" fill="#fde047" font-size="13">反射光</text>
+      </svg>
+    </div>
+    <div style="padding:12px 28px 20px;background:#1e293b;display:flex;align-items:center;gap:16px;">
+      <label for="angleSlider" style="font-size:15px;white-space:nowrap;">入射角 i：</label>
+      <input type="range" id="angleSlider" data-interactive min="5" max="80" value="40" style="flex:1;accent-color:#fbbf24;">
+      <span id="angleVal" style="font-size:18px;font-weight:700;color:#fde68a;min-width:48px;">40°</span>
+      <button type="button" class="btn btn-outline" id="resetLab" data-interactive style="background:#334155;color:#fff;border-color:#475569;">重置</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var CX = 360, CY = 240, LEN = 175;
+      var slider = document.getElementById('angleSlider');
+      var angleVal = document.getElementById('angleVal');
+      var incident = document.getElementById('incident');
+      var reflected = document.getElementById('reflected');
+      var arcI = document.getElementById('arcI');
+      var arcR = document.getElementById('arcR');
+      var labelI = document.getElementById('labelI');
+      var labelR = document.getElementById('labelR');
+
+      function deg2rad(d) { return d * Math.PI / 180; }
+
+      function arcPath(cx, cy, r, startDeg, endDeg) {
+        var s = deg2rad(startDeg), e = deg2rad(endDeg);
+        var x1 = cx + r * Math.sin(s), y1 = cy - r * Math.cos(s);
+        var x2 = cx + r * Math.sin(e), y2 = cy - r * Math.cos(e);
+        var large = Math.abs(endDeg - startDeg) > 180 ? 1 : 0;
+        return 'M' + x1 + ',' + y1 + ' A' + r + ',' + r + ' 0 ' + large + ' 1 ' + x2 + ',' + y2;
+      }
+
+      function update(deg, skipSave) {
+        var rad = deg2rad(deg);
+        var ix = CX - LEN * Math.sin(rad);
+        var iy = CY - LEN * Math.cos(rad);
+        var rx = CX + LEN * Math.sin(rad);
+        var ry = CY - LEN * Math.cos(rad);
+        incident.setAttribute('x2', ix);
+        incident.setAttribute('y2', iy);
+        reflected.setAttribute('x2', rx);
+        reflected.setAttribute('y2', ry);
+        arcI.setAttribute('d', arcPath(CX, CY, 42, -deg, 0));
+        arcR.setAttribute('d', arcPath(CX, CY, 52, 0, deg));
+        labelI.setAttribute('x', CX - 95);
+        labelI.setAttribute('y', CY - 55);
+        labelI.textContent = 'i = ' + deg + '°';
+        labelR.setAttribute('x', CX + 58);
+        labelR.setAttribute('y', CY - 55);
+        labelR.textContent = 'r = ' + deg + '°';
+        angleVal.textContent = deg + '°';
+        slider.value = deg;
+        if (!skipSave) {
+          window.parent.postMessage({ type: 'saveState', state: { angle: deg } }, '*');
+        }
+      }
+
+      slider.addEventListener('input', function () {
+        update(Number(slider.value));
+      });
+
+      document.getElementById('resetLab').addEventListener('click', function () {
+        update(40);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (e.data && e.data.type === 'restoreState' && e.data.state && e.data.state.angle != null) {
+          update(e.data.state.angle, true);
+        }
+      });
+
+      update(40, true);
+    })();
+  </script>
+</template>
+
+<!-- 第 4 页：选择题测验 -->
+<template class="page-data" data-id="4" data-name="选择题测验">
+  <style>
+    .quiz {
+      padding: 20px 32px 24px;
+      background: var(--bg);
+    }
+    .quiz h2 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      color: var(--primary);
+    }
+    .quiz .hint { margin: 0 0 16px; font-size: 14px; color: var(--muted); }
+    .q-block { margin-bottom: 14px; }
+    .q-text { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    .opt {
+      display: block; width: 100%; text-align: left;
+      padding: 10px 14px; margin: 6px 0;
+      border: 2px solid #e2e8f0; border-radius: 8px;
+      background: #fff; font-size: 16px; cursor: pointer;
+    }
+    .opt:disabled { cursor: default; }
+    .opt.correct { border-color: var(--success); background: #dcfce7; }
+    .opt.wrong { border-color: var(--error); background: #fee2e2; }
+    .footer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 16px;
+      margin-top: 12px;
+      border-top: 1px solid #e2e8f0;
+    }
+    #scoreText { font-size: 18px; font-weight: 700; color: var(--primary); flex: 1; }
+  </style>
+  <div class="slide slide--scroll quiz">
+    <h2>课堂小测</h2>
+    <p class="hint">共 3 题，选完后点击「提交答案」查看得分</p>
+
+    <div class="q-block" data-q="0">
+      <p class="q-text">1. 关于光的反射，下列说法正确的是？</p>
+      <button type="button" class="opt" data-interactive data-q="0" data-v="A">反射光与入射光分居法线两侧</button>
+      <button type="button" class="opt" data-interactive data-q="0" data-v="B">反射角可以大于入射角</button>
+      <button type="button" class="opt" data-interactive data-q="0" data-v="C">入射角是光线与镜面的夹角</button>
+    </div>
+
+    <div class="q-block" data-q="1">
+      <p class="q-text">2. 入射角为 30° 时，反射角为？</p>
+      <button type="button" class="opt" data-interactive data-q="1" data-v="A">60°</button>
+      <button type="button" class="opt" data-interactive data-q="1" data-v="B">30°</button>
+      <button type="button" class="opt" data-interactive data-q="1" data-v="C">15°</button>
+    </div>
+
+    <div class="q-block" data-q="2">
+      <p class="q-text">3. 下列现象中，属于光的反射的是？</p>
+      <button type="button" class="opt" data-interactive data-q="2" data-v="A">水中筷子看起来「弯折」</button>
+      <button type="button" class="opt" data-interactive data-q="2" data-v="B">平静湖面映出蓝天白云</button>
+      <button type="button" class="opt" data-interactive data-q="2" data-v="C">太阳光通过三棱镜出现彩色光带</button>
+    </div>
+
+    <div class="footer">
+      <span id="scoreText">请选择答案后提交</span>
+      <button type="button" class="btn" id="submitQuiz" data-interactive>提交答案</button>
+      <button type="button" class="btn btn-outline" id="retryQuiz" data-interactive>重新作答</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var ANSWERS = { 0: 'A', 1: 'B', 2: 'B' };
+      var picks = { 0: null, 1: null, 2: null };
+      var submitted = false;
+      var scoreEl = document.getElementById('scoreText');
+
+      function save() {
+        window.parent.postMessage({
+          type: 'saveState',
+          state: { picks: picks, submitted: submitted }
+        }, '*');
+      }
+
+      function select(q, val, btn) {
+        if (submitted) return;
+        picks[q] = val;
+        document.querySelectorAll('.opt[data-q="' + q + '"]').forEach(function (b) {
+          b.classList.remove('selected');
+          b.style.borderColor = '';
+          b.style.background = '';
+        });
+        btn.style.borderColor = 'var(--primary)';
+        btn.style.background = '#dbeafe';
+        save();
+      }
+
+      document.querySelectorAll('.opt').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          select(Number(btn.dataset.q), btn.dataset.v, btn);
+        });
+      });
+
+      function grade() {
+        var missing = [0, 1, 2].filter(function (q) { return !picks[q]; });
+        if (missing.length) {
+          scoreEl.textContent = '还有 ' + missing.length + ' 题未选择';
+          scoreEl.style.color = 'var(--error)';
+          return;
+        }
+        submitted = true;
+        var score = 0;
+        [0, 1, 2].forEach(function (q) {
+          var correct = picks[q] === ANSWERS[q];
+          if (correct) score++;
+          document.querySelectorAll('.opt[data-q="' + q + '"]').forEach(function (b) {
+            b.disabled = true;
+            if (b.dataset.v === ANSWERS[q]) b.classList.add('correct');
+            else if (b.dataset.v === picks[q]) b.classList.add('wrong');
+          });
+        });
+        scoreEl.textContent = '得分：' + score + ' / 3' + (score === 3 ? '  🎉 全对！' : '  请对照正确答案复习');
+        scoreEl.style.color = score === 3 ? 'var(--success)' : 'var(--primary)';
+        save();
+      }
+
+      document.getElementById('submitQuiz').addEventListener('click', grade);
+
+      document.getElementById('retryQuiz').addEventListener('click', function () {
+        submitted = false;
+        picks = { 0: null, 1: null, 2: null };
+        document.querySelectorAll('.opt').forEach(function (b) {
+          b.disabled = false;
+          b.classList.remove('correct', 'wrong');
+          b.style.borderColor = '';
+          b.style.background = '';
+        });
+        scoreEl.textContent = '请选择答案后提交';
+        scoreEl.style.color = '';
+        save();
+      });
+
+      function restore(state) {
+        if (!state) return;
+        picks = state.picks || { 0: null, 1: null, 2: null };
+        submitted = !!state.submitted;
+        document.querySelectorAll('.opt').forEach(function (b) {
+          b.disabled = false;
+          b.classList.remove('correct', 'wrong');
+          b.style.borderColor = '';
+          b.style.background = '';
+        });
+        Object.keys(picks).forEach(function (q) {
+          if (picks[q]) {
+            var btn = document.querySelector('.opt[data-q="' + q + '"][data-v="' + picks[q] + '"]');
+            if (btn && !submitted) select(Number(q), picks[q], btn);
+          }
+        });
+        if (submitted) grade();
+      }
+
+      window.addEventListener('message', function (e) {
+        if (e.data && e.data.type === 'restoreState') restore(e.data.state);
+      });
+    })();
+  </script>
+</template>
+
+<script src="./courseware-shell.js"></script>
+</body>
+</html>

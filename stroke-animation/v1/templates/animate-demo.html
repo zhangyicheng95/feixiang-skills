@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<title>飞象老师 · 笔顺动画 + 跟练游戏 双模式 Demo</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'PingFang SC', sans-serif;
+    background: linear-gradient(135deg,#FFF9F0 0%,#FFF3E4 100%);
+    min-height: 100vh;
+    color: #2D3436;
+    padding: 16px;
+  }
+  header { text-align: center; margin: 12px 0 24px; }
+  header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  header p { font-size: 13px; color: #7F8C8D; }
+  .lib-info { text-align: center; margin-bottom: 12px; font-size: 12px; color: #B9770E; }
+  .lib-info span { background: #FFE9B5; padding: 4px 10px; border-radius: 10px; font-weight: 600; }
+
+  .mode-switch {
+    display: flex; justify-content: center; gap: 8px; margin: 0 auto 16px; max-width: 400px;
+  }
+  .mode-switch button {
+    flex: 1; padding: 10px 16px; border: 2px solid #EADBC8; border-radius: 10px;
+    background: #fff; font-family: inherit; font-size: 14px; cursor: pointer;
+    transition: all 0.2s; font-weight: 600;
+  }
+  .mode-switch button.active {
+    background: linear-gradient(135deg,#FF9F43,#FF7F50); color: #fff; border-color: #FF7F50;
+    box-shadow: 0 4px 12px rgba(255,127,80,.3);
+  }
+
+  .picker {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 12px;
+  }
+  .picker button {
+    width: 48px; height: 48px;
+    font-size: 22px; font-weight: 700;
+    background: #fff; border: 2px solid #EADBC8; border-radius: 10px;
+    cursor: pointer; font-family: inherit; transition: all 0.2s;
+  }
+  .picker button.active {
+    background: linear-gradient(135deg,#FFE0B2,#FFD1A1); border-color: #FF9F43;
+  }
+
+  .search { display: flex; justify-content: center; gap: 8px; margin: 0 auto 16px; max-width: 360px; }
+  .search input {
+    flex: 1; padding: 10px 14px; font-size: 16px; font-family: inherit;
+    border: 2px solid #EADBC8; border-radius: 10px; outline: none;
+  }
+  .search input:focus { border-color: #FF9F43; }
+  .search button {
+    padding: 0 16px;
+    background: linear-gradient(135deg,#FF9F43,#FF7F50);
+    color: #fff; font-weight: 600; font-size: 14px;
+    border: none; border-radius: 10px; cursor: pointer; font-family: inherit;
+  }
+  .search-hint {
+    text-align: center; font-size: 12px; min-height: 16px;
+    margin: -8px auto 12px; max-width: 360px;
+  }
+
+  .stage { display: flex; justify-content: center; margin-bottom: 24px; }
+  #stage-host { width: 100%; max-width: 360px; }
+
+  .footer { text-align: center; color: #BDC3C7; font-size: 11px; margin-top: 24px; line-height: 1.6; }
+</style>
+
+<script>
+  window.STROKE_ANIM_PATH_URL = './stroke-path.json?v=v21';
+  window.STROKE_DATA_URL      = './stroke-data.json?v=v21';
+</script>
+<script src="./animation-loader.js?v=v21-tb-patch"></script>
+</head>
+<body>
+
+<header>
+  <h1>飞象老师 · 双模式 Demo</h1>
+  <p>StrokeTrace v1.7.5 · <code>animate()</code> 笔顺动画 + <code>mount()</code> 严格跟练</p>
+  <p style="margin-top:6px;font-size:12px;color:#9C7B5A;">✨ v1.7.5：普通描红默认动画，手写评分才进跟练游戏｜ ✨ v1.7.2 教材字表补丁：补齐"十/千/工/八/六/七/父/牛/羊"等小学低段核心字（2,842 → 2,865）</p>
+</header>
+
+<div class="lib-info">字库就绪：<span id="libBadge">加载中…</span></div>
+
+<div class="mode-switch">
+  <button id="btnAnimate" class="active">📺 笔顺动画</button>
+  <button id="btnPractice">✍️ 跟练游戏</button>
+</div>
+
+<div class="picker" id="picker"></div>
+
+<div class="search">
+  <input id="charInput" type="text" maxlength="2" placeholder="输入任意汉字…" autocomplete="off" />
+  <button id="charBtn" type="button">切换</button>
+</div>
+<div class="search-hint" id="searchHint"></div>
+
+<div class="stage">
+  <div id="stage-host"></div>
+</div>
+
+<div class="footer">
+  数据 ARPHIC 公版 · 笔顺名 stroke-order v57 (data v56) · 一行 mount/animate 即生成<br>
+  v1.6 跟练规则：每一笔达到 2 星才能进入下一笔；写完整字标准衬底淡出，保留你的字<br>
+  v1.7.1 圈点系统：先看清自己的字 → 800 ms 后老师红圈贴着笔形圈出 + ★ 五角星盖章；写错重写过的笔，点评区有"改正成功"鼓励
+</div>
+
+<script>
+  var DEFAULT = ['一', '十', '千', '工', '父', '六', '七', '八', '大', '口', '手', '学'];
+  var curMode = 'animate';        // 'animate' | 'practice'
+  var curChar = '学';
+  var handle = null;
+
+  function renderPicker() {
+    var wrap = document.getElementById('picker');
+    wrap.innerHTML = '';
+    DEFAULT.forEach(function (c) {
+      var btn = document.createElement('button');
+      btn.textContent = c;
+      btn.className = (c === curChar) ? 'active' : '';
+      btn.addEventListener('click', function () { switchChar(c); });
+      wrap.appendChild(btn);
+    });
+  }
+
+  function rebuild() {
+    if (handle && handle.destroy) handle.destroy();
+    handle = null;
+    var host = document.getElementById('stage-host');
+    host.innerHTML = '<div id="stage"></div>';
+    if (curMode === 'animate') {
+      handle = window.StrokeTrace.animate({
+        target: '#stage',
+        char: curChar,
+        autoStart: true,
+        loop: false,
+        speed: 1.0,
+        showHand: true,
+        showStrokeTip: true,
+        showControls: true
+      });
+    } else {
+      handle = window.StrokeTrace.mount({
+        target: '#stage',
+        char: curChar,
+        scoring: {
+          showStars: true,
+          showSegmentErrors: true,
+          passStars: 2,            // ★ v1.6：≥2 星才算"写对"，否则保留 1s 红笔后强制重写
+          failHoldMs: 1000
+        },
+        hints: { showOutline: true, pulseNextStroke: true, showStrokeName: true, showStrokeTip: true },
+        watchMode: { autoPlay: false, showHand: true },
+        // ★ v1.6 写完整字进入"作品感" + ★ v1.7 / v1.7.1 圈点系统
+        artwork: {
+          enabled: true,
+          praiseCircles: true,        // 3 星笔画在作品态用红色手绘圈圈出来
+          maxPraiseCircles: 2,        // ★ v1.7.1：默认 2，克制视觉
+          praiseStartDelayMs: 800,    // ★ v1.7.1：衬底淡出后再画圈，先让学生看清自己写的字
+          praiseStaggerMs: 220,       // ★ v1.7.1：多圈错落出现间隔
+          praiseStar: true,           // ★ v1.7.1：圈一端打 ★ 红五角星表扬章
+          retryPraise: true           // 重写过的笔画，点评区给"改正成功"鼓励文案
+        }
+      });
+    }
+  }
+
+  function switchChar(ch) {
+    curChar = ch;
+    renderPicker();
+    rebuild();
+    showHint('当前练习「' + ch + '」', false);
+  }
+
+  function switchMode(mode) {
+    if (mode === curMode) return;
+    curMode = mode;
+    document.getElementById('btnAnimate').classList.toggle('active', mode === 'animate');
+    document.getElementById('btnPractice').classList.toggle('active', mode === 'practice');
+    rebuild();
+  }
+
+  function pickFirstHan(s) {
+    if (!s) return '';
+    s = s.replace(/\s+/g, '');
+    if (!s) return '';
+    var m = s.match(/[\u4E00-\u9FFF\u3400-\u4DBF]/);
+    return m ? m[0] : '';
+  }
+
+  function showHint(html, isErr) {
+    var el = document.getElementById('searchHint');
+    el.innerHTML = html || '';
+    el.style.color = isErr ? '#C0392B' : '#16A085';
+  }
+
+  function trySearch() {
+    var raw = document.getElementById('charInput').value;
+    var c = pickFirstHan(raw);
+    if (!c) { showHint('请输入一个汉字', true); return; }
+    if (!window.StrokeTrace.hasChar(c)) {
+      showHint('「' + c + '」不在字库（仅支持 2,865 教材字）', true);
+      return;
+    }
+    document.getElementById('charInput').value = c;
+    switchChar(c);
+  }
+
+  window.addEventListener('stroke-anim-ready', function () {
+    document.getElementById('libBadge').textContent = window.StrokeTrace.listChars().length + ' 字可练';
+    renderPicker();
+    rebuild();
+    document.getElementById('btnAnimate').addEventListener('click', function () { switchMode('animate'); });
+    document.getElementById('btnPractice').addEventListener('click', function () { switchMode('practice'); });
+    document.getElementById('charBtn').addEventListener('click', trySearch);
+    document.getElementById('charInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); trySearch(); }
+    });
+  });
+</script>
+
+</body>
+</html>

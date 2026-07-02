@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光合作用入门</title>
+  <!-- spec: requirements=2页,小学科学,含选择题; require=翻页,答题反馈; core-loop=选题→判对错→反馈 -->
+</head>
+<body>
+
+<div id="cw-loading">加载课件中...</div>
+
+<template class="page-shared">
+  <style>
+    :root {
+      --primary: #059669;
+      --bg: #ffffff;
+      --text: #1e293b;
+      --success: #22c55e;
+      --error: #ef4444;
+    }
+  </style>
+</template>
+
+<template class="page-data" data-id="1" data-name="导入">
+  <style>
+    .slide {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: linear-gradient(160deg, #ecfdf5, #fff);
+      font-family: "PingFang SC", system-ui, sans-serif;
+      padding: 48px;
+      text-align: center;
+    }
+    h1 { color: var(--primary); font-size: 40px; margin: 0 0 16px; }
+    p { font-size: 20px; color: var(--text); margin: 0; line-height: 1.6; }
+  </style>
+  <div class="slide">
+    <h1>🌱 光合作用</h1>
+    <p>植物怎样把阳光变成自己的「食物」？<br>按 → 或点击「下一页」开始。</p>
+  </div>
+</template>
+
+<template class="page-data" data-id="2" data-name="小测验">
+  <style>
+    .slide { padding: 36px 48px; font-family: "PingFang SC", system-ui, sans-serif; }
+    h2 { color: var(--primary); font-size: 28px; margin: 0 0 20px; }
+    .option {
+      display: block; width: 100%; margin: 10px 0; padding: 14px 16px;
+      border: 2px solid #e2e8f0; border-radius: 10px; background: #fff;
+      cursor: pointer; text-align: left; font-size: 18px; color: var(--text);
+    }
+    .option:disabled { cursor: default; }
+    .option.correct { border-color: var(--success); background: #dcfce7; }
+    .option.wrong { border-color: var(--error); background: #fee2e2; }
+    #feedback { margin-top: 16px; font-size: 18px; min-height: 28px; font-weight: 600; }
+  </style>
+  <div class="slide">
+    <h2>植物进行光合作用需要什么？</h2>
+    <button type="button" class="option" data-interactive data-correct="false">只需要水</button>
+    <button type="button" class="option" data-interactive data-correct="true">阳光、二氧化碳和水</button>
+    <button type="button" class="option" data-interactive data-correct="false">只需要土壤</button>
+    <p id="feedback"></p>
+  </div>
+  <script>
+    (function () {
+      var answered = false;
+      var feedback = document.getElementById('feedback');
+      var buttons = document.querySelectorAll('.option');
+
+      function applyState(state) {
+        if (!state || !state.answered) return;
+        answered = true;
+        buttons.forEach(function (btn) {
+          btn.disabled = true;
+          if (btn.dataset.correct === 'true') btn.classList.add('correct');
+          else if (btn.textContent === state.choice) btn.classList.add('wrong');
+        });
+        feedback.textContent = state.correct ? '✓ 回答正确！' : '再想想：光合作用需要阳光、二氧化碳和水。';
+        feedback.style.color = state.correct ? 'var(--success)' : 'var(--error)';
+      }
+
+      function save(choice, correct) {
+        window.parent.postMessage({
+          type: 'saveState',
+          state: { answered: true, correct: correct, choice: choice }
+        }, '*');
+      }
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (answered) return;
+          answered = true;
+          var ok = btn.dataset.correct === 'true';
+          buttons.forEach(function (b) { b.disabled = true; });
+          btn.classList.add(ok ? 'correct' : 'wrong');
+          if (!ok) {
+            document.querySelector('[data-correct="true"]').classList.add('correct');
+          }
+          feedback.textContent = ok ? '✓ 回答正确！' : '再想想：光合作用需要阳光、二氧化碳和水。';
+          feedback.style.color = ok ? 'var(--success)' : 'var(--error)';
+          save(btn.textContent.trim(), ok);
+        });
+      });
+
+      window.addEventListener('message', function (e) {
+        if (e.data && e.data.type === 'restoreState') applyState(e.data.state);
+      });
+    })();
+  </script>
+</template>
+
+<script src="./courseware-shell.js"></script>
+</body>
+</html>

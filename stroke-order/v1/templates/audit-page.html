@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>stroke-order v33 扩展字核验</title>
+<script src="https://musk-online.fbcontent.cn/pub-musk-ai-studio/skills/stroke-order/v1/templates/stroke-loader.js"></script>
+<style>
+body { font-family: 'PingFang SC', sans-serif; max-width: 1100px; margin: 20px auto; padding: 0 16px; }
+.tier-title { background: #f6c23e; padding: 8px 12px; border-radius: 6px; margin-top: 24px; font-weight: bold; }
+.tier-A { background: #e74a3b; color: white; }
+.tier-B { background: #f6c23e; }
+.tier-C { background: #1cc88a; color: white; }
+.tier-D { background: #4e73df; color: white; }
+.card { border: 1px solid #ddd; padding: 12px; margin: 6px 0; border-radius: 6px; display: grid; grid-template-columns: 80px 1fr 160px 160px; gap: 12px; align-items: center; }
+.ch { font-size: 48px; font-weight: bold; color: #2c3e50; text-align: center; }
+.info { line-height: 1.6; font-size: 14px; }
+.strokes { background: #fffbeb; padding: 6px 10px; border-radius: 4px; }
+.actions a { display: block; color: #4e73df; text-decoration: none; margin: 2px 0; font-size: 13px; }
+.actions a:hover { text-decoration: underline; }
+.pass { background: #1cc88a; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; margin: 2px; }
+.fail { background: #e74a3b; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; margin: 2px; }
+.status { font-weight: bold; }
+.stats { position: fixed; top: 10px; right: 10px; background: white; border: 1px solid #ccc; padding: 8px 12px; border-radius: 6px; font-size: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+</style>
+</head>
+<body>
+<h1>stroke-order v33 新增 4976 字 · 分层抽样核验</h1>
+<p>说明：A 全检、B 10%、C 2%、D 启发式 10%。对每个字，点击"查新华字典"对照笔顺，然后点 ✓ 或 ✗。</p>
+<div class="stats" id="stats">加载中...</div>
+<div id="app">加载中...</div>
+<script>
+const SAMPLE = {"A": ["予", "亟", "傺", "儳", "冗", "剜", "剟", "卺", "叆", "叕", "哆", "啜", "啵", "喀", "嗫", "嗲", "嗳", "嚏", "嚓", "垿", "塅", "塾", "墅", "墼", "壑", "夐", "夙", "夤", "夥", "奓", "嫒", "孕", "孖", "孥", "孰", "孱", "孺", "嶷", "巉", "廓", "悫", "惋", "惙", "慑", "懿", "戤", "扅", "掇", "搋", "搡", "暧", "椀", "椴", "楙", "楹", "榖", "槃", "檫", "殁", "殇", "殍", "殛", "殡", "殪", "涴", "淼", "溵", "滠", "滪", "漈", "漋", "漷", "潏", "潺", "澪", "瀔", "瀣", "烝", "煅", "燏", "猇", "猱", "琬", "瑖", "瑷", "璨", "瓴", "甍", "甗", "畹", "疐", "疫", "瘢", "瘵", "癃", "皲", "皴", "眵", "磉", "磐", "磜", "磬", "祋", "祓", "祾", "禒", "禘", "穄", "箢", "篪", "簃", "粲", "糅", "縠", "繄", "缎", "罄", "羖", "翳", "耰", "聂", "舜", "芟", "茕", "荥", "菀", "蓣", "蔻", "薨", "薿", "虒", "虓", "虢", "虤", "衩", "衿", "袯", "袼", "裈", "裰", "褫", "襜", "襦", "觞", "觳", "诐", "谲", "蹂", "蹑", "辍", "遹", "镊", "镲", "镵", "鞣", "颞", "颡", "饕", "饧", "饩", "饹", "馉", "馊", "馒", "馕", "馨", "骣", "骰", "骼", "髂", "髋", "髌", "鲅", "鲎", "鲏", "鲣", "鲦", "鲩", "鲬", "鲮", "鲰", "鲺", "鲿", "鳈", "鳉", "鳑", "鳕", "鳗", "鳜", "鳠", "鳤", "鹬", "黟"], "B": ["丸", "亢", "亵", "亸", "仡", "傩", "冥", "刍", "劂", "咤", "咨", "嘧", "噻", "囔", "妭", "婀", "嫭", "孽", "屙", "峄", "崞", "嵘", "巩", "巯", "幂", "幪", "悛", "愃", "憺", "撂", "攫", "昤", "歅", "沱", "泽", "洌", "渟", "湲", "烽", "狻", "玖", "瑕", "甄", "疍", "痪", "癜", "盦", "矞", "矾", "礅", "礌", "礞", "禔", "筇", "糈", "绎", "缦", "聍", "胥", "腙", "腚", "膦", "莞", "萏", "萱", "蓂", "蔌", "蝣", "觃", "谖", "豉", "跂", "蹿", "郓", "酦", "钦", "钹", "铮", "铴", "镓", "闶", "阙", "陀", "雾", "饫", "饻", "馥", "驭", "骘", "鬃", "鲐", "鲖", "鳇", "鳓", "鳙", "鳛", "鹑", "黔", "黢", "黩"], "C": ["佘", "厖", "叩", "哐", "唳", "嗷", "埯", "夼", "婍", "嫘", "嬉", "寅", "庥", "徂", "惮", "愫", "拷", "暵", "暿", "椠", "溽", "潵", "珂", "竑", "籀", "纲", "绨", "缛", "聱", "肼", "胰", "腧", "臾", "茹", "蕰", "蛞", "蜣", "蝰", "讣", "谶", "跶", "踅", "辄", "迨", "鄃", "锶", "阒", "顼", "黠", "齑"], "D": ["抟", "敩", "桲", "氖", "氘", "氚", "氛", "氡", "氤", "氩", "氪", "氮", "氲", "浡", "窀", "窎", "窦", "窭", "窳", "窸", "绶", "郤", "鄀", "酅", "锓", "飑", "饽", "馞", "鹁", "鼒"]};
+const TIER_LABEL = {
+  A: '🔴 A 层 · 高风险（Hard 未启发式）',
+  B: '🟡 B 层 · 中风险（Medium 未启发式）',
+  C: '🟢 C 层 · 低风险（Easy 0 歧义）',
+  D: '🔵 D 层 · 启发式覆盖核验',
+};
+
+window.addEventListener('stroke-data-ready', () => {
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+  let total = 0, pass = 0, fail = 0;
+  const results = JSON.parse(localStorage.getItem('audit_v33') || '{}');
+
+  const updateStats = () => {
+    total = Object.keys(results).length;
+    pass = Object.values(results).filter(v => v === 'pass').length;
+    fail = Object.values(results).filter(v => v === 'fail').length;
+    const all = Object.values(SAMPLE).flat().length;
+    document.getElementById('stats').innerHTML =
+      `核验进度: ${total}/${all}<br>✓ 通过: ${pass}<br>✗ 错误: ${fail}<br><button onclick="exportResults()">导出结果</button>`;
+  };
+
+  for (const [tier, chars] of Object.entries(SAMPLE)) {
+    const title = document.createElement('div');
+    title.className = `tier-title tier-${tier}`;
+    title.textContent = `${TIER_LABEL[tier]} · ${chars.length} 字`;
+    app.appendChild(title);
+
+    for (const ch of chars) {
+      const d = window.getStrokeData(ch);
+      if (d.source !== 'db') continue;
+
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="ch">${ch}</div>
+        <div class="info">
+          <div class="strokes"><b>v33 笔顺:</b> ${d.strokes.map((s,i)=>`${i+1}.${s}`).join(' / ')}</div>
+          <div><b>画数:</b> ${d.count}</div>
+        </div>
+        <div class="actions">
+          <a href="https://zidian.911cha.com/zi${encodeURIComponent(ch)}.html" target="_blank">查在线字典</a>
+          <a href="https://bihua.bmcx.com/${encodeURIComponent(ch)}__bihuachaxun/" target="_blank">查笔画</a>
+          <a href="https://www.hanyuguoxue.com/zi/?q=${encodeURIComponent(ch)}" target="_blank">汉语国学</a>
+        </div>
+        <div>
+          <button class="pass" onclick="mark('${ch}','pass',this)">✓ 正确</button>
+          <button class="fail" onclick="mark('${ch}','fail',this)">✗ 错</button>
+          <div class="status" id="st_${ch}"></div>
+        </div>
+      `;
+      app.appendChild(card);
+
+      if (results[ch]) {
+        document.getElementById(`st_${ch}`).textContent =
+          results[ch] === 'pass' ? '✓ 已标记' : '✗ 已标记';
+      }
+    }
+  }
+  updateStats();
+
+  window.mark = (ch, v, btn) => {
+    results[ch] = v;
+    localStorage.setItem('audit_v33', JSON.stringify(results));
+    document.getElementById(`st_${ch}`).textContent = v === 'pass' ? '✓ 已标记' : '✗ 已标记';
+    updateStats();
+  };
+
+  window.exportResults = () => {
+    const lines = ['字,结论,正确答案(如错)'];
+    for (const [ch, v] of Object.entries(results)) {
+      lines.push(`${ch},${v === 'pass' ? '通过' : '错'},`);
+    }
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'audit_v33_results.csv';
+    a.click();
+  };
+});
+</script>
+</body>
+</html>
