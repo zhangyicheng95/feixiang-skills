@@ -265,6 +265,8 @@ hash = (keyword 首字符 codepoint + keyword 末字符 codepoint + 页数) mod 
 
 **生成物**：`.page-container` + `.page-title` + `.card` + `.tip`；封面用全屏 `.cover` 特例。
 
+**画布底色**：子页 **960×540 与壳舞台同色 `#eef1f5`**（无白底、无外框阴影）；白卡片仅 `.card` 等组件自带。
+
 **滚动契约**：壳固定 `body` 为 960×540 且 `overflow:hidden`；`.page-container` 必须 `height:100%; max-height:100%; overflow-y:auto`，长内容在容器内滚动，禁止用 `min-height:100%` 撑高 body。
 
 ---

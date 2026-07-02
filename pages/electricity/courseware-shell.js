@@ -7,6 +7,7 @@
 
   var CANVAS_W = 960;
   var CANVAS_H = 540;
+  var STAGE_BG = '#eef1f5';
   var THUMB_SCALE = 120 / CANVAS_W;
 
   function parseShared() {
@@ -67,8 +68,11 @@
       'e.preventDefault();window.parent.postMessage({type:"cwNav",dir:"prev"},"*");' +
       '}});';
 
-    var scrollFix =
-      '<style id="cw-scroll">' +
+    var pageFix =
+      '<style id="cw-page">' +
+      'html,body{background:' +
+      STAGE_BG +
+      '}' +
       '.page-container{height:100%;max-height:100%;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}' +
       '</style>';
 
@@ -78,9 +82,11 @@
       CANVAS_W +
       'px;height:' +
       CANVAS_H +
-      'px;overflow:hidden}</style>' +
+      'px;overflow:hidden;background:' +
+      STAGE_BG +
+      '}</style>' +
       sharedHead +
-      scrollFix +
+      pageFix +
       '<script>' +
       meta +
       frameFill +
@@ -251,9 +257,13 @@
       'border-radius:8px;cursor:pointer;line-height:1}' +
       '.cw-action:hover{background:#f8fafc;border-color:#cbd5e1}' +
       '.cw-action--icon{width:32px;height:32px;padding:0;font-size:18px;color:#94a3b8}' +
-      '.cw-body{flex:1;display:flex;min-height:0;background:#eef1f5;outline:none}' +
+      '.cw-body{flex:1;display:flex;min-height:0;background:' +
+      STAGE_BG +
+      ';outline:none}' +
       '.cw-body:fullscreen,.cw-body:-webkit-full-screen{width:100%;height:100%;display:flex;min-height:0;' +
-      'background:#eef1f5}' +
+      'background:' +
+      STAGE_BG +
+      '}' +
       '.cw-body:fullscreen .cw-thumbs,.cw-body:-webkit-full-screen .cw-thumbs{height:100%}' +
       '.cw-thumbs{width:136px;flex-shrink:0;padding:12px 10px;overflow-y:auto;background:#fff;' +
       'border-right:1px solid #e5e7eb}' +
@@ -280,17 +290,18 @@
       'border-radius:999px;background:#64748b;color:#fff;font-size:11px;font-weight:700;' +
       'display:flex;align-items:center;justify-content:center;z-index:2;line-height:1}' +
       '.cw-thumb--on .cw-thumb-no{background:#10b981}' +
-      '.cw-body:fullscreen .cw-stage,.cw-body:-webkit-full-screen .cw-stage{background:#0f172a;padding:0}' +
-      '.cw-body:fullscreen .cw-stage-frame,.cw-body:-webkit-full-screen .cw-stage-frame{' +
-      'box-shadow:none;border-radius:0}' +
+      '.cw-body:fullscreen .cw-stage,.cw-body:-webkit-full-screen .cw-stage{background:' +
+      STAGE_BG +
+      ';padding:0}' +
       '.cw-stage{flex:1;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;' +
-      'padding:24px;background:#eef1f5;outline:none}' +
+      'padding:24px;background:' +
+      STAGE_BG +
+      ';outline:none}' +
       '.cw-stage-frame{width:' +
       CANVAS_W +
       'px;height:' +
       CANVAS_H +
-      'px;border-radius:12px;overflow:hidden;background:#fff;' +
-      'box-shadow:0 10px 40px rgba(15,23,42,.12),0 0 0 1px rgba(15,23,42,.04);' +
+      'px;overflow:hidden;background:transparent;border:none;border-radius:0;box-shadow:none;' +
       'transform-origin:center center;flex-shrink:0}' +
       '.cw-main-iframe{width:100%;height:100%;border:none;display:block}' +
       '.cw-footer{height:40px;flex-shrink:0;display:flex;align-items:center;padding:0 20px;' +
