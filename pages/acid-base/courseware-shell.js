@@ -153,7 +153,7 @@
       var btn = e.target.closest('[data-action]');
       if (!btn) return;
       var action = btn.getAttribute('data-action');
-      if (action === 'fullscreen') self.frameWrap.requestFullscreen();
+      if (action === 'fullscreen') self._toggleFullscreen();
       else if (action === 'download') self._download();
       else if (action === 'close') window.history.length > 1 ? window.history.back() : null;
     });
@@ -167,6 +167,13 @@
     });
 
     window.addEventListener('resize', function () {
+      self._fitMain();
+    });
+
+    document.addEventListener('fullscreenchange', function () {
+      self._fitMain();
+    });
+    document.addEventListener('webkitfullscreenchange', function () {
       self._fitMain();
     });
 
@@ -229,6 +236,9 @@
       'border-radius:999px;background:#64748b;color:#fff;font-size:11px;font-weight:700;' +
       'display:flex;align-items:center;justify-content:center;z-index:2;line-height:1}' +
       '.cw-thumb--on .cw-thumb-no{background:#10b981}' +
+      '.cw-stage:fullscreen,.cw-stage:-webkit-full-screen{background:#0f172a;padding:0}' +
+      '.cw-stage:fullscreen .cw-stage-frame,.cw-stage:-webkit-full-screen .cw-stage-frame{' +
+      'box-shadow:none;border-radius:0}' +
       '.cw-stage{flex:1;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;' +
       'padding:24px;background:#eef1f5}' +
       '.cw-stage-frame{width:' +
@@ -289,13 +299,31 @@
     if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   };
 
+  CoursewareShell.prototype._isFullscreen = function () {
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    return fs === this.stageEl;
+  };
+
+  CoursewareShell.prototype._toggleFullscreen = function () {
+    if (this._isFullscreen()) {
+      if (document.exitFullscreen) document.exitFullscreen();
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      return;
+    }
+    var el = this.stageEl;
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  };
+
   CoursewareShell.prototype._fitMain = function () {
     if (!this.stageEl || !this.frameWrap) return;
-    var pad = 48;
+    var fs = this._isFullscreen();
+    var pad = fs ? 0 : 48;
     var sw = this.stageEl.clientWidth - pad;
     var sh = this.stageEl.clientHeight - pad;
-    var scale = Math.min(sw / CANVAS_W, sh / CANVAS_H, 1);
-    this.frameWrap.style.transform = scale < 1 ? 'scale(' + scale + ')' : '';
+    var scale = Math.min(sw / CANVAS_W, sh / CANVAS_H);
+    if (!fs) scale = Math.min(scale, 1);
+    this.frameWrap.style.transform = Math.abs(scale - 1) < 0.001 ? '' : 'scale(' + scale + ')';
   };
 
   CoursewareShell.prototype._download = function () {

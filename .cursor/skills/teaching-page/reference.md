@@ -21,11 +21,10 @@
 
 ## 视口与滚动（multi）
 
-- 壳注入 iframe：`width:960px; height:540px`（固定画布）；预览壳居中缩放显示
-- 封面：`slide slide--fit`（100% 铺满视口，不滚动）
-- 长页：`slide slide--scroll`（视口内纵向滚动）
-- **禁止** `html/body { overflow: hidden }` 写在 page-shared（会覆盖壳滚动）
-- **禁止** 在 Host 文件的 `page-shared` 里写 `<script src="…"><\/script>`；会截断后续 `<template page-data>`，壳只能解析到最后一页
+- **预览壳**（`assets/courseware-shell.js`）：飞象风 UI；主区居中 **960×540** iframe，不足时缩小、全屏时**等比放大**（不拉伸变形）
+- **子页注入**：`html,body { width:960px; height:540px; overflow:hidden }`
+- **标准页**：`.page-container` 内 `overflow-y:auto` 滚动；封面/转场为全屏特例（`.cover` 等）
+- **禁止**子页用 `100vh`；禁止在 Host `page-shared` 写 `<script src="…"><\/script>`
 
 ## 壳层 srcdoc 注入（排障）
 

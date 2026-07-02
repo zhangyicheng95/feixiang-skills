@@ -99,7 +99,7 @@ description: >-
 封面/转场/结课为全屏特例（不用 page-container）。
 ```
 
-详见 [feixiang-style.md §4.5](feixiang-style.md)。旧版 `.fx-page` / `.fx-canvas` 双层框仍可用于深色实验风，**默认新生成走 page-container**。
+详见 [feixiang-style.md §4.6](feixiang-style.md)。旧版 `.fx-page` / `.fx-canvas` 仅作实验/demo，**默认新生成走 page-container**。
 
 ### 画布与溢出（必遵守）
 
@@ -139,9 +139,11 @@ window.addEventListener('message', (e) => {
 □ spec + fx-style 两行注释存在且覆盖用户硬要求
 □ 互动类：core-loop 每步有代码实现
 □ 每个按钮/可点元素有事件且有效
-□ multi：courseware-shell.js 与 .html 同目录；page-data 连续 data-id 从 1 起
+□ multi：courseware-shell.js 与 .html 同目录（**必须从 assets/ 复制最新版**，勿手改壳）
+□ multi：page-data 连续 data-id 从 1 起
 □ multi：page-shared 中的库未误放在 Host head
-□ multi：page-shared 含 `.slide` / `slide--fit` / `slide--scroll` 规则；长内容页使用 `slide--scroll`
+□ multi：标准页用 `.page-container`；长内容在容器内 `overflow-y:auto` 滚动（非外层裁切）
+□ multi：子页内容按 **960×540** 排版，禁止 iframe 内用 100vh
 □ 无字面量 </template> 在 template 内 script 中（用 <\/template>）
 □ 已告诉用户打开方式（浏览器打开文件路径）
 ```
@@ -149,13 +151,12 @@ window.addEventListener('message', (e) => {
 ## 飞象风自检（全部 ✓ 才算"像飞象"）
 
 ```
-□ 全程无 box-shadow / text-shadow（层次靠 border + 色块）
-□ 页/卡背景是纯色，未用渐变作主背景（封面允许极轻同色渐变）
-□ 卡片/按钮/演示区都有 solid border；圆角统一为 --radius
-□ 配色来自选定色板（fx-style 注释一致），非通用蓝 #2563eb
-□ 标题/要点/按钮无 emoji；图标示意图用 SVG/几何块
-□ 演示/互动区用 .fx-demo 网格底纹，核心演示激活多色分块
-□ 文字高对比（近黑/近白），非大片浅灰细字
+□ 使用 page-container 产物模式（§4.6）：.page-title + .card + .tip / .btn-primary
+□ 预览壳由 courseware-shell.js 提供（缩略图 iframe + 居中 960×540 主画布 + 全屏等比缩放）
+□ 封面可用轻渐变；标准页卡片允许飞象产物轻阴影（.card box-shadow）
+□ 标题/要点/按钮无 emoji；示意图用 SVG 或几何块
+□ 配色来自选定色板（fx-style 注释一致）
+□ 文字 16–18px 行高 1.6+，高对比可读
 ```
 
 ## 回复用户格式

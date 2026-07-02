@@ -29,7 +29,7 @@ alwaysApply: true
 2. **必读**：`SKILL.md`；细节查 `reference.md`；骨架查 `templates/`
 3. **产出**：必须 `Write` 到磁盘；默认 `pages/<英文名>/`
 4. **multi 模式**：`index.html` + 同目录 `courseware-shell.js`（从 `assets/courseware-shell.js` 复制）
-5. **契约**：`page-shared` / `page-data` / `slide--fit` | `slide--scroll` / `spec` 注释
+5. **契约**：`page-shared` / `page-data` / `.page-container`（标准页）/ `spec` 注释；壳从 `assets/courseware-shell.js` 复制
 6. **禁止**：飞象 CDN 壳、只贴代码不建文件、长内容 + `overflow:hidden` 裁切
 
 ## 修改已有课件
