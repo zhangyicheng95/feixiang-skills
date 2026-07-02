@@ -21,8 +21,8 @@
 
 ## 视口与滚动（multi）
 
-- 壳注入：`width:960px; max-height:540px; overflow-y:auto`
-- 封面：`slide slide--fit`（540px 铺满，不滚动）
+- 壳注入 iframe：`width:960px; height:540px`（固定画布）；预览壳居中缩放显示
+- 封面：`slide slide--fit`（100% 铺满视口，不滚动）
 - 长页：`slide slide--scroll`（视口内纵向滚动）
 - **禁止** `html/body { overflow: hidden }` 写在 page-shared（会覆盖壳滚动）
 - **禁止** 在 Host 文件的 `page-shared` 里写 `<script src="…"><\/script>`；会截断后续 `<template page-data>`，壳只能解析到最后一页

@@ -183,67 +183,87 @@ hash = (keyword 首字符 codepoint + keyword 末字符 codepoint + 页数) mod 
 
 ---
 
-## 4.5 版式框（.fx-page）——飞象「四周有内容」的固定画布
+## 4.5 版式框 + 内嵌画布（飞象「外框 100%，中间固定画布」）
 
-飞象每页不是一块光秃内容，而是**固定 960×540 画布 + 四周版式框**：顶部课题条 + 页码，底部品牌 + 进度点，四角几何装饰，中间才是主体。**multi 课件的每一页都应套这个框**。
+飞象每页结构是两层，**尺寸职责分离**：
+
+1. **外框 `.fx-page`**：宽 **100%**、高 **100%**，铺满宿主 iframe / 课堂窗口；顶栏、底栏、四角装饰、`.fx-toolbar` 贴在外框上（四周增量内容）。
+2. **内嵌画布 `.fx-canvas`**：固定 **960×540**（`--cw-w` / `--cw-h`），居中放在 `.fx-canvas-wrap` 内；**所有教学内容只写进画布**，按固定坐标排版，不随外框拉伸。
+
+```
+┌─ .fx-page（100% × 100%，外框底色）────────────────────────┐
+│ [学科标签]                              [2 / 4]  ←顶栏   │
+│         ┌─ .fx-canvas（固定 960×540，描边+网格）─┐       │
+│         │  页标题 / 卡片 / 演示 / 互动 / 测验    │       │
+│         └──────────────────────────────────────┘       │
+│  [可选 .fx-toolbar，画布外、页脚前]                       │
+│  飞象课堂 · 学科                  ● ● ○ ○  ←底栏         │
+└────────────────────────────────────────────────────────┘
+  └ 四角 L 形装饰（贴外框四角）
+```
 
 **结构（每页 body 根节点）：**
 ```html
 <div class="slide slide--fit fx-page">
-  <!-- 顶：课题（自动填页名）+ 页码（自动 3 / 5） -->
-  <header class="fx-topbar">
-    <span class="fx-chip" data-fx-pagename></span>
-    <span class="fx-pageno" data-fx-pageno></span>
-  </header>
+  <header class="fx-topbar">…</header>
 
-  <!-- 中：主体（fit 用 fx-body；长内容用 fx-page--scroll + fx-body 滚动） -->
-  <div class="fx-body">
-    …本页内容（fx-head / fx-demo / fx-card 等）…
+  <div class="fx-canvas-wrap">
+    <div class="fx-canvas">
+      …本页正文 / 演示 / 选项（按 960×540 排版）…
+    </div>
   </div>
 
-  <!-- 底：品牌 + 进度点（自动按总页数生成，当前页高亮） -->
-  <footer class="fx-footer">
-    <span class="fx-brand">飞象课堂 · 学科名</span>
-    <span class="fx-dots" data-fx-progress></span>
-  </footer>
+  <div class="fx-toolbar">…可选控件…</div>
 
-  <!-- 四角几何装饰（纯装饰） -->
-  <span class="fx-corner fx-corner--tl"></span>
-  <span class="fx-corner fx-corner--tr"></span>
-  <span class="fx-corner fx-corner--bl"></span>
-  <span class="fx-corner fx-corner--br"></span>
+  <footer class="fx-footer">…</footer>
+  <span class="fx-corner fx-corner--tl"></span> …
 </div>
 ```
 
-- `data-fx-pagename` / `data-fx-pageno` / `data-fx-progress` 由**壳自动填充**（读 `window.__CW_PAGE__`）；页名留空即取 `data-name`，也可自己写死文字覆盖。
-- 长内容页：外层加 `fx-page--scroll`，滚动只发生在 `.fx-body`，**页眉页脚固定不动**（比整页滚动更像飞象）。
-- 封面页可用更满的版式（弱化顶栏，仅保留页码/角标），主体放大标题。
+- `data-fx-pagename` / `data-fx-pageno` / `data-fx-progress` 由壳自动填充（`window.__CW_PAGE__`）。
+- 长内容：给 `.fx-canvas` 加 `fx-canvas--scroll`，**只在 540px 画布内滚动**；外框顶栏/底栏固定。
+- 封面：标题等内容放在 `.fx-canvas` 内；外框仍 100%。
+- 互动页：演示在 `.fx-canvas` 内；滑块/按钮放 `.fx-toolbar`（画布外）。
 
-**page-shared 追加以下 CSS（模板已内置）：**
+**page-shared 追加 CSS（模板已内置）：**
 ```css
-.fx-page{ position:relative; height:540px; box-sizing:border-box;
+:root{ --cw-w:960px; --cw-h:540px; }
+/* 外框：100% 铺满宿主 */
+.fx-page{ position:relative; width:100%; height:100%; box-sizing:border-box;
   display:flex; flex-direction:column; background:var(--bg); overflow:hidden; }
-.fx-page--scroll .fx-body{ overflow-y:auto; -webkit-overflow-scrolling:touch; }
 .fx-topbar{ display:flex; align-items:center; justify-content:space-between;
-  padding:12px 30px; border-bottom:2px solid var(--card-border); flex-shrink:0; }
-.fx-pageno{ font-size:13px; font-weight:700; color:var(--primary); letter-spacing:1px; }
-.fx-body{ flex:1; min-height:0; padding:16px 30px; }
-.fx-footer{ display:flex; align-items:center; justify-content:space-between;
-  padding:8px 30px; border-top:2px solid var(--card-border); flex-shrink:0;
-  font-size:12px; color:var(--text); opacity:.7; }
-.fx-brand{ letter-spacing:1px; }
-.fx-dots{ display:inline-flex; gap:6px; }
-.fx-dot{ width:8px; height:8px; border:2px solid var(--card-border); background:transparent; }
-.fx-dot--on{ background:var(--primary); border-color:var(--primary); }
-/* 四角 L 形几何装饰 */
-.fx-corner{ position:absolute; width:16px; height:16px; pointer-events:none; }
-.fx-corner--tl{ left:10px; top:10px; border-left:3px solid var(--accent); border-top:3px solid var(--accent); }
-.fx-corner--tr{ right:10px; top:10px; border-right:3px solid var(--accent); border-top:3px solid var(--accent); }
-.fx-corner--bl{ left:10px; bottom:10px; border-left:3px solid var(--accent); border-bottom:3px solid var(--accent); }
-.fx-corner--br{ right:10px; bottom:10px; border-right:3px solid var(--accent); border-bottom:3px solid var(--accent); }
+  padding:10px 22px; flex-shrink:0; }
+.fx-pageno{ font-size:13px; font-weight:700; color:var(--primary); }
+/* 居中槽 + 固定画布 */
+.fx-canvas-wrap{ flex:1; min-height:0; display:flex; align-items:center; justify-content:center;
+  padding:6px 18px 8px; overflow:hidden; }
+.fx-canvas{ width:var(--cw-w); height:var(--cw-h); flex:0 0 auto; padding:14px 18px;
+  box-sizing:border-box; background:var(--demo-bg); border:2px solid var(--demo-border);
+  border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column;
+  background-image:
+    linear-gradient(var(--demo-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--demo-grid) 1px, transparent 1px);
+  background-size:30px 30px; }
+.fx-canvas--scroll{ overflow-y:auto; -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin; scrollbar-color:var(--primary) var(--demo-grid); }
+.fx-canvas--scroll::-webkit-scrollbar{ width:10px; }
+.fx-canvas--scroll::-webkit-scrollbar-track{
+  background:var(--demo-grid); border-left:2px solid var(--demo-border); }
+.fx-canvas--scroll::-webkit-scrollbar-thumb{
+  background:var(--primary); border:2px solid var(--card-border);
+  border-radius:var(--radius); min-height:48px; }
+.fx-canvas--scroll::-webkit-scrollbar-thumb:hover{ background:var(--accent); }
 ```
 
-> 注：`fx-page` 用 `height:540px; overflow:hidden` 固定画布，因此**它已经替代 `slide--fit`**（可同时挂 `slide slide--fit fx-page`，但滚动交给 `.fx-body`）。长内容用 `fx-page--scroll`，不要再给 `.fx-page` 加整体滚动。
+> 旧版 `.fx-page`/`.fx-canvas` 双层框见上文；**默认新生成对齐飞象真实产物的 `.page-container` 模式（见下）。**
+
+---
+
+## 4.6 飞象产物对齐（壳 + page-container）
+
+**预览壳**（`courseware-shell.js`）：白顶栏 + 缩略 iframe 绿框 + 浅灰舞台居中 960×540 主 iframe（圆角阴影）。
+
+**生成物**：`.page-container` + `.page-title` + `.card` + `.tip`；封面用全屏 `.cover` 特例。
 
 ---
 
@@ -251,11 +271,11 @@ hash = (keyword 首字符 codepoint + keyword 末字符 codepoint + 页数) mod 
 
 | 页类型 | 飞象配方 |
 |---|---|
-| **封面** | 纯色 `--bg`（或极轻同色渐变）；主标题 34–40px/800 居中；上方 `.fx-chip` 放学科·年级；下方一行副标题。禁止大面积渐变、禁止 emoji。 |
-| **概念/讲解** | 标题条 + `.fx-card` 网格（2×2 或 2×3）；关键量用 `.fx-block` 多色高亮；示意图用内联 SVG。 |
-| **互动/演示** | `.fx-demo`（带网格底纹）作 Stage 居中；控件用 `.fx-btn` / `.fx-btn--2nd`；数值/状态用 `.fx-card`。3D/Canvas 用演示多色。 |
-| **测验** | 选项为 `.fx-btn--2nd` 满宽；选中描边变 `--primary`；对错用色板绿/红演示色；提交/重做用 `.fx-btn`。 |
-| **小结** | 要点用 `.fx-card` 列表 + 序号块（`.fx-block`）；无 emoji。 |
+| **封面** | 全屏 `.cover`；轻渐变可接受；主标题 44–48px；学科 tag 胶囊。 |
+| **概念/讲解** | `.page-container` + `.page-title` + `.card` 双栏 + `.tip`。 |
+| **互动/演示** | `.page-title` + 浅灰演示区 + `.btn-primary` 控件。 |
+| **测验** | `.page-title` + 白底选项块；提交 `.btn-primary`；对错绿/红。 |
+| **小结** | `.card` 列表 + `.tip`；无 emoji。 |
 
 ---
 

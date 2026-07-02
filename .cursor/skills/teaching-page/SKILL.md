@@ -85,37 +85,27 @@ description: >-
 - 视口 **960×540**（宽固定、高为可视窗口）；共享库只放 `page-shared`，禁止放 Host `<head>`。
 - 壳脚本固定：`<script src="./courseware-shell.js"></script>`（与 html 同目录）。
 
-### 画布与溢出（必遵守）
+### 飞象产物对齐（壳 + 960×540 画布）
 
-壳在 iframe 内注入 **宽 960px、高 540px、纵向可滚动** 的视口。内容超高时应在视口内滚动，**禁止被裁切且无法查看**。
+**预览壳**（`courseware-shell.js`）负责飞象老师产品 UI：白顶栏（文件名 + 编辑/全屏/下载）、左侧缩略图 iframe 栏（绿框选中 + 页码圆点）、浅灰舞台居中 **960×540** 主 iframe（圆角 + 阴影）。
 
-**`page-shared` 必须包含**（直接复制）：
+**生成物**（`page-data`）只写 **960×540 画布内容**，对齐飞象真实产物：
 
-```css
-.slide {
-  width: 100%;
-  min-height: 540px;
-  box-sizing: border-box;
-}
-.slide--fit {
-  /* 单屏封面/全屏动画：恰好铺满 540px */
-  height: 540px;
-  overflow: hidden;
-}
-.slide--scroll {
-  /* 多题测验、长文讲解：视口内滚动 */
-  max-height: 540px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
+```
+.page-container（min-height:100%; padding:30px 40px; 可滚动）
+├── .page-title（32px + 左侧 6px 主色竖线）
+├── .card 网格 / 演示区
+└── .tip / .btn-primary
+封面/转场/结课为全屏特例（不用 page-container）。
 ```
 
-| 页面类型 | 用法 |
-|---|---|
-| 封面、单屏动画 | 外层 `slide slide--fit` |
-| 概念讲解、多题测验、列表 | 外层 `slide slide--scroll` |
-| 互动作图（控件+画布） | 优先一屏放下；放不下用 `slide--scroll` |
+详见 [feixiang-style.md §4.5](feixiang-style.md)。旧版 `.fx-page` / `.fx-canvas` 双层框仍可用于深色实验风，**默认新生成走 page-container**。
+
+### 画布与溢出（必遵守）
+
+壳注入子页 **固定 960×540**；长内容在 `.page-container` 内 `overflow-y:auto` 滚动。
+
+**`page-shared` 基线类**（飞象产物，模板已内置）：`.page-container`、`.page-title`、`.card`、`.btn`、`.btn-primary`、`.tip`。
 
 **禁止**：在 `.slide` 上写 `overflow: hidden` 且内容超过 540px；禁止 `height: 100%` 撑满后再塞超长内容却不加滚动。
 

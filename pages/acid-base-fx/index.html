@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>酸碱中和反应 · 初二化学</title>
+  <title>酸碱中和反应 · 初二化学.html</title>
   <!-- spec: requirements=初二化学,酸碱中和,4页,1互动+测验; require=中和滴定模拟,pH变化,4题判分; core-loop=滴碱→pH升→中和提示;测验:选题→提交→反馈 -->
-  <!-- fx-style: palette=FX-深青(B-07); radius=0; keyword=酸碱中和; source=hash -->
+  <!-- fx-style: palette=FX-青(B-08); layout=page-container; radius=12; keyword=酸碱中和; source=hash -->
 </head>
 <body>
 
@@ -14,198 +14,181 @@
 <template class="page-shared">
   <style>
     :root{
-      --bg:#0F302F; --text:#EEFFEB; --primary:#06B17A; --accent:#B6FCE5; --info:#E44B40;
-      --card:#123A37; --card-border:rgba(238,255,235,.30);
-      --demo-bg:#123A37; --demo-border:#526F68; --demo-grid:#164441;
-      --btn-primary-bg:#06B17A; --btn-primary-fg:#FFFFFF;
-      --btn-2nd-bg:#184C49; --btn-2nd-fg:#EEFFEB;
-      --ok:#06B17A; --no:#E44B40;
-      --radius:0px;
-      --font:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+      --primary:#137F8B; --secondary:#0E7490; --accent:#E44B40;
+      --bg:#F8FAFC; --text:#1E293B; --success:#10B981; --error:#EF4444;
+      --muted:#64748B; --alkali:#B6FCE5; --acid:#FEE2E2;
+      --font:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
     }
-    .slide{ width:100%; min-height:540px; box-sizing:border-box;
-      font-family:var(--font); color:var(--text); background:var(--bg); }
-    .slide--fit{ height:540px; overflow:hidden; }
-    .slide--scroll{ max-height:540px; overflow-x:hidden; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-
-    .fx-card{ background:var(--card); border:2px solid var(--card-border);
-      border-radius:var(--radius); padding:14px 16px; }
-    .fx-demo{ background:var(--demo-bg); border:2px solid var(--demo-border);
-      border-radius:var(--radius);
-      background-image:
-        linear-gradient(var(--demo-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--demo-grid) 1px, transparent 1px);
-      background-size:30px 30px; }
-    .fx-btn{ font-size:15px; font-weight:600; padding:9px 20px; cursor:pointer;
-      border-radius:var(--radius); background:var(--btn-primary-bg);
-      color:var(--btn-primary-fg); border:2px solid var(--card-border); }
-    .fx-btn--2nd{ background:var(--btn-2nd-bg); color:var(--btn-2nd-fg); }
-    .fx-chip{ display:inline-block; padding:4px 12px; border:2px solid var(--card-border);
-      border-radius:999px; background:var(--card); font-size:13px; font-weight:600; color:var(--accent); }
-    .fx-block{ border-radius:calc(var(--radius) / 2); border:3px solid; }
-    .fx-head{ display:flex; align-items:baseline; gap:12px; }
-    .fx-head h2{ margin:0; color:var(--primary); font-size:26px; font-weight:700; }
-    .fx-head .fx-sub{ font-size:13px; color:var(--text); opacity:.6; }
-
-    /* 版式框：固定画布 + 四周内容 */
-    .fx-page{ position:relative; height:540px; box-sizing:border-box;
-      display:flex; flex-direction:column; background:var(--bg); overflow:hidden; }
-    .fx-page--scroll .fx-body{ overflow-y:auto; -webkit-overflow-scrolling:touch; }
-    .fx-topbar{ display:flex; align-items:center; justify-content:space-between;
-      padding:12px 30px; border-bottom:2px solid var(--card-border); flex-shrink:0; }
-    .fx-pageno{ font-size:13px; font-weight:700; color:var(--accent); letter-spacing:1px; }
-    .fx-body{ flex:1; min-height:0; padding:16px 30px; }
-    .fx-footer{ display:flex; align-items:center; justify-content:space-between;
-      padding:8px 30px; border-top:2px solid var(--card-border); flex-shrink:0;
-      font-size:12px; color:var(--text); opacity:.7; }
-    .fx-brand{ letter-spacing:1px; }
-    .fx-dots{ display:inline-flex; gap:6px; }
-    .fx-dot{ width:8px; height:8px; border:2px solid var(--card-border); background:transparent; }
-    .fx-dot--on{ background:var(--primary); border-color:var(--primary); }
-    .fx-corner{ position:absolute; width:16px; height:16px; pointer-events:none; }
-    .fx-corner--tl{ left:10px; top:10px; border-left:3px solid var(--accent); border-top:3px solid var(--accent); }
-    .fx-corner--tr{ right:10px; top:10px; border-right:3px solid var(--accent); border-top:3px solid var(--accent); }
-    .fx-corner--bl{ left:10px; bottom:10px; border-left:3px solid var(--accent); border-bottom:3px solid var(--accent); }
-    .fx-corner--br{ right:10px; bottom:10px; border-right:3px solid var(--accent); border-bottom:3px solid var(--accent); }
+    body{ font-family:var(--font); color:var(--text); background:var(--bg); margin:0; }
+    .page-container{
+      min-height:100%; padding:28px 36px; display:flex; flex-direction:column;
+      box-sizing:border-box; overflow-y:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:thin; scrollbar-color:var(--primary) #e2e8f0;
+    }
+    .page-container::-webkit-scrollbar{ width:6px; }
+    .page-container::-webkit-scrollbar-track{ background:#e2e8f0; border-radius:999px; }
+    .page-container::-webkit-scrollbar-thumb{ background:var(--primary); border-radius:999px; }
+    .page-title{
+      font-size:30px; font-weight:700; color:var(--primary); margin-bottom:16px;
+      padding-left:14px; border-left:6px solid var(--primary); line-height:1.2;
+    }
+    .card{
+      background:#fff; border-radius:12px;
+      box-shadow:0 4px 6px -1px rgba(0,0,0,.1); padding:18px; margin-bottom:12px;
+    }
+    .btn{
+      padding:9px 18px; border-radius:8px; font-weight:600; cursor:pointer;
+      transition:background .2s; border:none; font-size:15px;
+    }
+    .btn-primary{ background:var(--primary); color:#fff; }
+    .btn-primary:hover{ background:var(--secondary); }
+    .btn-ghost{
+      background:#fff; color:var(--primary); border:1px solid #cbd5e1;
+    }
+    .tip{
+      background:#ecfdf5; border:1px solid var(--success); border-radius:12px;
+      padding:12px 16px; font-size:14px; line-height:1.6;
+    }
+    .chip{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:40px; height:40px; padding:0 10px; border-radius:8px;
+      font-weight:800; font-size:14px; border:2px solid;
+    }
   </style>
 </template>
 
 <!-- 第 1 页：封面 -->
 <template class="page-data" data-id="1" data-name="封面">
   <style>
-    .cover-body{ display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
-      height:100%; padding:0 30px; position:relative; }
-    .cover-body h1{ font-size:44px; font-weight:800; margin:18px 0 14px; color:var(--primary); letter-spacing:2px; }
-    .cover-body .eq{ font-size:20px; font-weight:700; color:var(--accent); letter-spacing:1px; }
-    .cover-body .sub{ font-size:16px; line-height:1.7; color:var(--text); opacity:.85; margin-top:10px; }
-    .cover-body .bar{ width:72px; height:8px; background:var(--accent); margin-top:22px; border:2px solid var(--card-border); }
-    .cover-body .beakers{ position:absolute; right:20px; top:50%; transform:translateY(-50%); }
+    .cover{
+      height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      background:linear-gradient(135deg,#0f766e 0%,#137F8B 55%,#0e7490 100%);
+      color:#fff; text-align:center; padding:40px; box-sizing:border-box; position:relative;
+    }
+    .cover h1{ font-size:42px; margin:0 0 12px; font-weight:800; letter-spacing:1px; }
+    .cover .eq{ font-size:20px; font-weight:700; opacity:.95; margin:0 0 10px; }
+    .cover .sub{ font-size:16px; opacity:.88; margin:0 0 24px; }
+    .cover .tag{
+      font-size:15px; background:rgba(255,255,255,.16); padding:9px 26px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.25);
+    }
+    .cover svg{ position:absolute; right:48px; bottom:48px; opacity:.9; }
   </style>
-  <div class="slide slide--fit fx-page">
-    <header class="fx-topbar">
-      <span class="fx-chip">初二化学 · 溶液的酸碱性</span>
-      <span class="fx-pageno" data-fx-pageno></span>
-    </header>
-    <div class="fx-body cover-body">
-      <h1>酸碱中和反应</h1>
-      <p class="eq">酸 + 碱 → 盐 + 水</p>
-      <p class="sub">滴定模拟 · pH 变化 · 课堂小测</p>
-      <div class="bar"></div>
-      <svg class="beakers" width="150" height="180" viewBox="0 0 150 180" aria-hidden="true">
-        <path d="M40 40 L40 130 Q40 150 60 150 L70 150 Q90 150 90 130 L90 40 Z" fill="none" stroke="#526F68" stroke-width="3"/>
-        <path d="M40 95 L40 130 Q40 150 60 150 L70 150 Q90 150 90 130 L90 95 Z" fill="#E44B40" opacity="0.85"/>
-        <rect x="34" y="34" width="62" height="8" fill="#06B17A"/>
-        <line x1="112" y1="30" x2="112" y2="96" stroke="#B6FCE5" stroke-width="3"/>
-        <path d="M104 30 L120 30 L112 20 Z" fill="#B6FCE5"/>
-      </svg>
-    </div>
-    <footer class="fx-footer">
-      <span class="fx-brand">飞象课堂 · 初二化学</span>
-      <span class="fx-dots" data-fx-progress></span>
-    </footer>
-    <span class="fx-corner fx-corner--tl"></span><span class="fx-corner fx-corner--tr"></span>
-    <span class="fx-corner fx-corner--bl"></span><span class="fx-corner fx-corner--br"></span>
+  <div class="cover">
+    <h1>酸碱中和反应</h1>
+    <p class="eq">酸 + 碱 → 盐 + 水</p>
+    <p class="sub">滴定模拟 · pH 变化 · 课堂小测</p>
+    <div class="tag">初二化学 · 溶液的酸碱性</div>
+    <svg width="120" height="140" viewBox="0 0 120 140" aria-hidden="true">
+      <path d="M32 28 L32 108 Q32 124 48 124 L58 124 Q74 124 74 108 L74 28 Z" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2.5"/>
+      <path d="M32 78 L32 108 Q32 124 48 124 L58 124 Q74 124 74 108 L74 78 Z" fill="#E44B40" opacity=".85"/>
+      <rect x="27" y="23" width="52" height="7" rx="1" fill="#B6FCE5"/>
+    </svg>
   </div>
 </template>
 
-<!-- 第 2 页：概念 -->
+<!-- 第 2 页：概念讲解 -->
 <template class="page-data" data-id="2" data-name="概念讲解">
   <style>
-    .concept{ padding:0 30px 24px; }
-    .grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
-    .concept h3{ margin:0 0 6px; font-size:18px; color:var(--accent); }
-    .concept p{ margin:0; font-size:15px; line-height:1.6; }
-    .concept ul{ margin:6px 0 0; padding-left:18px; font-size:14px; line-height:1.6; }
-    .eqbox{ grid-column:1/-1; display:flex; align-items:center; gap:14px; }
-    .eqbox .fx-block{ width:44px; height:44px; display:flex; align-items:center; justify-content:center;
-      font-weight:800; font-size:15px; color:#0F302F; }
+    .grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .grid h4{ margin:0 0 8px; color:var(--primary); font-size:17px; }
+    .grid p,.grid ul{ margin:0; font-size:15px; line-height:1.7; }
+    .grid ul{ padding-left:18px; }
+    .eqrow{
+      grid-column:1/-1; display:flex; align-items:center; flex-wrap:wrap; gap:10px;
+    }
+    .eqrow .note{ font-size:13px; color:var(--muted); margin:0; }
   </style>
-  <div class="slide slide--fit fx-page fx-page--scroll concept">
-    <header class="fx-topbar">
-      <span class="fx-chip" data-fx-pagename></span>
-      <span class="fx-pageno" data-fx-pageno></span>
-    </header>
-    <div class="fx-body">
-      <div class="fx-head"><h2>什么是中和反应</h2><span class="fx-sub">定义 · 实质 · 指示剂</span></div>
-      <div class="grid" style="margin-top:12px;">
-        <div class="fx-card"><h3>定义</h3><p>酸与碱作用生成<strong>盐</strong>和<strong>水</strong>的反应。</p></div>
-        <div class="fx-card"><h3>实质</h3><p>H⁺ 与 OH⁻ 结合生成 H₂O，溶液趋向中性。</p></div>
-        <div class="fx-card eqbox">
-          <span class="fx-block" style="background:#E44B40; border-color:#8f2b24;">酸</span>
-          <span style="font-size:20px; font-weight:800; color:var(--accent);">+</span>
-          <span class="fx-block" style="background:#B6FCE5; border-color:#06B17A;">碱</span>
-          <span style="font-size:20px; font-weight:800; color:var(--accent);">→</span>
-          <span class="fx-block" style="background:#06B17A; border-color:#EEFFEB;">盐</span>
-          <span style="font-size:20px; font-weight:800; color:var(--accent);">+</span>
-          <span class="fx-block" style="background:#EEFFEB; border-color:#06B17A;">水</span>
-          <p style="margin:0 0 0 8px; font-size:13px; opacity:.8;">例：HCl + NaOH → NaCl + H₂O</p>
-        </div>
-        <div class="fx-card"><h3>指示剂</h3>
-          <ul><li>酚酞：酸/中性无色，碱性<strong>变红</strong></li><li>石蕊：遇酸变红，遇碱变蓝</li></ul>
-        </div>
-        <div class="fx-card"><h3>pH 判断</h3>
-          <ul><li>pH &lt; 7 酸性；= 7 中性；&gt; 7 碱性</li><li>中和完全时接近 pH = 7</li></ul>
-        </div>
+  <div class="page-container">
+    <div class="page-title">什么是中和反应</div>
+    <div class="grid">
+      <div class="card">
+        <h4>定义</h4>
+        <p>酸与碱作用生成<strong>盐</strong>和<strong>水</strong>的反应。</p>
+      </div>
+      <div class="card">
+        <h4>实质</h4>
+        <p>H⁺ 与 OH⁻ 结合生成 H₂O，溶液趋向中性。</p>
+      </div>
+      <div class="card eqrow">
+        <span class="chip" style="background:#FEE2E2;border-color:#E44B40;color:#991B1B;">酸</span>
+        <span style="font-size:18px;font-weight:800;color:var(--primary);">+</span>
+        <span class="chip" style="background:#CCFBF1;border-color:#137F8B;color:#115E59;">碱</span>
+        <span style="font-size:18px;font-weight:800;color:var(--primary);">→</span>
+        <span class="chip" style="background:#D1FAE5;border-color:#10B981;color:#065F46;">盐</span>
+        <span style="font-size:18px;font-weight:800;color:var(--primary);">+</span>
+        <span class="chip" style="background:#F0FDFA;border-color:#5EEAD4;color:#0F766E;">水</span>
+        <p class="note">例：HCl + NaOH → NaCl + H₂O</p>
+      </div>
+      <div class="card">
+        <h4>指示剂</h4>
+        <ul>
+          <li>酚酞：酸/中性无色，碱性<strong>变红</strong></li>
+          <li>石蕊：遇酸变红，遇碱变蓝</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>pH 判断</h4>
+        <ul>
+          <li>pH &lt; 7 酸性；= 7 中性；&gt; 7 碱性</li>
+          <li>中和完全时接近 pH = 7</li>
+        </ul>
       </div>
     </div>
-    <footer class="fx-footer">
-      <span class="fx-brand">飞象课堂 · 初二化学</span>
-      <span class="fx-dots" data-fx-progress></span>
-    </footer>
-    <span class="fx-corner fx-corner--tl"></span><span class="fx-corner fx-corner--tr"></span>
-    <span class="fx-corner fx-corner--bl"></span><span class="fx-corner fx-corner--br"></span>
+    <div class="tip"><strong>提示：</strong>中和反应的实质是 H⁺ 与 OH⁻ 结合成水，溶液酸性与碱性同时减弱。</div>
   </div>
 </template>
 
-<!-- 第 3 页：互动滴定 -->
+<!-- 第 3 页：中和滴定模拟 -->
 <template class="page-data" data-id="3" data-name="中和滴定模拟">
   <style>
-    .lab-body{ display:flex; flex-direction:column; height:100%; }
-    .lab-body .stage{ flex:1; display:flex; align-items:center; justify-content:center; gap:28px; }
-    .beaker{ width:120px; height:160px; border:3px solid var(--demo-border); border-top:none;
-      position:relative; overflow:hidden; background:rgba(255,255,255,.04); }
-    .liquid{ position:absolute; left:0; right:0; bottom:0; height:72%; background:#E44B40; transition:background .35s, height .2s; }
-    .panel{ width:250px; display:flex; flex-direction:column; gap:10px; }
-    .ph{ font-size:34px; font-weight:800; color:var(--accent); text-align:center; }
-    .phbar{ height:12px; border:2px solid var(--card-border);
-      background:linear-gradient(90deg,#E44B40,#F8EF50,#06B17A,#3B82F6); position:relative; }
-    .phmark{ position:absolute; top:-4px; width:4px; height:18px; background:#EEFFEB; transition:left .25s; }
-    .status{ text-align:center; font-weight:700; min-height:24px; color:var(--accent); }
-    .lab-body .ctrl{ padding-top:10px; display:flex; align-items:center; gap:14px; }
-    .lab-body .ctrl label{ font-size:14px; white-space:nowrap; }
-    .lab-body .ctrl input[type=range]{ flex:1; accent-color:var(--primary); }
+    .lab{ display:flex; gap:18px; align-items:stretch; flex:1; min-height:0; }
+    .beaker-wrap{ flex:1; background:#f1f5f9; border-radius:12px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; padding:16px; }
+    .beaker{
+      width:100px; height:140px; border:3px solid #94a3b8; border-top:none;
+      position:relative; overflow:hidden; background:rgba(255,255,255,.6); border-radius:0 0 8px 8px;
+    }
+    .liquid{
+      position:absolute; left:0; right:0; bottom:0; height:70%;
+      background:#E44B40; transition:background .35s, height .2s;
+    }
+    .panel{ width:240px; display:flex; flex-direction:column; gap:8px; }
+    .ph{ font-size:32px; font-weight:800; color:var(--primary); text-align:center; margin:0; }
+    .phbar{
+      height:10px; border-radius:999px; border:1px solid #e2e8f0;
+      background:linear-gradient(90deg,#E44B40,#FDE047,#10B981,#3B82F6); position:relative;
+    }
+    .phmark{
+      position:absolute; top:-3px; width:4px; height:14px; background:#1e293b;
+      border-radius:1px; transition:left .25s;
+    }
+    .status{ text-align:center; font-weight:600; font-size:14px; color:var(--primary); min-height:20px; margin:0; }
+    .ctrl{ display:flex; align-items:center; gap:12px; margin-top:12px; }
+    .ctrl label{ font-size:14px; white-space:nowrap; color:var(--muted); }
+    .ctrl input[type=range]{ flex:1; accent-color:var(--primary); }
   </style>
-  <div class="slide slide--fit fx-page">
-    <header class="fx-topbar">
-      <span class="fx-chip" data-fx-pagename></span>
-      <span class="fx-pageno" data-fx-pageno></span>
-    </header>
-    <div class="fx-body lab-body">
-      <div class="fx-head"><h2>互动：盐酸中滴加 NaOH</h2><span class="fx-sub">拖动滑块观察 pH 与颜色（定性模型）</span></div>
-      <div class="stage fx-demo" data-interactive style="margin-top:12px;">
-        <div style="text-align:center;">
-          <div class="beaker"><div class="liquid" id="liquid"></div></div>
-          <p style="font-size:12px; opacity:.7; margin:8px 0 0;">锥形瓶 · 含酚酞</p>
-        </div>
-        <div class="panel fx-card">
-          <div class="ph" id="phv">pH 1.5</div>
-          <div class="phbar"><div class="phmark" id="phm"></div></div>
-          <p class="status" id="st">强酸性（盐酸）</p>
-          <p style="text-align:center; font-size:13px; opacity:.8; margin:0;">已滴 NaOH：<strong id="pct" style="color:var(--accent);">0</strong>%</p>
-        </div>
+  <div class="page-container">
+    <div class="page-title">互动：盐酸中滴加 NaOH</div>
+    <div class="lab" data-interactive>
+      <div class="beaker-wrap">
+        <div class="beaker"><div class="liquid" id="liquid"></div></div>
+        <p style="font-size:12px;color:var(--muted);margin:10px 0 0;">锥形瓶 · 含酚酞</p>
       </div>
-      <div class="ctrl">
-        <label>滴加 NaOH</label>
-        <input type="range" id="rng" data-interactive min="0" max="100" value="0" step="1">
-        <button type="button" class="fx-btn" id="reset" data-interactive>重置</button>
+      <div class="panel card" style="margin:0;">
+        <p class="ph" id="phv">pH 1.5</p>
+        <div class="phbar"><div class="phmark" id="phm"></div></div>
+        <p class="status" id="st">强酸性（盐酸）</p>
+        <p style="text-align:center;font-size:13px;color:var(--muted);margin:0;">
+          已滴 NaOH：<strong id="pct" style="color:var(--primary);">0</strong>%
+        </p>
       </div>
     </div>
-    <footer class="fx-footer">
-      <span class="fx-brand">飞象课堂 · 初二化学</span>
-      <span class="fx-dots" data-fx-progress></span>
-    </footer>
-    <span class="fx-corner fx-corner--tl"></span><span class="fx-corner fx-corner--tr"></span>
-    <span class="fx-corner fx-corner--bl"></span><span class="fx-corner fx-corner--br"></span>
+    <div class="ctrl">
+      <label for="rng">滴加 NaOH</label>
+      <input type="range" id="rng" data-interactive min="0" max="100" value="0" step="1">
+      <button type="button" class="btn btn-primary" id="reset" data-interactive>重置</button>
+    </div>
   </div>
   <script>
     (function(){
@@ -214,13 +197,13 @@
           st=document.getElementById('st'), pct=document.getElementById('pct'), NP=62;
       function ph(v){ if(v<=0) return 1.5; if(v>=100) return 13.5;
         return v<NP ? 1.5+(6.5-1.5)*(v/NP) : 6.5+(13.5-6.5)*((v-NP)/(100-NP)); }
-      function color(p){ return p<6.5?'#E44B40':(p<8.2?'#B6FCE5':'#06B17A'); }
+      function color(p){ return p<6.5?'#E44B40':(p<8.2?'#F472B6':'#10B981'); }
       function msg(p,v){ if(v===0) return '强酸性（盐酸）';
         if(p>=6.8&&p<=7.2) return '中和完成！pH ≈ 7'; return p<7?'仍呈酸性，继续滴加…':'碱过量，酚酞变红'; }
       function update(v,skip){ v=Number(v); var p=ph(v);
         phv.textContent='pH '+p.toFixed(1);
         phm.style.left=Math.max(0,Math.min(100,((p-1)/13)*100))+'%';
-        liquid.style.background=color(p); liquid.style.height=(70+v*0.06)+'%';
+        liquid.style.background=color(p); liquid.style.height=(68+v*0.06)+'%';
         st.textContent=msg(p,v); pct.textContent=v; rng.value=v;
         if(!skip) window.parent.postMessage({type:'saveState',state:{v:v}},'*'); }
       rng.addEventListener('input',function(){ update(rng.value); });
@@ -232,51 +215,42 @@
   </script>
 </template>
 
-<!-- 第 4 页：测验 -->
+<!-- 第 4 页：课堂测验 -->
 <template class="page-data" data-id="4" data-name="课堂测验">
   <style>
-    .quiz .q{ font-size:15px; font-weight:700; margin:12px 0 5px; }
-    .opt{ display:block; width:100%; text-align:left; margin:4px 0; font-size:14px; padding:8px 13px; cursor:pointer; }
-    .opt.correct{ border-color:var(--ok); color:var(--ok); }
-    .opt.wrong{ border-color:var(--no); color:var(--no); }
-    .foot{ display:flex; align-items:center; gap:12px; margin-top:12px; padding-top:10px; border-top:1px solid var(--card-border); }
-    #score{ flex:1; font-weight:700; color:var(--accent); }
+    .quiz .q{ font-size:15px; font-weight:700; margin:12px 0 6px; }
+    .opt{
+      display:block; width:100%; text-align:left; margin:5px 0; padding:9px 14px;
+      border:1px solid #e2e8f0; border-radius:8px; background:#fff; cursor:pointer; font-size:14px;
+    }
+    .opt.correct{ border-color:var(--success); color:var(--success); background:#ecfdf5; }
+    .opt.wrong{ border-color:var(--error); color:var(--error); background:#fef2f2; }
+    .foot{ display:flex; align-items:center; gap:12px; margin-top:14px; padding-top:12px; border-top:1px solid #e2e8f0; }
+    #score{ flex:1; font-weight:700; color:var(--primary); font-size:14px; }
   </style>
-  <div class="slide slide--fit fx-page fx-page--scroll quiz">
-    <header class="fx-topbar">
-      <span class="fx-chip" data-fx-pagename></span>
-      <span class="fx-pageno" data-fx-pageno></span>
-    </header>
-    <div class="fx-body">
-      <div class="fx-head"><h2>课堂测验</h2><span class="fx-sub">共 4 题，选后提交</span></div>
-      <p class="q">1. 中和反应的生成物是？</p>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="0" data-v="A">盐和氧气</button>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="0" data-v="B">盐和水</button>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="0" data-v="C">酸和碱</button>
-      <p class="q">2. 酚酞在碱性溶液中显？</p>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="1" data-v="A">无色</button>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="1" data-v="B">红色</button>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="1" data-v="C">蓝色</button>
-      <p class="q">3. HCl + NaOH 反应的产物是？</p>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="2" data-v="A">NaCl 和 H₂O</button>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="2" data-v="B">NaOH 和 Cl₂</button>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="2" data-v="C">H₂ 和 NaClO</button>
-      <p class="q">4. 互动中，中和完成时 pH 约为？</p>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="3" data-v="A">1</button>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="3" data-v="B">7</button>
-      <button type="button" class="fx-btn fx-btn--2nd opt" data-interactive data-q="3" data-v="C">14</button>
-      <div class="foot">
-        <span id="score">请作答后提交</span>
-        <button type="button" class="fx-btn" id="submit" data-interactive>提交答案</button>
-        <button type="button" class="fx-btn fx-btn--2nd" id="retry" data-interactive>重做</button>
-      </div>
+  <div class="page-container quiz">
+    <div class="page-title">课堂测验</div>
+    <p class="q">1. 中和反应的生成物是？</p>
+    <button type="button" class="opt" data-interactive data-q="0" data-v="A">盐和氧气</button>
+    <button type="button" class="opt" data-interactive data-q="0" data-v="B">盐和水</button>
+    <button type="button" class="opt" data-interactive data-q="0" data-v="C">酸和碱</button>
+    <p class="q">2. 酚酞在碱性溶液中显？</p>
+    <button type="button" class="opt" data-interactive data-q="1" data-v="A">无色</button>
+    <button type="button" class="opt" data-interactive data-q="1" data-v="B">红色</button>
+    <button type="button" class="opt" data-interactive data-q="1" data-v="C">蓝色</button>
+    <p class="q">3. HCl + NaOH 反应的产物是？</p>
+    <button type="button" class="opt" data-interactive data-q="2" data-v="A">NaCl 和 H₂O</button>
+    <button type="button" class="opt" data-interactive data-q="2" data-v="B">NaOH 和 Cl₂</button>
+    <button type="button" class="opt" data-interactive data-q="2" data-v="C">H₂ 和 NaClO</button>
+    <p class="q">4. 互动中，中和完成时 pH 约为？</p>
+    <button type="button" class="opt" data-interactive data-q="3" data-v="A">1</button>
+    <button type="button" class="opt" data-interactive data-q="3" data-v="B">7</button>
+    <button type="button" class="opt" data-interactive data-q="3" data-v="C">14</button>
+    <div class="foot">
+      <span id="score">请作答后提交</span>
+      <button type="button" class="btn btn-primary" id="submit" data-interactive>提交答案</button>
+      <button type="button" class="btn btn-ghost" id="retry" data-interactive>重做</button>
     </div>
-    <footer class="fx-footer">
-      <span class="fx-brand">飞象课堂 · 初二化学</span>
-      <span class="fx-dots" data-fx-progress></span>
-    </footer>
-    <span class="fx-corner fx-corner--tl"></span><span class="fx-corner fx-corner--tr"></span>
-    <span class="fx-corner fx-corner--bl"></span><span class="fx-corner fx-corner--br"></span>
   </div>
   <script>
     (function(){
@@ -284,22 +258,23 @@
           s=document.getElementById('score');
       function save(){ window.parent.postMessage({type:'saveState',state:{pick:pick,done:done}},'*'); }
       function sel(q,v,btn){ if(done) return; pick[q]=v;
-        document.querySelectorAll('.opt[data-q="'+q+'"]').forEach(function(b){ b.style.borderColor=''; });
-        btn.style.borderColor='var(--accent)'; save(); }
+        document.querySelectorAll('.opt[data-q="'+q+'"]').forEach(function(b){ b.style.borderColor=''; b.style.background=''; });
+        btn.style.borderColor='var(--primary)'; btn.style.background='#f0fdfa'; save(); }
       document.querySelectorAll('.opt').forEach(function(b){
         b.addEventListener('click',function(){ sel(Number(b.dataset.q),b.dataset.v,b); }); });
       function grade(){ var miss=[0,1,2,3].filter(function(q){ return !pick[q]; });
-        if(miss.length){ s.textContent='还有 '+miss.length+' 题未选'; s.style.color='var(--no)'; return; }
+        if(miss.length){ s.textContent='还有 '+miss.length+' 题未选'; s.style.color='var(--error)'; return; }
         done=true; var sc=0;
         [0,1,2,3].forEach(function(q){ if(pick[q]===ANS[q]) sc++;
           document.querySelectorAll('.opt[data-q="'+q+'"]').forEach(function(b){ b.disabled=true;
             if(b.dataset.v===ANS[q]) b.classList.add('correct');
             else if(b.dataset.v===pick[q]) b.classList.add('wrong'); }); });
-        s.textContent='得分：'+sc+' / 4'+(sc===4?'  全对！':''); s.style.color=sc===4?'var(--ok)':'var(--accent)'; save(); }
+        s.textContent='得分：'+sc+' / 4'+(sc===4?'  全对！':'');
+        s.style.color=sc===4?'var(--success)':'var(--primary)'; save(); }
       document.getElementById('submit').addEventListener('click',grade);
       document.getElementById('retry').addEventListener('click',function(){ done=false; pick={0:null,1:null,2:null,3:null};
-        document.querySelectorAll('.opt').forEach(function(b){ b.disabled=false; b.classList.remove('correct','wrong'); b.style.borderColor=''; });
-        s.textContent='请作答后提交'; s.style.color='var(--accent)'; save(); });
+        document.querySelectorAll('.opt').forEach(function(b){ b.disabled=false; b.classList.remove('correct','wrong'); b.style.borderColor=''; b.style.background=''; });
+        s.textContent='请作答后提交'; s.style.color='var(--primary)'; save(); });
       window.addEventListener('message',function(e){
         if(!e.data||e.data.type!=='restoreState'||!e.data.state) return; var st=e.data.state;
         pick=st.pick||pick; done=!!st.done;
