@@ -92,7 +92,7 @@ description: >-
 **生成物**（`page-data`）只写 **960×540 画布内容**，对齐飞象真实产物：
 
 ```
-.page-container（min-height:100%; padding:30px 40px; 可滚动）
+.page-container（height:100%; max-height:100%; padding:30px 40px; overflow-y:auto 内滚动）
 ├── .page-title（32px + 左侧 6px 主色竖线）
 ├── .card 网格 / 演示区
 └── .tip / .btn-primary

@@ -21,7 +21,7 @@
 
 ## 视口与滚动（multi）
 
-- **预览壳**（`assets/courseware-shell.js`）：飞象风 UI；主区居中 **960×540** iframe，不足时缩小、全屏时**等比放大**（不拉伸变形）
+- **预览壳**（`assets/courseware-shell.js`）：飞象风 UI；主区居中 **960×540** iframe，不足时缩小、全屏时**等比放大**（不拉伸变形）；全屏范围为 **缩略图栏 + 主舞台**（顶栏/底栏隐藏，按 Esc 退出）
 - **子页注入**：`html,body { width:960px; height:540px; overflow:hidden }`
 - **标准页**：`.page-container` 内 `overflow-y:auto` 滚动；封面/转场为全屏特例（`.cover` 等）
 - **禁止**子页用 `100vh`；禁止在 Host `page-shared` 写 `<script src="…"><\/script>`

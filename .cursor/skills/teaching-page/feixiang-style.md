@@ -265,6 +265,8 @@ hash = (keyword 首字符 codepoint + keyword 末字符 codepoint + 页数) mod 
 
 **生成物**：`.page-container` + `.page-title` + `.card` + `.tip`；封面用全屏 `.cover` 特例。
 
+**滚动契约**：壳固定 `body` 为 960×540 且 `overflow:hidden`；`.page-container` 必须 `height:100%; max-height:100%; overflow-y:auto`，长内容在容器内滚动，禁止用 `min-height:100%` 撑高 body。
+
 ---
 
 ## 5. 各页类型飞象化配方

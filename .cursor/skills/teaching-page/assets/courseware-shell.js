@@ -57,6 +57,21 @@
       (index || 0) +
       '},"*");});';
 
+    var navKeys =
+      'document.addEventListener("keydown",function(e){' +
+      'if(window.__CW_MODE__!=="main")return;' +
+      'var t=e.target;if(t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.isContentEditable))return;' +
+      'if(e.key==="ArrowRight"||e.key===" "||e.key==="PageDown"){' +
+      'e.preventDefault();window.parent.postMessage({type:"cwNav",dir:"next"},"*");' +
+      '}else if(e.key==="ArrowLeft"||e.key==="PageUp"){' +
+      'e.preventDefault();window.parent.postMessage({type:"cwNav",dir:"prev"},"*");' +
+      '}});';
+
+    var scrollFix =
+      '<style id="cw-scroll">' +
+      '.page-container{height:100%;max-height:100%;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}' +
+      '</style>';
+
     return (
       '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">' +
       '<style>*{box-sizing:border-box}html,body{margin:0;padding:0;width:' +
@@ -65,6 +80,7 @@
       CANVAS_H +
       'px;overflow:hidden}</style>' +
       sharedHead +
+      scrollFix +
       '<script>' +
       meta +
       frameFill +
@@ -72,6 +88,7 @@
       page.body +
       '<script>' +
       ready +
+      navKeys +
       '<\/script></body></html>'
     );
   }
@@ -83,12 +100,35 @@
     this.pageStates = {};
     this.mainIframe = null;
     this.frameWrap = null;
+    this.bodyEl = null;
     this.stageEl = null;
     this.thumbList = null;
     this.titleEl = null;
     this.pageLabel = null;
     this.thumbIframes = [];
   }
+
+  CoursewareShell.prototype._handleNavKey = function (e) {
+    var t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      this.next();
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      this.prev();
+    }
+  };
+
+  CoursewareShell.prototype._focusFs = function () {
+    if (!this.bodyEl) return;
+    this.bodyEl.setAttribute('tabindex', '-1');
+    try {
+      this.bodyEl.focus({ preventScroll: true });
+    } catch (err) {
+      this.bodyEl.focus();
+    }
+  };
 
   CoursewareShell.prototype.mount = function () {
     var loading = document.getElementById('cw-loading');
@@ -117,6 +157,7 @@
 
     var body = document.createElement('div');
     body.className = 'cw-body';
+    this.bodyEl = body;
 
     this.thumbList = document.createElement('aside');
     this.thumbList.className = 'cw-thumbs';
@@ -160,7 +201,10 @@
 
     window.addEventListener('message', function (e) {
       if (!e.data || !e.data.type) return;
-      if (e.data.type === 'saveState') {
+      if (e.data.type === 'cwNav') {
+        if (e.data.dir === 'next') self.next();
+        else if (e.data.dir === 'prev') self.prev();
+      } else if (e.data.type === 'saveState') {
         var page = self.pages[self.index];
         if (page) self.pageStates[page.id] = e.data.state;
       }
@@ -170,21 +214,18 @@
       self._fitMain();
     });
 
+    var onKey = function (e) {
+      self._handleNavKey(e);
+    };
+    document.addEventListener('keydown', onKey);
+
     document.addEventListener('fullscreenchange', function () {
+      if (self._isFullscreen()) self._focusFs();
       self._fitMain();
     });
     document.addEventListener('webkitfullscreenchange', function () {
+      if (self._isFullscreen()) self._focusFs();
       self._fitMain();
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-        e.preventDefault();
-        self.next();
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-        e.preventDefault();
-        self.prev();
-      }
     });
 
     this._renderThumbs();
@@ -210,7 +251,10 @@
       'border-radius:8px;cursor:pointer;line-height:1}' +
       '.cw-action:hover{background:#f8fafc;border-color:#cbd5e1}' +
       '.cw-action--icon{width:32px;height:32px;padding:0;font-size:18px;color:#94a3b8}' +
-      '.cw-body{flex:1;display:flex;min-height:0;background:#eef1f5}' +
+      '.cw-body{flex:1;display:flex;min-height:0;background:#eef1f5;outline:none}' +
+      '.cw-body:fullscreen,.cw-body:-webkit-full-screen{width:100%;height:100%;display:flex;min-height:0;' +
+      'background:#eef1f5}' +
+      '.cw-body:fullscreen .cw-thumbs,.cw-body:-webkit-full-screen .cw-thumbs{height:100%}' +
       '.cw-thumbs{width:136px;flex-shrink:0;padding:12px 10px;overflow-y:auto;background:#fff;' +
       'border-right:1px solid #e5e7eb}' +
       '#cw-thumb-list{scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent}' +
@@ -236,11 +280,11 @@
       'border-radius:999px;background:#64748b;color:#fff;font-size:11px;font-weight:700;' +
       'display:flex;align-items:center;justify-content:center;z-index:2;line-height:1}' +
       '.cw-thumb--on .cw-thumb-no{background:#10b981}' +
-      '.cw-stage:fullscreen,.cw-stage:-webkit-full-screen{background:#0f172a;padding:0}' +
-      '.cw-stage:fullscreen .cw-stage-frame,.cw-stage:-webkit-full-screen .cw-stage-frame{' +
+      '.cw-body:fullscreen .cw-stage,.cw-body:-webkit-full-screen .cw-stage{background:#0f172a;padding:0}' +
+      '.cw-body:fullscreen .cw-stage-frame,.cw-body:-webkit-full-screen .cw-stage-frame{' +
       'box-shadow:none;border-radius:0}' +
       '.cw-stage{flex:1;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;' +
-      'padding:24px;background:#eef1f5}' +
+      'padding:24px;background:#eef1f5;outline:none}' +
       '.cw-stage-frame{width:' +
       CANVAS_W +
       'px;height:' +
@@ -301,7 +345,7 @@
 
   CoursewareShell.prototype._isFullscreen = function () {
     var fs = document.fullscreenElement || document.webkitFullscreenElement;
-    return fs === this.stageEl;
+    return fs === this.bodyEl;
   };
 
   CoursewareShell.prototype._toggleFullscreen = function () {
@@ -311,7 +355,7 @@
       else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
       return;
     }
-    var el = this.stageEl;
+    var el = this.bodyEl;
     var req = el.requestFullscreen
       ? el.requestFullscreen()
       : el.webkitRequestFullscreen
@@ -319,6 +363,7 @@
         : null;
     if (req && req.then) {
       req.then(function () {
+        self._focusFs();
         self._fitMain();
       });
     }
