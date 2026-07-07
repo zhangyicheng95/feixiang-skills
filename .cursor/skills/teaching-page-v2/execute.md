@@ -1,17 +1,26 @@
 # 执行细则（互动课件 HTML · SCORM 2004）
 
-> 形态与页数由**服务端上游**保障；Harness 产出 SCORM 2004 4th Edition 单 SCO 包。
+> 由 **teaching-page-workflow Phase 5** 调用；Harness 产出 SCORM 2004 4th Edition 单 SCO 包。
 
 ## 步骤
 
 1. 规划各页：封面 / 讲解 / 互动 / 测验 / 小结
 2. 逐页写 `<template class="page-data" data-id data-name>`
 3. `Read` [feixiang-style.md](feixiang-style.md) → 色板写入 `page-shared`
-4. 以 [../teaching-page-shared/templates/courseware-starter.html](../teaching-page-shared/templates/courseware-starter.html) 为 Host 骨架
-5. 生成 [../teaching-page-shared/templates/imsmanifest.template.xml](../teaching-page-shared/templates/imsmanifest.template.xml) → `imsmanifest.xml`
+4. 以 [templates/courseware-starter.html](templates/courseware-starter.html) 为 Host 骨架
+5. 生成 [templates/imsmanifest.template.xml](templates/imsmanifest.template.xml) → `imsmanifest.xml`
 6. 复制 assets/scorm-api.js + assets/courseware-shell.js
 7. **打包**：`bash assets/package-scorm.sh pages/<slug>` → 生成 `<slug>.zip`
 8. 过 SKILL.md 交付自检 + [scorm.md](scorm.md) 自检
+
+## 课程游戏（单页）
+
+由 [../teaching-page-workflow/phases/05-generate-game.md](../teaching-page-workflow/phases/05-generate-game.md) 调用：
+
+1. 以 [templates/game-starter.html](templates/game-starter.html) 为骨架
+2. 生成 [templates/imsmanifest-game.template.xml](templates/imsmanifest-game.template.xml) → `imsmanifest.xml`
+3. 复制 `assets/scorm-api.js`（**无** courseware-shell.js）
+4. `bash assets/package-scorm-game.sh pages/<slug>`
 
 ## 飞象产物对齐
 
@@ -28,6 +37,6 @@
 
 ## 禁止
 
-- 判定 single/multi（服务端职责）
+- 跳过 Workflow 从零生成（修改已有课件除外）
 - 省略 imsmanifest / scorm-api / **未打 ZIP**（SCORM 交付不完整）
 - 测验页无 `__cwScormReport` 提交上报

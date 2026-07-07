@@ -1,0 +1,27 @@
+confirmed: true
+confirmed_at: 2026-07-07
+title: 酸碱中和反应 · 初二化学
+product: interactive
+execution_layer: v2
+page_count: 4
+pages:
+  - id: 1
+    name: 封面
+    type: cover
+    goal: 呈现课题与学习目标
+    interaction: none
+  - id: 2
+    name: 概念讲解
+    type: concept
+    goal: 定义中和反应与方程式
+    interaction: none
+  - id: 3
+    name: 滴定模拟
+    type: demo
+    goal: 观察 pH 随滴碱变化
+    interaction: slider+reset; saveState
+  - id: 4
+    name: 课堂测验
+    type: quiz
+    goal: 4 题选择判分
+    interaction: choice×4; scormReport on submit

@@ -1,5 +1,7 @@
 # 第一阶段 · 教学 Agent Harness 演示手册
 
+> **架构已更新（2026-07）**：编排入口为 `.cursor/skills/teaching-page-workflow/`，执行层为 `teaching-page-v2/`。详见 `.cursor/skills/VERSIONS.md`。下文部分目录图仍为一期表述，汇报时以 VERSIONS 为准。
+
 > **受众**：项目经理、产品、教研（非纯研发）  
 > **演示人**：前端 / Agent 方向同学  
 > **建议时长**：5–8 分钟（含 1 次现场生成 + 1 个成品浏览）  

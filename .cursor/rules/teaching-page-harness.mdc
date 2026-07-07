@@ -1,16 +1,16 @@
 ---
 description: >-
-  生成或修改 K12 互动课件 HTML 时，自动遵循 teaching-page-v2 Harness
-  （无需 @teaching-page）。单页/多页形态由服务端上游保障，Harness 不判定。
+  生成或修改 K12 教学 HTML 时，自动遵循 teaching-page-workflow 全流程
+  + teaching-page-v2 执行层（无需 @teaching-page）。
 globs: pages/**/*.html
 alwaysApply: true
 ---
 
-# Teaching Page Harness v2
+# Teaching Page Harness（Workflow + v2）
 
 ## 何时启用
 
-教学页面、互动课件、课堂演示、答题页、多页课件；在 `pages/` 下新建/修改教学 HTML；演示 Harness。
+教学页面、静态课件、互动课件、课程游戏、课堂演示、多页课件；在 `pages/` 下新建/修改教学 HTML。
 
 ## 何时不要启用
 
@@ -21,24 +21,28 @@ alwaysApply: true
 ## 执行
 
 ```
-Read teaching-page-v2/SKILL.md → execute.md → Write pages/<slug>/
+Read teaching-page-workflow/SKILL.md
+  → Phase 0 route.md
+  → phases/01–06
+  → Phase 5 调用 teaching-page-v2/execute.md
+  → Write pages/<slug>/ + .cursor/workflow/<slug>/
 ```
 
-**禁止**在 Harness 内判定 single/multi 或维护决策文件（服务端职责）。
+**全流程在本地**；服务端仅提供 Agent 运行时。
 
 ## 契约
 
-- 产出：**`<slug>.zip`**（最终 LMS 交付）+ 开发目录四源文件
-- 打包：`bash teaching-page-v2/assets/package-scorm.sh pages/<slug>`
-- 骨架：`teaching-page-shared/templates/courseware-starter.html`
-- SCORM：见 `teaching-page-v2/scorm.md`；测验页必调 `__cwScormReport`
-- `page-shared` / `page-data` / `.page-container` / spec 注释
-- 画布 `#eef1f5`，壳无外框阴影
-- 多端：PC + iPad（`responsive.md`）
+- 过程产物：`.cursor/workflow/<slug>/*.yaml`
+- 最终交付：**`<slug>.zip`** + `pages/<slug>/`
+- 多页：`package-scorm.sh`（四文件）
+- 游戏：`package-scorm-game.sh`（三文件）
+- 执行层绑定：`teaching-page-workflow/execution-binding.md`（当前 v2）
+- 骨架：`teaching-page-v2/templates/`（随执行层版本，不跨版本共享）
+- SCORM：见 `teaching-page-v2/scorm.md`
 
 ## 修改已有课件
 
-Read 目标 HTML → 只改用户要求部分 → 保留 spec、壳路径、配色。
+Read 目标 HTML → 增量 Phase 5 → Phase 6 重打包。
 
 ## 归档
 

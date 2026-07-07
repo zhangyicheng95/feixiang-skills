@@ -46,6 +46,7 @@
   <script>...</script>
 </template>
 
+<script src="./scorm-api.js"></script>
 <script src="./courseware-shell.js"></script>
 ```
 

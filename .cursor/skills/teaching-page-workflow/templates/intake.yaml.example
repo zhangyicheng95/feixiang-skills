@@ -1,0 +1,12 @@
+slug: acid-base-fx
+title: 酸碱中和反应 · 初二化学
+product: interactive
+execution_layer: v2
+output_dir: pages/acid-base-fx
+keyword: 酸碱中和
+requirements: 初二化学; 4页; 滴定模拟; 4题测验
+require: 中和滴定,pH变化,判分
+forbid: emoji; 外链视频
+core_loop: 滴碱→pH升→中和提示; 测验选题→提交→SCORM上报
+page_count_hint: 4
+scorm: true

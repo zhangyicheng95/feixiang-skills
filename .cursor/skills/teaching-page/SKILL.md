@@ -1,17 +1,22 @@
 ---
 name: teaching-page
 description: >-
-  互动课件 HTML 生成（转发 v2 Harness）。单页/多页由服务端上游保障；
-  本入口只执行 Host + page-data + 本地预览壳生成。
+  K12 教学 HTML 全流程入口。静态课件、互动课件、课程游戏均走 teaching-page-workflow
+  Phase 0–6；HTML/SCORM 执行由 teaching-page-v2 完成。
 ---
 
-# Teaching Page（入口 → v2）
+# Teaching Page（入口 → Workflow）
 
 ```
-Read .cursor/skills/teaching-page-v2/SKILL.md → 按工作流生成
+Read .cursor/skills/teaching-page-workflow/SKILL.md → Phase 0–6
 ```
 
-- **v2（默认）**：`teaching-page-v2/`
-- **v1（归档）**：`teaching-page-v1/` — 仅回归，勿用于新生成
+| 层 | 目录 | 职责 |
+|----|------|------|
+| **编排** | `teaching-page-workflow/` | 路由、大纲、确认、素材、交付 |
+| **执行** | `teaching-page-v2/` | HTML/壳/SCORM + **本版 templates/** |
+| **归档** | `teaching-page-v1/` | 旧 harness，仅回归 |
+
+服务端只提供 Agent 运行时；**全流程在本地 Harness 完成**。
 
 详见 [VERSIONS.md](../VERSIONS.md)。

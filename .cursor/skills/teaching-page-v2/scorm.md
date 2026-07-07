@@ -43,6 +43,26 @@ zip -j <slug>.zip index.html imsmanifest.xml scorm-api.js courseware-shell.js
 
 `imsmanifest.xml` 必须在 ZIP **根目录**，LMS 才能识别。
 
+## 课程游戏（单页 SCO）
+
+ZIP 根目录三文件（**无** `courseware-shell.js`）：
+
+```
+imsmanifest.xml
+index.html
+scorm-api.js
+```
+
+打包：
+
+```bash
+bash .cursor/skills/teaching-page-v2/assets/package-scorm-game.sh pages/<slug>
+```
+
+模板：[templates/imsmanifest-game.template.xml](templates/imsmanifest-game.template.xml)
+
+游戏页在结算时直接调用 `__cwScormReport`（`scorm-api.js` 在页面内加载，无 iframe 壳）。
+
 ## imsmanifest 占位符
 
 | 占位符 | 说明 |
@@ -53,7 +73,7 @@ zip -j <slug>.zip index.html imsmanifest.xml scorm-api.js courseware-shell.js
 | `{{RES_ID}}` | 资源 ID |
 | `{{TITLE}}` | 课件标题（XML 转义） |
 
-模板：[../teaching-page-shared/templates/imsmanifest.template.xml](../teaching-page-shared/templates/imsmanifest.template.xml)
+模板：[templates/imsmanifest.template.xml](templates/imsmanifest.template.xml)
 
 ## Host 必写
 

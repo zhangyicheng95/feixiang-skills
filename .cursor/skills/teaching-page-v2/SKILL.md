@@ -1,25 +1,25 @@
 ---
 name: teaching-page-v2
 description: >-
-  互动课件 HTML Harness 执行层 v2。只生成 Host + page-data + 本地预览壳。
-  单页/多页形态由服务端上游保障，本 Skill 不判定、不路由。
+  教学 HTML Harness 执行层 v2。由 teaching-page-workflow Phase 5 调用：
+  多页 Host + page-data + 预览壳（static/interactive），或单页游戏 HTML。
 ---
 
 # Teaching Page v2（Harness 执行层）
 
 在 **Cursor Agent** 里：读规则 → 写 HTML → 浏览器打开即跑。不依赖飞象 CDN 壳。
 
-**边界**：本目录是本地 Harness。**不**做形态决策（单页 vs 多页由服务端上游保障）；**不**维护决策文件或前置层。
+**边界**：本目录是**执行层**，由 [teaching-page-workflow](../teaching-page-workflow/SKILL.md) Phase 5 调用。**不**单独跳过 Workflow 做全流程（修改已有课件除外）。
 
-## 工作流
+## 工作流（Phase 5 内）
 
 ```
-1. 从用户原文 / 上游指令抽取验收要点 → 写入 spec 注释
+1. 读 .cursor/workflow/<slug>/outline.yaml + intake.yaml（含 execution_layer）
 2. Read feixiang-style.md → 选色板 → fx-style 注释
-3. 有互动 → 声明 core-loop 并实现最小可玩闭环
-4. 以 teaching-page-shared/templates/courseware-starter.html 为 Host 骨架
-5. Write pages/<slug>/ 四源文件 + 运行 package-scorm.sh 生成 <slug>.zip
-6. 交付自检 + 飞象风自检 + SCORM 自检（见 scorm.md）
+3. static/interactive：templates/courseware-starter.html Host + page-data
+   game：templates/game-starter.html 单页 + 状态机
+4. Write pages/<slug>/ + package-scorm.sh 或 package-scorm-game.sh
+5. 交付自检 + 飞象风 + SCORM（见 scorm.md）
 ```
 
 详见 [execute.md](execute.md)。
@@ -51,21 +51,29 @@ description: >-
 
 `Read` 目标 HTML → 只改用户要求部分；保留 spec、壳路径、配色令牌、`page-data` 结构。
 
-## 交付自检
+## 交付自检（多页 static / interactive）
 
 ```
 □ 已 Write 到磁盘（非仅聊天展示）
 □ spec + fx-style 覆盖用户硬要求
 □ 互动类 core-loop 每步有实现
-□ <slug>.zip 已生成（ZIP 根目录为 imsmanifest.xml + 四文件）
+□ <slug>.zip 已生成（ZIP 根目录 imsmanifest + 四文件）
 □ courseware-shell.js + scorm-api.js 与 index.html 同目录（从 assets/ 复制）
-□ imsmanifest.xml 四文件引用正确；spec 含 scorm=2004
+□ imsmanifest.xml 四文件 href 正确；spec 含 scorm=2004
 □ 测验页提交时调用 __cwScormReport（score + complete + interactions）
 □ page-data 连续 data-id 从 1 起
 □ page-shared 未误放 Host head；禁止 page-shared 内 script src 外链
 □ 标准页 .page-container 内 overflow-y:auto 滚动
 □ 子页按 960×540 排版；无 template 内 script 字面量 </template>
 □ 已告知 LMS 交付路径（`<slug>.zip`）与本地预览路径（`index.html`）
+```
+
+## 交付自检（game 单页）
+
+```
+□ <slug>.zip 已生成（ZIP 根目录三文件：imsmanifest + index + scorm-api）
+□ 无 courseware-shell.js；结算调用 __cwScormReport
+□ 状态机集中管理 phase；触控目标 ≥ 44px
 ```
 
 ## 飞象风自检
@@ -80,7 +88,7 @@ description: >-
 ## 参考
 
 - 执行细则：[execute.md](execute.md)
-- 模板：[../teaching-page-shared/templates/courseware-starter.html](../teaching-page-shared/templates/courseware-starter.html)
+- 模板：[templates/](templates/)（本版本自有，不跨版本共享）
 - 视觉：[feixiang-style.md](feixiang-style.md)
 - 契约：[reference.md](reference.md)
 - SCORM：[scorm.md](scorm.md)
