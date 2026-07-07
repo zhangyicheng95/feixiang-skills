@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>课件标题.html</title>
+  <!-- spec: requirements=; require=; count=4 -->
+  <!-- fx-style: palette=FX-蓝(飞象默认); layout=page-container; keyword=; source=飞象产物对齐 -->
+</head>
+<body>
+
+<div id="cw-loading">加载课件中...</div>
+
+<!-- 飞象产物 page-shared：960×540 画布 + page-container 组件基线 -->
+<template class="page-shared">
+  <style>
+    :root{
+      --primary:#3B82F6; --secondary:#60A5FA; --accent:#F59E0B;
+      --bg:#FFFFFF; --text:#1E293B; --success:#10B981; --error:#EF4444;
+      --muted:#64748B;
+      --font:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+    }
+    body{ font-family:var(--font); color:var(--text); background:#eef1f5; margin:0; }
+    .page-container{
+      height:100%; max-height:100%; min-height:0; padding:30px 40px; display:flex; flex-direction:column;
+      box-sizing:border-box; overflow-y:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:thin; scrollbar-color:var(--primary) #e2e8f0;
+    }
+    .page-container::-webkit-scrollbar{ width:6px; }
+    .page-container::-webkit-scrollbar-track{ background:#e2e8f0; border-radius:999px; }
+    .page-container::-webkit-scrollbar-thumb{ background:var(--primary); border-radius:999px; }
+    .page-title{
+      font-size:32px; font-weight:700; color:var(--primary); margin-bottom:20px;
+      padding-left:15px; border-left:6px solid var(--primary); line-height:1.2;
+    }
+    .card{
+      background:#fff; border-radius:12px;
+      box-shadow:0 4px 6px -1px rgba(0,0,0,.1); padding:20px; margin-bottom:15px;
+    }
+    .btn{
+      padding:10px 20px; border-radius:8px; font-weight:600; cursor:pointer;
+      transition:background .2s; border:none; font-size:15px;
+    }
+    .btn-primary{ background:var(--primary); color:#fff; }
+    .btn-primary:hover{ background:var(--secondary); }
+    .tip{
+      background:#ecfdf5; border:1px solid var(--success); border-radius:12px;
+      padding:14px 18px; font-size:15px; line-height:1.6;
+    }
+  </style>
+</template>
+
+<!-- 第 1 页：封面（全屏特例） -->
+<template class="page-data" data-id="1" data-name="封面">
+  <style>
+    .cover{
+      height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%);
+      color:#fff; text-align:center; padding:40px; box-sizing:border-box;
+    }
+    .cover h1{ font-size:44px; margin:0 0 16px; font-weight:800; }
+    .cover p{ font-size:18px; opacity:.92; margin:0 0 28px; line-height:1.6; }
+    .cover .tag{
+      font-size:16px; background:rgba(255,255,255,.18); padding:10px 28px; border-radius:999px;
+    }
+  </style>
+  <div class="cover">
+    <h1>课件标题</h1>
+    <p>副标题 · 本课要点 / 课时</p>
+    <div class="tag">学科 · 年级 · 教材版本</div>
+  </div>
+</template>
+
+<!-- 第 2 页：概念讲解 -->
+<template class="page-data" data-id="2" data-name="概念讲解">
+  <div class="page-container">
+    <div class="page-title">核心概念</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div class="card">
+        <h4 style="color:var(--primary);margin:0 0 10px;">要点一</h4>
+        <p style="margin:0;font-size:16px;line-height:1.8;">说明文字，≤80 字。用列表或短段落呈现知识点。</p>
+      </div>
+      <div class="card">
+        <h4 style="color:var(--primary);margin:0 0 10px;">要点二</h4>
+        <p style="margin:0;font-size:16px;line-height:1.8;">关键术语加粗，保持 16px 行高 1.8 可读性。</p>
+      </div>
+    </div>
+    <div class="tip"><strong>提示：</strong>飞象标准页用 <code>.page-container</code> + <code>.page-title</code> + <code>.card</code> 组合。</div>
+  </div>
+</template>
+
+<!-- 第 3 页：互动演示 -->
+<template class="page-data" data-id="3" data-name="互动演示">
+  <style>
+    .lab-wrap{ display:flex; gap:20px; flex:1; min-height:0; }
+    .lab-stage{
+      flex:1; background:#f1f5f9; border-radius:12px; display:flex;
+      align-items:center; justify-content:center; min-height:220px;
+    }
+    .lab-val{ font-size:28px; font-weight:700; color:var(--primary); }
+    .lab-ctrl{ display:flex; flex-direction:column; gap:12px; width:220px; }
+  </style>
+  <div class="page-container">
+    <div class="page-title">互动演示</div>
+    <div class="lab-wrap">
+      <div class="lab-stage" data-interactive>
+        <span class="lab-val" id="out">状态：0</span>
+      </div>
+      <div class="lab-ctrl">
+        <input type="range" id="rng" data-interactive min="0" max="100" value="0" style="width:100%;accent-color:var(--primary);">
+        <button type="button" class="btn btn-primary" id="reset" data-interactive>重置</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var rng=document.getElementById('rng'), out=document.getElementById('out');
+      function update(v,skip){ out.textContent='状态：'+v; rng.value=v;
+        if(!skip) window.parent.postMessage({type:'saveState',state:{v:Number(v)}},'*'); }
+      rng.addEventListener('input',function(){ update(rng.value); });
+      document.getElementById('reset').addEventListener('click',function(){ update(0); });
+      window.addEventListener('message',function(e){
+        if(e.data&&e.data.type==='restoreState'&&e.data.state) update(e.data.state.v,true); });
+      update(0,true);
+    })();
+  </script>
+</template>
+
+<!-- 第 4 页：课堂测验 -->
+<template class="page-data" data-id="4" data-name="课堂测验">
+  <style>
+    .quiz .q{ font-size:16px; font-weight:700; margin:14px 0 8px; }
+    .opt{ display:block; width:100%; text-align:left; margin:6px 0; padding:10px 14px;
+      border:1px solid #e2e8f0; border-radius:8px; background:#fff; cursor:pointer; font-size:15px; }
+    .opt.correct{ border-color:var(--success); color:var(--success); }
+    .opt.wrong{ border-color:var(--error); color:var(--error); }
+    .foot{ display:flex; align-items:center; gap:12px; margin-top:16px; }
+    #score{ flex:1; font-weight:700; color:var(--primary); }
+  </style>
+  <div class="page-container quiz">
+    <div class="page-title">课堂测验</div>
+    <p class="q">1. 示例题干？</p>
+    <button type="button" class="opt" data-interactive data-q="0" data-v="A">选项 A</button>
+    <button type="button" class="opt" data-interactive data-q="0" data-v="B">选项 B</button>
+    <div class="foot">
+      <span id="score">请作答后提交</span>
+      <button type="button" class="btn btn-primary" id="submit" data-interactive>提交</button>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var ANS={0:'A'}, pick={0:null}, done=false, s=document.getElementById('score');
+      function save(){ window.parent.postMessage({type:'saveState',state:{pick:pick,done:done}},'*'); }
+      document.querySelectorAll('.opt').forEach(function(b){
+        b.addEventListener('click',function(){ if(done) return;
+          pick[b.dataset.q]=b.dataset.v;
+          document.querySelectorAll('.opt[data-q="'+b.dataset.q+'"]').forEach(function(x){ x.style.borderColor=''; });
+          b.style.borderColor='var(--primary)'; save(); });
+      });
+      function grade(){ if(!pick[0]){ s.textContent='请先作答'; return; } done=true;
+        document.querySelectorAll('.opt').forEach(function(b){ b.disabled=true;
+          if(b.dataset.v===ANS[b.dataset.q]) b.classList.add('correct');
+          else if(b.dataset.v===pick[b.dataset.q]) b.classList.add('wrong'); });
+        s.textContent = pick[0]===ANS[0] ? '正确' : '再想想'; save(); }
+      document.getElementById('submit').addEventListener('click',grade);
+      window.addEventListener('message',function(e){
+        if(e.data&&e.data.type==='restoreState'&&e.data.state){ var st=e.data.state;
+          pick=st.pick||pick; done=!!st.done; if(done) grade(); } });
+    })();
+  </script>
+</template>
+
+<script src="./courseware-shell.js"></script>
+</body>
+</html>
