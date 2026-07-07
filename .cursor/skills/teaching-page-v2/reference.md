@@ -21,7 +21,8 @@
 
 ## 视口与滚动（multi）
 
-- **预览壳**（`assets/courseware-shell.js`）：飞象风 UI；主区居中 **960×540** iframe，不足时缩小、全屏时**等比放大**（不拉伸变形）；全屏范围为 **缩略图栏 + 主舞台**（顶栏/底栏隐藏，按 Esc 退出）
+- **设计画布**：逻辑 **960×540**；PC 居中显示（≤100%），窄屏由壳 **等比缩小** 适配
+- **终端适配**：PC + iPad（竖屏/横屏）；见 [responsive.md](responsive.md)
 - **子页注入**：`html,body { width:960px; height:540px; overflow:hidden; background:#eef1f5 }`（与舞台同色，无白底卡片）
 - **预览壳**：`.cw-stage-frame` **禁止** `box-shadow` / 圆角外框；阴影仅允许在页内 `.card`
 - **标准页**：`.page-container` 内 `overflow-y:auto` 滚动；封面/转场为全屏特例（`.cover` 等）
@@ -52,12 +53,20 @@
 
 | 方向 | type | 说明 |
 |---|---|---|
-| 子→壳 | `saveState` | 状态变更即发送，state 可 JSON.stringify |
+| 子→壳 | `saveState` | 状态变更即发送，state 可 JSON.stringify；触发 SCORM suspend_data 同步 |
+| 子→壳 | `scormReport` | SCORM 分数/完成/作答（见 [scorm.md](scorm.md)） |
+| 子→壳 | `cwNav` | 键盘翻页 |
 | 壳→子 | `restoreState` | 后退到已访问页时恢复；state 可能为 null |
 
-## 壳注入全局（multi）
+## SCORM 2004
 
-- `window.__CW_MODE__`：`'main'`（本 MVP 壳仅主区）
+产物默认 SCORM 2004 4th Edition 单 SCO。详见 **[scorm.md](scorm.md)**。
+
+| 文件 | 作用 |
+|------|------|
+| `scorm-api.js` | API_1484_11 适配 |
+| `imsmanifest.xml` | LMS 包清单 |
+| `courseware-shell.js` | 进度/书签/分数/交互上报 |
 
 ## 与飞象差异（Cursor MVP）
 
@@ -66,5 +75,6 @@
 | 壳 | 本地 `courseware-shell.js` | CDN 闭源 |
 | 缩略图 | 简化侧栏 | 完整三 iframe |
 | MuskCollect | 无 | 数据回收 |
+| SCORM | **2004 4th Edition**（本地 scorm-api + manifest） | 生产 LMS 对接 |
 | test_html 云测 | 无，靠交付自检 | Playwright 云函数 |
 | 媒体 | 公开 CDN 可用 | 仅 fbcontent 白名单 |

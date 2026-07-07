@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="com.feixiang.acid-base-fx" version="1.0"
+  xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
+  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
+  xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3"
+  xmlns:imsss="http://www.imsglobal.org/xsd/imsss"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>2004 4th Edition</schemaversion>
+  </metadata>
+  <organizations default="ORG_acid-base-fx">
+    <organization identifier="ORG_acid-base-fx">
+      <title>酸碱中和反应 · 初二化学</title>
+      <item identifier="ITEM_acid-base-fx" identifierref="RES_acid-base-fx" isvisible="true">
+        <title>酸碱中和反应 · 初二化学</title>
+        <imsss:sequencing>
+          <imsss:deliveryControls completionSetByContent="true" objectiveSetByContent="true"/>
+        </imsss:sequencing>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="RES_acid-base-fx" type="webcontent" adlcp:scormType="sco" href="index.html">
+      <file href="index.html"/>
+      <file href="courseware-shell.js"/>
+      <file href="scorm-api.js"/>
+    </resource>
+  </resources>
+</manifest>

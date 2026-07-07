@@ -68,6 +68,9 @@
       'e.preventDefault();window.parent.postMessage({type:"cwNav",dir:"prev"},"*");' +
       '}});';
 
+    var scormHelper =
+      'window.__cwScormReport=function(p){window.parent.postMessage(Object.assign({type:"scormReport"},p||{}),"*");};';
+
     var pageFix =
       '<style id="cw-page">' +
       'html,body{background:' +
@@ -95,6 +98,7 @@
       '<script>' +
       ready +
       navKeys +
+      scormHelper +
       '<\/script></body></html>'
     );
   }
@@ -112,6 +116,9 @@
     this.titleEl = null;
     this.pageLabel = null;
     this.thumbIframes = [];
+    this.scormActive = false;
+    this.masteryScore = 70;
+    this.scormMeta = { interactions: [], completed: false };
   }
 
   CoursewareShell.prototype._handleNavKey = function (e) {
@@ -124,6 +131,169 @@
       e.preventDefault();
       this.prev();
     }
+  };
+
+  CoursewareShell.prototype._parseMastery = function () {
+    var m = document.querySelector('meta[name="cw-mastery-score"]');
+    if (m) {
+      var n = Number(m.getAttribute('content'));
+      if (!isNaN(n) && n >= 0 && n <= 100) this.masteryScore = n;
+    }
+  };
+
+  CoursewareShell.prototype._initScorm = function () {
+    this._parseMastery();
+    if (typeof window.SCORM === 'undefined') return;
+    var r = window.SCORM.init();
+    this.scormActive = r.ok;
+    if (!this.scormActive) return;
+    window.SCORM.set('cmi.completion_status', 'incomplete');
+    window.SCORM.set('cmi.success_status', 'unknown');
+    var raw = this._restoreFromScorm();
+    if (raw && raw.index != null && raw.index >= 0 && raw.index < this.pages.length) {
+      this.index = raw.index;
+      if (raw.pageStates) this.pageStates = raw.pageStates;
+      if (raw.interactions) this.scormMeta.interactions = raw.interactions;
+      if (raw.completed) this.scormMeta.completed = true;
+    } else {
+      var loc = parseInt(window.SCORM.get('cmi.location'), 10);
+      if (!isNaN(loc) && loc >= 0 && loc < this.pages.length) this.index = loc;
+    }
+    window.addEventListener('beforeunload', this._terminateScorm.bind(this));
+    window.addEventListener('pagehide', this._terminateScorm.bind(this));
+  };
+
+  CoursewareShell.prototype._restoreFromScorm = function () {
+    if (!this.scormActive) return null;
+    var s = window.SCORM.get('cmi.suspend_data');
+    if (!s) return null;
+    try {
+      return JSON.parse(s);
+    } catch (e) {
+      return null;
+    }
+  };
+
+  CoursewareShell.prototype._syncScorm = function (opts) {
+    if (!this.scormActive) return;
+    opts = opts || {};
+    var total = this.pages.length || 1;
+    var progress = (this.index + 1) / total;
+    var payload = {
+      index: this.index,
+      pageStates: this.pageStates,
+      interactions: this.scormMeta.interactions,
+      completed: this.scormMeta.completed,
+    };
+    window.SCORM.set('cmi.location', String(this.index));
+    window.SCORM.set('cmi.suspend_data', JSON.stringify(payload));
+    window.SCORM.set('cmi.progress_measure', progress.toFixed(4));
+    if (opts.score) {
+      var sc = opts.score;
+      if (sc.raw != null) window.SCORM.set('cmi.score.raw', String(sc.raw));
+      if (sc.min != null) window.SCORM.set('cmi.score.min', String(sc.min));
+      if (sc.max != null) window.SCORM.set('cmi.score.max', String(sc.max));
+      if (sc.scaled != null) window.SCORM.set('cmi.score.scaled', String(sc.scaled));
+      else if (sc.raw != null && sc.max != null && Number(sc.max) > Number(sc.min || 0)) {
+        var scaled =
+          (Number(sc.raw) - Number(sc.min || 0)) / (Number(sc.max) - Number(sc.min || 0));
+        window.SCORM.set('cmi.score.scaled', scaled.toFixed(4));
+      }
+    }
+    if (opts.complete || this.scormMeta.completed) {
+      this.scormMeta.completed = true;
+      window.SCORM.set('cmi.completion_status', 'completed');
+      var raw = opts.score && opts.score.raw != null ? Number(opts.score.raw) : null;
+      if (raw != null) {
+        window.SCORM.set(
+          'cmi.success_status',
+          raw >= this.masteryScore ? 'passed' : 'failed'
+        );
+      } else if (opts.success) {
+        window.SCORM.set('cmi.success_status', opts.success);
+      } else {
+        window.SCORM.set('cmi.success_status', 'passed');
+      }
+    } else {
+      window.SCORM.set('cmi.completion_status', 'incomplete');
+    }
+    window.SCORM.commit();
+  };
+
+  CoursewareShell.prototype._writeInteraction = function (item, idx) {
+    if (!this.scormActive || !item) return;
+    var p = 'cmi.interactions.' + idx + '.';
+    window.SCORM.set(p + 'id', item.id || 'interaction_' + idx);
+    window.SCORM.set(p + 'type', item.type || 'choice');
+    if (item.description) window.SCORM.set(p + 'description', item.description);
+    if (item.student_response != null) {
+      window.SCORM.set(p + 'learner_response', String(item.student_response));
+    }
+    if (item.result) window.SCORM.set(p + 'result', item.result);
+    if (item.weighting != null) window.SCORM.set(p + 'weighting', String(item.weighting));
+    if (item.latency) window.SCORM.set(p + 'latency', item.latency);
+    if (item.timestamp) window.SCORM.set(p + 'timestamp', item.timestamp);
+  };
+
+  CoursewareShell.prototype._handleScormReport = function (data) {
+    if (data.interactions && data.interactions.length) {
+      var base = this.scormMeta.interactions.length;
+      for (var i = 0; i < data.interactions.length; i++) {
+        this.scormMeta.interactions.push(data.interactions[i]);
+        this._writeInteraction(data.interactions[i], base + i);
+      }
+    }
+    if (data.score || data.complete) {
+      this._syncScorm({
+        score: data.score,
+        complete: !!data.complete,
+        success: data.success,
+      });
+    } else {
+      this._syncScorm();
+    }
+  };
+
+  CoursewareShell.prototype._terminateScorm = function () {
+    if (!this.scormActive || typeof window.SCORM === 'undefined') return;
+    this._syncScorm();
+    window.SCORM.finish('suspend');
+    this.scormActive = false;
+  };
+
+  CoursewareShell.prototype._stagePadding = function () {
+    if (this._isFullscreen()) return 0;
+    var w = window.innerWidth;
+    if (w <= 768) return 8;
+    if (w <= 1024) return 16;
+    return 48;
+  };
+
+  CoursewareShell.prototype._bindTouchNav = function () {
+    var self = this;
+    var startX = 0;
+    var startY = 0;
+    this.stageEl.addEventListener(
+      'touchstart',
+      function (e) {
+        if (!e.changedTouches[0]) return;
+        startX = e.changedTouches[0].clientX;
+        startY = e.changedTouches[0].clientY;
+      },
+      { passive: true }
+    );
+    this.stageEl.addEventListener(
+      'touchend',
+      function (e) {
+        if (!e.changedTouches[0]) return;
+        var dx = e.changedTouches[0].clientX - startX;
+        var dy = e.changedTouches[0].clientY - startY;
+        if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+        if (dx < 0) self.next();
+        else self.prev();
+      },
+      { passive: true }
+    );
   };
 
   CoursewareShell.prototype._focusFs = function () {
@@ -213,6 +383,9 @@
       } else if (e.data.type === 'saveState') {
         var page = self.pages[self.index];
         if (page) self.pageStates[page.id] = e.data.state;
+        self._syncScorm();
+      } else if (e.data.type === 'scormReport') {
+        self._handleScormReport(e.data);
       }
     });
 
@@ -234,8 +407,16 @@
       self._fitMain();
     });
 
+    this._bindTouchNav();
+    window.addEventListener('orientationchange', function () {
+      setTimeout(function () {
+        self._fitMain();
+      }, 100);
+    });
+
     this._renderThumbs();
-    this.show(0, 'forward');
+    this._initScorm();
+    this.show(this.index, 'forward');
   };
 
   CoursewareShell.prototype._shellStyles = function () {
@@ -305,7 +486,39 @@
       'transform-origin:center center;flex-shrink:0}' +
       '.cw-main-iframe{width:100%;height:100%;border:none;display:block}' +
       '.cw-footer{height:40px;flex-shrink:0;display:flex;align-items:center;padding:0 20px;' +
-      'border-top:1px solid #e5e7eb;background:#fff;font-size:12px;color:#64748b}';
+      'border-top:1px solid #e5e7eb;background:#fff;font-size:12px;color:#64748b}' +
+      '@supports(height:100dvh){.cw-root{height:100dvh}}' +
+      '@media(max-width:1024px){' +
+      '.cw-header{padding:0 12px;height:48px}' +
+      '.cw-action[data-action="edit"]{display:none}' +
+      '.cw-action{padding:8px 10px;font-size:12px}' +
+      '.cw-body{flex-direction:column}' +
+      '.cw-thumbs{width:100%;max-height:92px;height:auto;flex-shrink:0;display:flex;flex-direction:row;' +
+      'gap:8px;padding:8px 10px;overflow-x:auto;overflow-y:hidden;border-right:none;border-bottom:1px solid #e5e7eb;' +
+      '-webkit-overflow-scrolling:touch}' +
+      '.cw-thumb{width:88px;height:' +
+      Math.round(88 * (CANVAS_H / CANVAS_W)) +
+      'px;margin:0;flex-shrink:0}' +
+      '.cw-thumb-inner{transform:scale(' +
+      (88 / CANVAS_W).toFixed(6) +
+      ')}' +
+      '.cw-stage{padding:12px;flex:1;min-height:0}' +
+      '.cw-footer{height:36px;padding:0 12px;font-size:11px}' +
+      '}' +
+      '@media(max-width:768px){' +
+      '.cw-header-actions .cw-action:not([data-action="fullscreen"]):not([data-action="close"]){display:none}' +
+      '.cw-title{font-size:13px}' +
+      '.cw-thumb{width:76px;height:' +
+      Math.round(76 * (CANVAS_H / CANVAS_W)) +
+      'px}' +
+      '.cw-thumb-inner{transform:scale(' +
+      (76 / CANVAS_W).toFixed(6) +
+      ')}' +
+      '.cw-stage{padding:8px}' +
+      '.cw-footer-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
+      '}' +
+      '@media(pointer:coarse){.cw-action,.cw-thumb{min-height:44px;min-width:44px}' +
+      '.cw-action--icon{min-width:44px;min-height:44px}}';
     return style;
   };
 
@@ -383,11 +596,12 @@
   CoursewareShell.prototype._fitMain = function () {
     if (!this.stageEl || !this.frameWrap) return;
     var fs = this._isFullscreen();
-    var pad = fs ? 0 : 48;
-    var sw = this.stageEl.clientWidth - pad;
-    var sh = this.stageEl.clientHeight - pad;
+    var pad = this._stagePadding();
+    var sw = this.stageEl.clientWidth - pad * 2;
+    var sh = this.stageEl.clientHeight - pad * 2;
+    if (sw < 1 || sh < 1) return;
     var scale = Math.min(sw / CANVAS_W, sh / CANVAS_H);
-    if (!fs) scale = Math.min(scale, 1);
+    if (!fs && window.innerWidth > 1024) scale = Math.min(scale, 1);
     this.frameWrap.style.transform = Math.abs(scale - 1) < 0.001 ? '' : 'scale(' + scale + ')';
   };
 
@@ -433,6 +647,7 @@
     window.addEventListener('message', onReady);
     this._updateThumbActive();
     this._fitMain();
+    this._syncScorm();
   };
 
   CoursewareShell.prototype.next = function () {

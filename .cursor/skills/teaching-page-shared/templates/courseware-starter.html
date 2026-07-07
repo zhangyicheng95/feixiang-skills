@@ -2,9 +2,10 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="cw-mastery-score" content="70">
   <title>课件标题.html</title>
-  <!-- spec: requirements=; require=; count=4 -->
+  <!-- spec: requirements=; require=; count=4; scorm=2004 -->
   <!-- fx-style: palette=FX-蓝(飞象默认); layout=page-container; keyword=; source=飞象产物对齐 -->
 </head>
 <body>
@@ -20,11 +21,13 @@
       --muted:#64748B;
       --font:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
     }
-    body{ font-family:var(--font); color:var(--text); background:#eef1f5; margin:0; }
+    body{ font-family:var(--font); color:var(--text); background:#eef1f5; margin:0;
+      -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     .page-container{
       height:100%; max-height:100%; min-height:0; padding:30px 40px; display:flex; flex-direction:column;
       box-sizing:border-box; overflow-y:auto; -webkit-overflow-scrolling:touch;
       scrollbar-width:thin; scrollbar-color:var(--primary) #e2e8f0;
+      touch-action:pan-y;
     }
     .page-container::-webkit-scrollbar{ width:6px; }
     .page-container::-webkit-scrollbar-track{ background:#e2e8f0; border-radius:999px; }
@@ -40,6 +43,7 @@
     .btn{
       padding:10px 20px; border-radius:8px; font-weight:600; cursor:pointer;
       transition:background .2s; border:none; font-size:15px;
+      min-height:44px; touch-action:manipulation;
     }
     .btn-primary{ background:var(--primary); color:#fff; }
     .btn-primary:hover{ background:var(--secondary); }
@@ -131,7 +135,8 @@
   <style>
     .quiz .q{ font-size:16px; font-weight:700; margin:14px 0 8px; }
     .opt{ display:block; width:100%; text-align:left; margin:6px 0; padding:10px 14px;
-      border:1px solid #e2e8f0; border-radius:8px; background:#fff; cursor:pointer; font-size:15px; }
+      border:1px solid #e2e8f0; border-radius:8px; background:#fff; cursor:pointer; font-size:15px;
+      min-height:44px; touch-action:manipulation; }
     .opt.correct{ border-color:var(--success); color:var(--success); }
     .opt.wrong{ border-color:var(--error); color:var(--error); }
     .foot{ display:flex; align-items:center; gap:12px; margin-top:16px; }
@@ -161,7 +166,15 @@
         document.querySelectorAll('.opt').forEach(function(b){ b.disabled=true;
           if(b.dataset.v===ANS[b.dataset.q]) b.classList.add('correct');
           else if(b.dataset.v===pick[b.dataset.q]) b.classList.add('wrong'); });
-        s.textContent = pick[0]===ANS[0] ? '正确' : '再想想'; save(); }
+        var correct = pick[0]===ANS[0];
+        s.textContent = correct ? '正确' : '再想想'; save();
+        if(window.__cwScormReport) window.__cwScormReport({
+          score:{ raw: correct ? 100 : 0, min:0, max:100 },
+          complete:true,
+          success: correct ? 'passed' : 'failed',
+          interactions:[{ id:'q1', type:'choice', description:'示例题干',
+            student_response: pick[0], result: correct ? 'correct' : 'incorrect' }]
+        }); }
       document.getElementById('submit').addEventListener('click',grade);
       window.addEventListener('message',function(e){
         if(e.data&&e.data.type==='restoreState'&&e.data.state){ var st=e.data.state;
@@ -170,6 +183,7 @@
   </script>
 </template>
 
+<script src="./scorm-api.js"></script>
 <script src="./courseware-shell.js"></script>
 </body>
 </html>

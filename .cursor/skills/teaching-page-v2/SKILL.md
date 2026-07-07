@@ -18,18 +18,23 @@ description: >-
 2. Read feixiang-style.md → 选色板 → fx-style 注释
 3. 有互动 → 声明 core-loop 并实现最小可玩闭环
 4. 以 teaching-page-shared/templates/courseware-starter.html 为 Host 骨架
-5. Write pages/<slug>/index.html + 同目录复制 assets/courseware-shell.js
-6. 交付自检 + 飞象风自检 → 告知打开路径
+5. Write pages/<slug>/ 四源文件 + 运行 package-scorm.sh 生成 <slug>.zip
+6. 交付自检 + 飞象风自检 + SCORM 自检（见 scorm.md）
 ```
 
 详见 [execute.md](execute.md)。
 
-## 产出（固定）
+## 产出（SCORM 2004）
 
-| 文件 | 说明 |
-|------|------|
-| `index.html` | Host + `page-shared` + 各 `page-data` |
+| 交付物 | 说明 |
+|--------|------|
+| **`<slug>.zip`** | **最终产物**，上传 LMS |
+| `index.html` | Host（开发目录，便于本地预览） |
+| `imsmanifest.xml` | 清单 |
+| `scorm-api.js` | 从 [assets/scorm-api.js](assets/scorm-api.js) 复制 |
 | `courseware-shell.js` | 从 [assets/courseware-shell.js](assets/courseware-shell.js) 复制 |
+
+打包：`bash assets/package-scorm.sh pages/<slug>`。详见 [scorm.md](scorm.md)。
 
 ## 飞象视觉契约
 
@@ -38,7 +43,7 @@ description: >-
 ## spec 注释（必写）
 
 ```html
-<!-- spec: requirements=...; require=...; core-loop=... -->
+<!-- spec: requirements=...; require=...; core-loop=...; scorm=2004 -->
 <!-- fx-style: palette=FX-青(B-08); layout=page-container; keyword=...; source=hash -->
 ```
 
@@ -52,12 +57,15 @@ description: >-
 □ 已 Write 到磁盘（非仅聊天展示）
 □ spec + fx-style 覆盖用户硬要求
 □ 互动类 core-loop 每步有实现
-□ courseware-shell.js 与 index.html 同目录（从 assets/ 复制）
+□ <slug>.zip 已生成（ZIP 根目录为 imsmanifest.xml + 四文件）
+□ courseware-shell.js + scorm-api.js 与 index.html 同目录（从 assets/ 复制）
+□ imsmanifest.xml 四文件引用正确；spec 含 scorm=2004
+□ 测验页提交时调用 __cwScormReport（score + complete + interactions）
 □ page-data 连续 data-id 从 1 起
 □ page-shared 未误放 Host head；禁止 page-shared 内 script src 外链
 □ 标准页 .page-container 内 overflow-y:auto 滚动
 □ 子页按 960×540 排版；无 template 内 script 字面量 </template>
-□ 已告知浏览器打开路径
+□ 已告知 LMS 交付路径（`<slug>.zip`）与本地预览路径（`index.html`）
 ```
 
 ## 飞象风自检
@@ -66,6 +74,7 @@ description: >-
 □ page-container（§4.6）：.page-title + .card + .tip
 □ 壳：缩略图 + 居中 960×540；画布与舞台同色
 □ 配色与 fx-style 一致；无 emoji
+□ PC + iPad：见 responsive.md 自检（缩略图布局、等比缩放、触控翻页）
 ```
 
 ## 参考
@@ -74,4 +83,6 @@ description: >-
 - 模板：[../teaching-page-shared/templates/courseware-starter.html](../teaching-page-shared/templates/courseware-starter.html)
 - 视觉：[feixiang-style.md](feixiang-style.md)
 - 契约：[reference.md](reference.md)
+- SCORM：[scorm.md](scorm.md)
+- 多端：[responsive.md](responsive.md)
 - 版本：[../VERSIONS.md](../VERSIONS.md)

@@ -28,10 +28,13 @@ Read teaching-page-v2/SKILL.md → execute.md → Write pages/<slug>/
 
 ## 契约
 
-- 产出：`index.html` + 同目录 `courseware-shell.js`（从 `teaching-page-v2/assets/` 复制）
+- 产出：**`<slug>.zip`**（最终 LMS 交付）+ 开发目录四源文件
+- 打包：`bash teaching-page-v2/assets/package-scorm.sh pages/<slug>`
 - 骨架：`teaching-page-shared/templates/courseware-starter.html`
+- SCORM：见 `teaching-page-v2/scorm.md`；测验页必调 `__cwScormReport`
 - `page-shared` / `page-data` / `.page-container` / spec 注释
 - 画布 `#eef1f5`，壳无外框阴影
+- 多端：PC + iPad（`responsive.md`）
 
 ## 修改已有课件
 
